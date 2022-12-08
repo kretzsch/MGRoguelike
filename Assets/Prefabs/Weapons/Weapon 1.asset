@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38473c8b3584cb849a464ac841a28281, type: 3}
   m_Name: Weapon 1
   m_EditorClassIdentifier: 
-  bulletType: {fileID: 0}
-  fireForce: 0
+  bulletType: {fileID: 5594619525339152266, guid: 7182f4744c5accd4983385d2e06d8250, type: 3}
+  fireForce: 20
   artwork: {fileID: 0}
   bulletSpawnPos: {x: 0, y: 0}
+  maxClipSize: 10

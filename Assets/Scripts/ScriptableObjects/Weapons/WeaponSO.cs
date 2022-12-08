@@ -8,4 +8,5 @@ public class WeaponSO : ScriptableObject
   public float fireForce; 
   public Sprite artwork;
   public Vector2 bulletSpawnPos;
+  public int maxClipSize;
 }

@@ -90,6 +90,7 @@ public class CardManager : MonoBehaviour
   private void Update()
   {
     //does this really need to be in the update?
+    //high garbage count with strings
     decksizeTxt.text = $"{deck.Count}";
     discardsizeTxt.text = $"{discardPile.Count}";
   }
