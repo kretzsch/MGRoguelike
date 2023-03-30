@@ -36,7 +36,7 @@ public class CardContainer : MonoBehaviour, IDragHandler, IPointerUpHandler, IPo
 
   public enum CardType
   {
-    Weapon,
+    Weapon, //contains ammo
     Effect,
     Shield,
     Ammo
