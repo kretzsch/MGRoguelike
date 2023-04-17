@@ -79,6 +79,7 @@ namespace StarterAssets
         [SerializeField] private GameObject bulletTrail;
         [SerializeField] private GameObject firePoint;
         ParticleSystem gunShootParticles;
+        public GameObject explosionEffect;
 
         private const float _threshold = 0.01f;
 
@@ -171,7 +172,7 @@ namespace StarterAssets
             {
                 float fireRate = 0.25f; // Fire rate in seconds
                 float damage = 10f;
-                float range = 50f;
+                float range = 500f;
 
 
                 if (_input.shoot && Time.time > lastFireTime + fireRate)
@@ -187,7 +188,18 @@ namespace StarterAssets
 
                         StartCoroutine(MoveBulletTrail(bulletTrail, bulletTrail.transform.position, bulletTrail.transform.position + bulletTrail.transform.forward * 7, fireRate));
 
+
+                        // Change the color of the object hit
+                        Renderer hitObjectRenderer = hit.collider.GetComponent<Renderer>();
                         IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
+
+                        if (hitObjectRenderer != null && damageableObject != null)
+                        {
+                            StartCoroutine(FlickerAndResetColor(hitObjectRenderer, damageableObject, Color.red, 0.05f, 2));
+                        }
+
+
+
                         if (damageableObject != null)
                         {
                             damageableObject.TakeDamage(damage);
@@ -197,6 +209,24 @@ namespace StarterAssets
             }
         }
 
+        private IEnumerator FlickerAndResetColor(Renderer renderer, IDamageable damageable, Color flickerColor, float flickerDuration, int flickerCount)
+        {
+            Color originalColor = renderer.material.color;
+
+            for (int i = 0; i < flickerCount; i++)
+            {
+                if (renderer != null && damageable != null && !damageable.IsDead())
+                {
+                    renderer.material.color = flickerColor;
+                    yield return new WaitForSeconds(flickerDuration);
+                    if (renderer != null)
+                    {
+                        renderer.material.color = originalColor;
+                    }
+                }
+                yield return new WaitForSeconds(flickerDuration);
+            }
+        }
 
         /// <summary>
         /// used for the bullet trail

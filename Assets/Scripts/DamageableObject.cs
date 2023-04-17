@@ -5,6 +5,8 @@ using UnityEngine;
 public class DamageableObject : MonoBehaviour, IDamageable
 {
     [SerializeField] private float health = 100f;
+    public GameObject explosionEffectPrefab;
+    private bool isDead = false;
 
     public void TakeDamage(float damage)
     {
@@ -12,10 +14,22 @@ public class DamageableObject : MonoBehaviour, IDamageable
         //health bar?
         // do damage feedback
         health -= damage;
-        if (health <= 0)
-        { 
+        if (health <= 0 && !isDead)
+        {
+            isDead = true;
+            SpawnExplosionEffect();
+            // Destroy the enemy object
             Destroy(gameObject);
         }
+    }
+    public bool IsDead()
+    {
+        return isDead;
+    }
+    private void SpawnExplosionEffect()
+    {
+        // Instantiate the explosion effect
+        Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
     }
 }
 
