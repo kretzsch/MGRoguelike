@@ -29,7 +29,7 @@ public class Manual2DFmod : MonoBehaviour
         }
     }
 
-    private void SetFmodParameter(string parameter, string label)
+    public void SetFmodParameter(string parameter, string label)
     {
         _instance.setParameterByNameWithLabel(parameter, label);
     }
