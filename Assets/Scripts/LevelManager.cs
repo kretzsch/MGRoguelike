@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
 
     private int currentLevelIndex = -1;
 
-    private void Start()
+    private void  Awake()
     {
         SwitchLevel(0,false);
     }
