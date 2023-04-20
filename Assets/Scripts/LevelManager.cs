@@ -43,6 +43,9 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator PerformTransition(int targetLevelIndex)
     {
+        // Switch the audio
+        levelAudioController.SetFmodParameter("level", levels[targetLevelIndex].audioParameterLabel);
+
         // Trigger the transition animation
         transitionAnimator.SetTrigger(transitionTriggerName);
 
@@ -58,10 +61,8 @@ public class LevelManager : MonoBehaviour
         // Activate the target level object
         levels[targetLevelIndex].levelObject.SetActive(true);
 
-        // Switch the audio
-        levelAudioController.SetFmodParameter("level", levels[targetLevelIndex].audioParameterLabel);
-
         // Update the current level index
         currentLevelIndex = targetLevelIndex;
     }
+
 }
