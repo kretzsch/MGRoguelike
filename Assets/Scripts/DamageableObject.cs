@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,11 @@ public class DamageableObject : MonoBehaviour, IDamageable
     [SerializeField] private bool isEnemy;
     private bool _isDead = false;
     private StoreChildren _storeChildren;
-    [SerializeField] private Manual2DFmod manual2DFmod;
+
+    //check if all enemies are dead. 
+    [SerializeField] private LevelAudioController levelAudioController;
+    public static event Action AllEnemiesDeadEvent;
+
 
     public void Start()
     {
@@ -50,11 +55,11 @@ public class DamageableObject : MonoBehaviour, IDamageable
     {
         if (_storeChildren.AllEnemiesDead())
         {
-            //TEMP solution for playtest. 
-            manual2DFmod.SetFmodParameter("level", "level2");
-            Debug.Log("All enemies are dead.");
+            Debug.Log("All Enemies dead");
+            levelAudioController.OnAllEnemiesDead();
         }
     }
+
     private void SpawnExplosionEffect()
     {
         // Instantiate the explosion effect
