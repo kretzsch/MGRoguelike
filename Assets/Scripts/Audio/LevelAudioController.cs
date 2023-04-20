@@ -1,12 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FMOD.Studio;
-using FMODUnity;
 
 public class LevelAudioController : MonoBehaviour
 {
-    private FMOD.Studio.EventInstance _instance;
+    private EventInstance _instance;
+    [SerializeField] private LevelManager levelManager;
+
+    private void Awake()
+    {
+        StoreChildren storeChildren = FindObjectOfType<StoreChildren>();
+        if (storeChildren != null)
+        {
+            storeChildren.OnAllEnemiesDeadEvent += OnAllEnemiesDead;
+        }
+    }
 
     private void Start()
     {
@@ -14,31 +21,23 @@ public class LevelAudioController : MonoBehaviour
         FMODAudioManager.Instance.PlayEvent(_instance);
     }
 
-    void Update()
+    private void OnDestroy()
     {
-        // This part is for testing purposes only
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        StoreChildren storeChildren = FindObjectOfType<StoreChildren>();
+        if (storeChildren != null)
         {
-            SetFmodParameter("level", "level1");
+            storeChildren.OnAllEnemiesDeadEvent -= OnAllEnemiesDead;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetFmodParameter("level", "level2");
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SetFmodParameter("level", "level3");
-        }
+    }
+
+    public void OnAllEnemiesDead()
+    {
+        // Assuming you have a method in LevelManager to switch to the next level
+        levelManager.SwitchToNextLevel();
     }
 
     public void SetFmodParameter(string parameter, string label)
     {
         _instance.setParameterByNameWithLabel(parameter, label);
-    }
-
-    public void OnAllEnemiesDead()
-    {
-        SetFmodParameter("level", "level2");
-        Debug.Log("All enemies are dead.");
     }
 }
