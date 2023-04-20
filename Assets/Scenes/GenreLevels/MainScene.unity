@@ -6940,6 +6940,7 @@ GameObject:
   - component: {fileID: 1913303994}
   - component: {fileID: 1913303996}
   - component: {fileID: 1913303995}
+  - component: {fileID: 1913303997}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -6980,7 +6981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7005,6 +7006,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913303993}
   m_CullTransparentMesh: 1
+--- !u!95 &1913303997
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913303993}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1ebda3383287d3f4d8b8155f907359e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1923807976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8236,7 +8257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45055277f3e0794db1da6aca573d49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 0}
+  levelManager: {fileID: 7758683067289401180}
 --- !u!114 &2156710396160637563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24775,7 +24796,7 @@ MonoBehaviour:
     levelObject: {fileID: 8800923752089943613}
     audioParameterLabel: Platformer
   levelAudioController: {fileID: 1940819103876368600}
-  transitionAnimator: {fileID: 0}
+  transitionAnimator: {fileID: 1913303997}
   transitionTriggerName: Switch
 --- !u!4 &7806522490043899074
 Transform:
