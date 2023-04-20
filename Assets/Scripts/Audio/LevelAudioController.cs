@@ -1,20 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FMOD;
+using FMOD.Studio;
+using FMODUnity;
 
-public class Manual2DFmod : MonoBehaviour
+public class LevelAudioController : MonoBehaviour
 {
     private FMOD.Studio.EventInstance _instance;
 
-
     private void Start()
     {
-        _instance = FMODUnity.RuntimeManager.CreateInstance("event:/FmodEvents/MainEvent");
-        _instance.start();
+        _instance = FMODAudioManager.Instance.CreateEventInstance("event:/FmodEvents/MainEvent");
+        FMODAudioManager.Instance.PlayEvent(_instance);
     }
+
     void Update()
     {
+        // This part is for testing purposes only
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SetFmodParameter("level", "level1");
@@ -32,5 +34,11 @@ public class Manual2DFmod : MonoBehaviour
     public void SetFmodParameter(string parameter, string label)
     {
         _instance.setParameterByNameWithLabel(parameter, label);
+    }
+
+    public void OnAllEnemiesDead()
+    {
+        SetFmodParameter("level", "level2");
+        Debug.Log("All enemies are dead.");
     }
 }
