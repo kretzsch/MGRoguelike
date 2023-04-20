@@ -1,29 +1,45 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StoreChildren : MonoBehaviour
 {
-    private List<GameObject> childObjects;
+    [SerializeField] private LevelManager levelManager;
+    public delegate void OnAllEnemiesDead();
+    public event OnAllEnemiesDead OnAllEnemiesDeadEvent;
 
-    void Start()
+    private List<GameObject> _children;
+
+    private void Awake()
     {
-        childObjects = new List<GameObject>();
+        _children = new List<GameObject>();
+    }
 
-        for (int i = 0; i < transform.childCount; i++)
+    private void Start()
+    {
+        foreach (Transform child in transform)
         {
-            childObjects.Add(transform.GetChild(i).gameObject);
+            _children.Add(child.gameObject);
+
         }
     }
 
     public void RemoveChild(GameObject child)
     {
-        childObjects.Remove(child);
+        _children.Remove(child);
+        CheckAllEnemiesDead();
     }
 
     public bool AllEnemiesDead()
     {
-        return childObjects.Count == 0;
+        return _children.Count == 0;
+    }
+
+    private void CheckAllEnemiesDead()
+    {
+        if (AllEnemiesDead())
+        {
+            OnAllEnemiesDeadEvent?.Invoke();
+        }
     }
 }
-
-
