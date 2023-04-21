@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FMODUnity;
-using FMOD.Studio;
-using System;
 
 public class LevelManager : MonoBehaviour
 {
@@ -22,18 +19,26 @@ public class LevelManager : MonoBehaviour
 
     private int currentLevelIndex = -1;
 
-    private void Start()
+    private void  Awake()
     {
-        SwitchLevel(0);
+        SwitchLevel(0,false);
     }
 
-    public void SwitchLevel(int levelIndex)
+    public void SwitchLevel(int levelIndex, bool playTransition = true)
     {
         if (levelIndex < 0 || levelIndex >= levels.Count || levelIndex == currentLevelIndex) return;
 
         // Perform level transition animation
-        StartCoroutine(PerformTransition(levelIndex));
+        if (playTransition)
+        {
+            StartCoroutine(PerformTransition(levelIndex));
+        }
+        else
+        {
+            SwitchLevelWithoutTransition(levelIndex);
+        }
     }
+
 
     public void SwitchToNextLevel()
     {
@@ -43,15 +48,34 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator PerformTransition(int targetLevelIndex)
     {
+     
+
         // Switch the audio
         levelAudioController.SetFmodParameter("level", levels[targetLevelIndex].audioParameterLabel);
 
         // Trigger the transition animation
         transitionAnimator.SetTrigger(transitionTriggerName);
+        
+        // Deactivate the current level object
+        if (currentLevelIndex >= 0)
+        {
+            levels[currentLevelIndex].levelObject.SetActive(false);
+        }
 
         // Wait until the transition animation is completed
         yield return new WaitForSeconds(transitionAnimator.GetCurrentAnimatorStateInfo(0).length);
 
+     
+
+        // Activate the target level object
+        levels[targetLevelIndex].levelObject.SetActive(true);
+
+      
+        // Update the current level index
+        currentLevelIndex = targetLevelIndex;
+    }
+    private void SwitchLevelWithoutTransition(int targetLevelIndex)
+    {
         // Deactivate the current level object
         if (currentLevelIndex >= 0)
         {
@@ -61,8 +85,12 @@ public class LevelManager : MonoBehaviour
         // Activate the target level object
         levels[targetLevelIndex].levelObject.SetActive(true);
 
+        // Switch the audio
+        levelAudioController.SetFmodParameter("level", levels[targetLevelIndex].audioParameterLabel);
+
         // Update the current level index
         currentLevelIndex = targetLevelIndex;
     }
+
 
 }
