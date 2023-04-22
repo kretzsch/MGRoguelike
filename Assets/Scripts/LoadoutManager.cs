@@ -125,6 +125,10 @@ public class LoadoutManager : MonoBehaviour
             ammoText.text = selectedWeaponsAndAmmo[ammoData.ammoName].ToString();
             return;
         }
+        // Force the layout to recalculate before adding the ammo icon
+        // this is done so that a bug doesnt occur where the ammo icon takes up the whole panel
+        LayoutRebuilder.ForceRebuildLayoutImmediate(purchasedItemsParent.GetComponent<RectTransform>());
+
         // Create a new GameObject with an Image component
         GameObject ammoIcon = new GameObject(ammoData.ammoName + " Icon");
         Image ammoImage = ammoIcon.AddComponent<Image>();
@@ -153,7 +157,7 @@ public class LoadoutManager : MonoBehaviour
         TextMeshProUGUI ammoCountText = ammoCountTextObject.AddComponent<TextMeshProUGUI>();
         ammoCountText.text = selectedWeaponsAndAmmo[ammoData.ammoName].ToString();
         ammoCountText.alignment = TextAlignmentOptions.Center;
-        ammoCountText.color = Color.black;
+        ammoCountText.color = Color.white;
 
         // Set the TextMeshProUGUI object as a child of the ammo icon
         ammoCountTextObject.transform.SetParent(ammoIcon.transform, false);
@@ -169,4 +173,20 @@ public class LoadoutManager : MonoBehaviour
     {
         return selectedWeaponsAndAmmo;
     }
+    public void ResetLoadout(TextMeshProUGUI budgetText, Transform purchasedItemsParent)
+    {
+        currentBudget = startingBudget;
+        selectedWeaponsAndAmmo.Clear();
+        UpdateBudgetUI(budgetText);
+        ClearPurchasedItemsUI(purchasedItemsParent);
+    }
+
+    private void ClearPurchasedItemsUI(Transform purchasedItemsParent)
+    {
+        foreach (Transform child in purchasedItemsParent)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
 }

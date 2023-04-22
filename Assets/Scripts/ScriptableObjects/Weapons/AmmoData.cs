@@ -5,7 +5,9 @@ public class AmmoData : PurchaseableItem
 {
     public string ammoName;
     public int ammoCostPerUnit;
+    public int magazineSize;
     public Sprite mainMenuSprite;
+   
 
     public override string ItemName => ammoName;
     public override int Cost => ammoCostPerUnit;
