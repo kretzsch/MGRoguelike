@@ -10,12 +10,14 @@ public class LoadoutManager : MonoBehaviour
 
     private int currentBudget;
     private Dictionary<string, int> selectedWeaponsAmmo;
+    public TextMeshProUGUI budgetText;
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         currentBudget = startingBudget;
         selectedWeaponsAmmo = new Dictionary<string, int>();
+        UpdateBudgetUI(budgetText);
     }
 
     // Purchase a weapon and update the budget and UI accordingly
@@ -54,11 +56,20 @@ public class LoadoutManager : MonoBehaviour
         budgetText.text = $"Budget: ${currentBudget}";
     }
 
-    // Add a weapon icon to the UI
     public void AddWeaponToUI(WeaponData weaponData, Transform purchasedItemsParent)
     {
-        Instantiate(weaponData.weaponVisualsData.levelVisuals[0].sprite, purchasedItemsParent);
+        // Create a new GameObject with a SpriteRenderer component
+        GameObject weaponIcon = new GameObject(weaponData.weaponName + " Icon");
+        SpriteRenderer spriteRenderer = weaponIcon.AddComponent<SpriteRenderer>();
+        spriteRenderer.color = Color.white;
+
+        // Assign the main menu sprite to the SpriteRenderer
+        spriteRenderer.sprite = weaponData.weaponVisualsData.mainMenuSprite;
+
+        // Set the new GameObject as a child of purchasedItemsParent
+        weaponIcon.transform.SetParent(purchasedItemsParent, false);
     }
+
 
     // Add an ammo icon and count to the UI
     public void AddAmmoToUI(AmmoData ammoData, Transform purchasedItemsParent)

@@ -10,6 +10,7 @@ public class WeaponVisualsData : ScriptableObject
 {
     // A list of visual representations for the weapon in different levels or genres.
     public List<LevelVisual> levelVisuals;
+    public Sprite mainMenuSprite;
 
     // The LevelVisual class holds the visual data for a weapon in a specific level or genre.
     [System.Serializable]
