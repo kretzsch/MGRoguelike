@@ -3,12 +3,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// PurchaseButton is a script that handles the purchasing of weapons when a button is clicked.
-/// It listens for a button click and calls the PurchaseWeapon method on the LoadoutManager.
+/// PurchaseButton is a script that handles the purchasing of items when a button is clicked.
+/// It listens for a button click and calls the appropriate purchase method on the LoadoutManager.
 /// </summary>
 public class PurchaseButton : MonoBehaviour
 {
-    public IPurchaseable purchaseableItem;
+    public PurchaseableItem purchaseableItem;
     public TextMeshProUGUI budgetText;
     public Transform purchasedItemsParent;
 
@@ -29,11 +29,11 @@ public class PurchaseButton : MonoBehaviour
             }
             else if (purchaseableItem is AmmoData ammoData)
             {
+                // Add the necessary arguments like 'units' for ammo purchase
                 int units = 1;
                 loadoutManager.PurchaseAmmo(ammoData, units, budgetText, purchasedItemsParent);
             }
-            // Add more conditions here for other purchaseable items like armor or grenades
+            // Add more conditions here for other purchasable items like armor or grenades
         }
     }
 }
-

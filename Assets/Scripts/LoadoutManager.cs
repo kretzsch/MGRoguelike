@@ -45,17 +45,23 @@ public class LoadoutManager : MonoBehaviour
     }
 
 
-    // Purchase ammo and update the budget and UI accordingly
     public bool PurchaseAmmo(AmmoData ammoData, int units, TextMeshProUGUI budgetText, Transform purchasedItemsParent)
     {
-        int totalAmmoCost = ammoData.ammoCostPerUnit * units;
+        int totalAmmoCost = ammoData.Cost * units;
 
         if (currentBudget >= totalAmmoCost)
         {
             currentBudget -= totalAmmoCost;
-            selectedWeaponsAndAmmo[ammoData.ammoName] += units;
+
+            // Check if the key exists in the dictionary, if not, add it with an initial value of 0
+            if (!selectedWeaponsAndAmmo.ContainsKey(ammoData.ItemName))
+            {
+                selectedWeaponsAndAmmo[ammoData.ItemName] = 0;
+            }
+            selectedWeaponsAndAmmo[ammoData.ItemName] += units;
+
             UpdateBudgetUI(budgetText);
-            AddAmmoToUI(ammoData, purchasedItemsParent, budgetText);
+            AddAmmoToUI(ammoData, purchasedItemsParent);
             return true;
         }
         return false;
@@ -106,7 +112,7 @@ public class LoadoutManager : MonoBehaviour
 
 
 
-    public void AddAmmoToUI(AmmoData ammoData, Transform purchasedItemsParent, TextMeshProUGUI budgetText)
+    public void AddAmmoToUI(AmmoData ammoData, Transform purchasedItemsParent)
     {
         // Check if the ammo icon already exists in the UI
         Transform existingAmmoIcon = purchasedItemsParent.Find(ammoData.ammoName + " Icon");
