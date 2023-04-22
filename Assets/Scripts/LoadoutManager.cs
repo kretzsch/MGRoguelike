@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +9,7 @@ public class LoadoutManager : MonoBehaviour
 {
     public int startingBudget = 1000;
     public List<WeaponData> availableWeapons;
+    public List<AmmoData> availableAmmo;
 
     private int currentBudget;
     private Dictionary<string, int> selectedWeaponsAmmo;
@@ -21,7 +21,6 @@ public class LoadoutManager : MonoBehaviour
         selectedWeaponsAmmo = new Dictionary<string, int>();
     }
 
-    // Purchase a weapon if the player has enough budget
     public bool PurchaseWeapon(WeaponData weaponData)
     {
         if (currentBudget >= weaponData.cost)
@@ -33,27 +32,24 @@ public class LoadoutManager : MonoBehaviour
         return false;
     }
 
-    // Purchase ammo for a weapon if the player has enough budget
-    public bool PurchaseAmmo(WeaponData weaponData, int units)
+    public bool PurchaseAmmo(AmmoData ammoData, int units)
     {
-        int totalAmmoCost = weaponData.ammoData.ammoCostPerUnit * units;
+        int totalAmmoCost = ammoData.ammoCostPerUnit * units;
 
         if (currentBudget >= totalAmmoCost)
         {
             currentBudget -= totalAmmoCost;
-            selectedWeaponsAmmo[weaponData.weaponName] += units;
+            selectedWeaponsAmmo[ammoData.ammoName] += units;
             return true;
         }
         return false;
     }
 
-    // Get the current player budget
     public int GetCurrentBudget()
     {
         return currentBudget;
     }
 
-    // Get the selected weapons and their ammo counts
     public Dictionary<string, int> GetSelectedWeaponsAmmo()
     {
         return selectedWeaponsAmmo;
