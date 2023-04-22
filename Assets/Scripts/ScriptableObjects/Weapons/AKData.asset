@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45f96789b9a42d249acd39414d0a7c48, type: 3}
-  m_Name: TestWeapon
+  m_Name: AKData
   m_EditorClassIdentifier: 
   weaponName: test
   cost: 300
