@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-///
+/// WeaponButton is a script that handles the purchasing of weapons when a button is clicked.
+/// It listens for a button click and calls the PurchaseWeapon method on the LoadoutManager.
 /// </summary>
 public class WeaponButton : MonoBehaviour
 {

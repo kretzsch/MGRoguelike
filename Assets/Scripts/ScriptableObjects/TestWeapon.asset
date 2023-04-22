@@ -15,5 +15,5 @@ MonoBehaviour:
   weaponName: test
   cost: 300
   magazineSize: 30
-  weaponVisualsData: {fileID: 0}
+  weaponVisualsData: {fileID: 11400000, guid: 8d080bc3db710a444bd21983c9be095f, type: 2}
   compatibleAmmo: {fileID: 11400000, guid: 795dbeefa68f3af4e890187a22406084, type: 2}
