@@ -48,7 +48,6 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator PerformTransition(int targetLevelIndex)
     {
-     
 
         // Switch the audio
         levelAudioController.SetFmodParameter("level", levels[targetLevelIndex].audioParameterLabel);

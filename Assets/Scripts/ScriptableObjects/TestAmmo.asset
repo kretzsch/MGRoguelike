@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f96789b9a42d249acd39414d0a7c48, type: 3}
-  m_Name: TestWeapon
+  m_Script: {fileID: 11500000, guid: 4cded34c80e29fe4e89a2b8382b10ea0, type: 3}
+  m_Name: TestAmmo
   m_EditorClassIdentifier: 
-  weaponName: test
-  cost: 300
-  magazineSize: 30
-  weaponVisualsData: {fileID: 0}
-  compatibleAmmo: {fileID: 11400000, guid: 795dbeefa68f3af4e890187a22406084, type: 2}
+  ammoName: testammo
+  ammoCostPerUnit: 10
