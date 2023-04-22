@@ -500,7 +500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.91
+      value: -0.683
       objectReference: {fileID: 0}
     - target: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
       propertyPath: m_LocalPosition.z
@@ -534,10 +534,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95787105524477528, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 51c4972cce15fb84da8f142249b489e6, type: 2}
+    - target: {fileID: 95787105524477528, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 137720934533220950, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: adc7cdbb0d6406743a08f27a0db9f65c, type: 2}
+      objectReference: {fileID: 2100000, guid: cdabe5b4c943cea4d98bf32aa30cac45, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
 --- !u!4 &530857477 stripped
@@ -833,7 +841,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
