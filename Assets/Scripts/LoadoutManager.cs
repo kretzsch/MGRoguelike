@@ -1,7 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
+/// <summary>
+/// LoadoutManager handles the player's weapon and ammo purchases, as well as the UI updates for budget and purchased items.
+/// </summary>
 public class LoadoutManager : MonoBehaviour
 {
     public int startingBudget = 1000;
@@ -56,15 +60,15 @@ public class LoadoutManager : MonoBehaviour
         budgetText.text = $"Budget: ${currentBudget}";
     }
 
+    // Add a weapon icon to the UI
     public void AddWeaponToUI(WeaponData weaponData, Transform purchasedItemsParent)
     {
-        // Create a new GameObject with a SpriteRenderer component
+        // Create a new GameObject with a unique name and an Image component
         GameObject weaponIcon = new GameObject(weaponData.weaponName + " Icon");
-        SpriteRenderer spriteRenderer = weaponIcon.AddComponent<SpriteRenderer>();
-        spriteRenderer.color = Color.white;
+        Image weaponImage = weaponIcon.AddComponent<Image>();
+        weaponImage.sprite = weaponData.weaponVisualsData.mainMenuSprite;
+        weaponImage.color = Color.white;
 
-        // Assign the main menu sprite to the SpriteRenderer
-        spriteRenderer.sprite = weaponData.weaponVisualsData.mainMenuSprite;
 
         // Set the new GameObject as a child of purchasedItemsParent
         weaponIcon.transform.SetParent(purchasedItemsParent, false);
@@ -75,11 +79,11 @@ public class LoadoutManager : MonoBehaviour
     public void AddAmmoToUI(AmmoData ammoData, Transform purchasedItemsParent)
     {
         // Instantiate the ammo icon prefab
-      //  GameObject ammoIcon = Instantiate(ammoData.visuals.ammoIconPrefab, purchasedItemsParent);
+        // GameObject ammoIcon = Instantiate(ammoData.visuals.ammoIconPrefab, purchasedItemsParent);
 
         // Update the ammo count text
-       // TextMeshProUGUI ammoCountText = ammoIcon.GetComponentInChildren<TextMeshProUGUI>();
-       // ammoCountText.text = selectedWeaponsAmmo[ammoData.ammoName].ToString();
+        // TextMeshProUGUI ammoCountText = ammoIcon.GetComponentInChildren<TextMeshProUGUI>();
+        // ammoCountText.text = selectedWeaponsAmmo[ammoData.ammoName].ToString();
     }
 
     public int GetCurrentBudget()
