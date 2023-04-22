@@ -96,6 +96,7 @@ public class LoadoutManager : MonoBehaviour
         // Assign the main menu sprite to the Image component
         weaponImage.sprite = weaponData.weaponVisualsData.mainMenuSprite;
         weaponImage.color = Color.white;
+        weaponImage.preserveAspect = true;
 
         // Set the new GameObject as a child of purchasedItemsParent
         weaponIcon.transform.SetParent(purchasedItemsParent, false);
@@ -120,6 +121,7 @@ public class LoadoutManager : MonoBehaviour
         {
             // Update the ammo count text
             TextMeshProUGUI ammoText = existingAmmoIcon.GetComponentInChildren<TextMeshProUGUI>();
+            ammoText.color = Color.white;
             ammoText.text = selectedWeaponsAndAmmo[ammoData.ammoName].ToString();
             return;
         }
@@ -130,6 +132,7 @@ public class LoadoutManager : MonoBehaviour
         // Assign the ammo icon sprite to the Image component
         ammoImage.sprite = ammoData.mainMenuSprite;
         ammoImage.color = Color.white;
+        ammoImage.preserveAspect = true;
 
         // Set the new GameObject as a child of purchasedItemsParent
         ammoIcon.transform.SetParent(purchasedItemsParent, false);

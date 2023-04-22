@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cded34c80e29fe4e89a2b8382b10ea0, type: 3}
-  m_Name: AKAmmo
+  m_Name: PistolAmmo
   m_EditorClassIdentifier: 
-  ammoName: ak47ammo
-  ammoCostPerUnit: 10
-  mainMenuSprite: {fileID: 21300010, guid: 309ac3eb4cc441349b63128366ca98b6, type: 3}
+  ammoName: pistolammo
+  ammoCostPerUnit: 5
+  mainMenuSprite: {fileID: 21300000, guid: 309ac3eb4cc441349b63128366ca98b6, type: 3}
