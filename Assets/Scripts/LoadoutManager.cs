@@ -44,7 +44,6 @@ public class LoadoutManager : MonoBehaviour
         return false;
     }
 
-
     public bool PurchaseAmmo(AmmoData ammoData, int units, TextMeshProUGUI budgetText, Transform purchasedItemsParent)
     {
         int totalAmmoCost = ammoData.Cost * units;
@@ -66,15 +65,11 @@ public class LoadoutManager : MonoBehaviour
         }
         return false;
     }
-
-
-
     // Update the UI to show the current budget
     public void UpdateBudgetUI(TextMeshProUGUI budgetText)
     {
         budgetText.text = $"Budget: ${currentBudget}";
     }
-
     public void AddWeaponToUI(WeaponData weaponData, Transform purchasedItemsParent)
     {
         // Determine the number of columns for the grid
@@ -110,9 +105,6 @@ public class LoadoutManager : MonoBehaviour
         rectTransform.pivot = new Vector2(0.5f, 0.5f);
         rectTransform.sizeDelta = new Vector2(cellWidth, cellHeight);
     }
-
-
-
     public void AddAmmoToUI(AmmoData ammoData, Transform purchasedItemsParent)
     {
         // Check if the ammo icon already exists in the UI
@@ -163,7 +155,6 @@ public class LoadoutManager : MonoBehaviour
         ammoCountTextObject.transform.SetParent(ammoIcon.transform, false);
     }
 
-
     public int GetCurrentBudget()
     {
         return currentBudget;
@@ -173,6 +164,10 @@ public class LoadoutManager : MonoBehaviour
     {
         return selectedWeaponsAndAmmo;
     }
+
+    //this method should be called when pressing the reset button in the main menu 
+    // OR when dying in game 
+    // OR when returning to the main menu.
     public void ResetLoadout(TextMeshProUGUI budgetText, Transform purchasedItemsParent)
     {
         currentBudget = startingBudget;
@@ -189,4 +184,14 @@ public class LoadoutManager : MonoBehaviour
         }
     }
 
+    public void TransferDataToPlayerInventory()
+    {
+        PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
+        if (playerInventory == null)
+        {
+            GameObject playerInventoryObject = new GameObject("PlayerInventory");
+            playerInventory = playerInventoryObject.AddComponent<PlayerInventory>();
+        }
+        playerInventory.SetInventory(selectedWeaponsAndAmmo);
+    }
 }
