@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - PickUp
   - Weapon
+  - CinemachineTarget
+  - WeaponModelsParent
   layers:
   - Default
   - TransparentFX

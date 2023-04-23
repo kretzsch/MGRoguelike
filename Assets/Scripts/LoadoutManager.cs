@@ -21,7 +21,7 @@ public class LoadoutManager : MonoBehaviour
     //this is used to display the weapons on the player model above the loadout 
     private Dictionary<string, GameObject> activeMainMenuModels = new Dictionary<string, GameObject>();
 
-
+    #region monobehaviour methods
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -29,6 +29,8 @@ public class LoadoutManager : MonoBehaviour
         selectedWeaponsAndAmmo = new Dictionary<string, int>();
         UpdateBudgetUI(budgetText);
     }
+    #endregion
+    #region public methods
 
     public bool PurchaseWeapon(WeaponData weaponData, TextMeshProUGUI budgetText, Transform purchasedItemsParent)
     {
@@ -64,32 +66,6 @@ public class LoadoutManager : MonoBehaviour
         return false;
     }
 
-    /// <summary>
-    /// above the loadout is a player model showcasing different weapons. 
-    /// these weapons are placed on different parts of the player model
-    /// this method is used to find the identifiers of the slots for these weapons.
-    /// </summary>
-    /// <param name="identifier"></param>
-    /// <returns></returns>
-    private GameObject FindWeaponModelByIdentifier(string identifier)
-    {
-        GameObject[] weaponModelsParents = GameObject.FindGameObjectsWithTag("WeaponModelsParent");
-        foreach (GameObject weaponModelsParent in weaponModelsParents)
-        {
-            Transform[] children = weaponModelsParent.GetComponentsInChildren<Transform>(true);
-            foreach (Transform child in children)
-            {
-                WeaponModelIdentifier weaponModelIdentifier = child.GetComponent<WeaponModelIdentifier>();
-                if (weaponModelIdentifier != null && weaponModelIdentifier.identifier == identifier)
-                {
-                    return child.gameObject;
-                }
-            }
-        }
-        return null;
-    }
-
-
     public bool PurchaseAmmo(AmmoData ammoData, int units, TextMeshProUGUI budgetText, Transform purchasedItemsParent)
     {
         int totalAmmoCost = ammoData.Cost * units;
@@ -112,7 +88,6 @@ public class LoadoutManager : MonoBehaviour
         return false;
     }
 
- 
     // Update the UI to show the current budget
     public void UpdateBudgetUI(TextMeshProUGUI budgetText)
     {
@@ -232,6 +207,44 @@ public class LoadoutManager : MonoBehaviour
         UpdateBudgetUI(budgetText);
         ClearPurchasedItemsUI(purchasedItemsParent);
     }
+    public void TransferDataToPlayerInventory()
+    {
+        PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
+        if (playerInventory == null)
+        {
+            GameObject playerInventoryObject = new GameObject("PlayerInventory");
+            playerInventory = playerInventoryObject.AddComponent<PlayerInventory>();
+        }
+        playerInventory.SetInventory(selectedWeaponsAndAmmo);
+    }
+    #endregion
+    #region  private methods
+    /// <summary>
+    /// above the loadout is a player model showcasing different weapons. 
+    /// these weapons are placed on different parts of the player model
+    /// this method is used to find the identifiers of the slots for these weapons.
+    /// </summary>
+    /// <param name="identifier"></param>
+    /// <returns></returns>
+    private GameObject FindWeaponModelByIdentifier(string identifier)
+    {
+        GameObject[] weaponModelsParents = GameObject.FindGameObjectsWithTag("WeaponModelsParent");
+        foreach (GameObject weaponModelsParent in weaponModelsParents)
+        {
+            Transform[] children = weaponModelsParent.GetComponentsInChildren<Transform>(true);
+            foreach (Transform child in children)
+            {
+                WeaponModelIdentifier weaponModelIdentifier = child.GetComponent<WeaponModelIdentifier>();
+                if (weaponModelIdentifier != null && weaponModelIdentifier.identifier == identifier)
+                {
+                    return child.gameObject;
+                }
+            }
+        }
+        return null;
+    }
+
+
     private WeaponData FindWeaponDataByName(string weaponName)
     {
         foreach (WeaponData weaponData in availableWeapons)
@@ -252,14 +265,5 @@ public class LoadoutManager : MonoBehaviour
         }
     }
 
-    public void TransferDataToPlayerInventory()
-    {
-        PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
-        if (playerInventory == null)
-        {
-            GameObject playerInventoryObject = new GameObject("PlayerInventory");
-            playerInventory = playerInventoryObject.AddComponent<PlayerInventory>();
-        }
-        playerInventory.SetInventory(selectedWeaponsAndAmmo);
-    }
+    #endregion
 }

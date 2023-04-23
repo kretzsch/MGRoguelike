@@ -524,6 +524,7 @@ GameObject:
   - component: {fileID: 212445582}
   - component: {fileID: 211675566}
   - component: {fileID: 210545518}
+  - component: {fileID: 212743599}
   m_Layer: 0
   m_Name: AK47Model
   m_TagString: Untagged
@@ -531,6 +532,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &212743599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212743598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb7aa006c9fe594abce34f4104c7b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: ak47
 --- !u!1 &240399497
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,8 +901,8 @@ GameObject:
   m_Component:
   - component: {fileID: 668021858}
   m_Layer: 0
-  m_Name: LeftHipSlot
-  m_TagString: Untagged
+  m_Name: WeaponModelsParent
+  m_TagString: WeaponModelsParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2905,10 +2919,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1795858368}
-  - component: {fileID: 1795858369}
   m_Layer: 0
-  m_Name: BackSlot
-  m_TagString: Untagged
+  m_Name: WeaponModelsParent
+  m_TagString: WeaponModelsParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2929,19 +2942,6 @@ Transform:
   m_Father: {fileID: 4003880123251896}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1795858369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1795858367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdb7aa006c9fe594abce34f4104c7b11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  identifier: ak47
 --- !u!1 &1827147527
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,8 +2952,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1827147528}
   m_Layer: 0
-  m_Name: RightHipSlot
-  m_TagString: Untagged
+  m_Name: WeaponModelsParent
+  m_TagString: WeaponModelsParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
