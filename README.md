@@ -2,7 +2,7 @@
 
 ## Description
 
-This genre-switching game offers a unique and engaging gaming experience by combining elements of first-person shooter (FPS), platformer, puzzle, and other game genres. The project was motivated by the desire to create a diverse gaming experience that challenges players and offers variety in gameplay. It includes a rich main menu, a loadout system, weapon and ammo purchasing, and interactive music using FMOD.
+This genre-switching game offers a unique and engaging gaming experience by combining elements of first-person shooter (FPS), platformer, topdown, and other game genres. The project was motivated by the desire to create a diverse gaming experience that challenges players and offers variety in gameplay. It includes a rich main menu, a loadout system, weapon and ammo purchasing, and interactive music using FMOD.
 
 ## Table of Contents
 
@@ -10,11 +10,11 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
-- [License](#license)
+- [Copyright and No License](#copyright-and-no-license)
 
 ## Features
 
-- Genre-switching gameplay with FPS, platformer, puzzle, and more.
+- Genre-switching gameplay with FPS, platformer, topdown, and more.
 - Main menu with tabs and panels for weapon and ammo purchasing.
 - Loadout system for managing weapons and ammo.
 - Interactive music using FMOD for seamless transitions and dynamic audio.
