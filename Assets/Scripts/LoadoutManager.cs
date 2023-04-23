@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 /// <summary>
 /// LoadoutManager handles the player's weapon and ammo purchases, as well as the UI updates for budget and purchased items.
+/// It also handles the activation and deactivation of weapon models in the main menu.
 /// </summary>
 public class LoadoutManager : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class LoadoutManager : MonoBehaviour
     private Dictionary<string, int> selectedWeaponsAndAmmo;
     public TextMeshProUGUI budgetText;
 
+
+    //this is used to display the weapons on the player model above the loadout 
+    private Dictionary<string, GameObject> activeMainMenuModels = new Dictionary<string, GameObject>();
+
+    #region monobehaviour methods
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -23,6 +29,8 @@ public class LoadoutManager : MonoBehaviour
         selectedWeaponsAndAmmo = new Dictionary<string, int>();
         UpdateBudgetUI(budgetText);
     }
+    #endregion
+    #region public methods
 
     public bool PurchaseWeapon(WeaponData weaponData, TextMeshProUGUI budgetText, Transform purchasedItemsParent)
     {
@@ -39,6 +47,20 @@ public class LoadoutManager : MonoBehaviour
             selectedWeaponsAndAmmo[weaponData.weaponName] = 0;
             UpdateBudgetUI(budgetText);
             AddWeaponToUI(weaponData, purchasedItemsParent);
+
+
+            // Activate the weapon model in the main menu
+            GameObject weaponModel = FindWeaponModelByIdentifier(weaponData.weaponVisualsData.mainMenuModelIdentifier);
+            if (weaponModel != null)
+            {
+                weaponModel.SetActive(true);
+                activeMainMenuModels[weaponData.weaponName] = weaponModel;
+            }
+            else
+            {
+                Debug.LogWarning("Weapon model with identifier " + weaponData.weaponVisualsData.mainMenuModelIdentifier + " not found in the scene.");
+            }
+
             return true;
         }
         return false;
@@ -65,6 +87,7 @@ public class LoadoutManager : MonoBehaviour
         }
         return false;
     }
+
     // Update the UI to show the current budget
     public void UpdateBudgetUI(TextMeshProUGUI budgetText)
     {
@@ -170,20 +193,20 @@ public class LoadoutManager : MonoBehaviour
     // OR when returning to the main menu.
     public void ResetLoadout(TextMeshProUGUI budgetText, Transform purchasedItemsParent)
     {
+        // Deactivate all active main menu models
+        foreach (KeyValuePair<string, GameObject> kvp in activeMainMenuModels)
+        {
+            kvp.Value.SetActive(false);
+        }
+        activeMainMenuModels.Clear();
+
+
+        //reset the rest
         currentBudget = startingBudget;
         selectedWeaponsAndAmmo.Clear();
         UpdateBudgetUI(budgetText);
         ClearPurchasedItemsUI(purchasedItemsParent);
     }
-
-    private void ClearPurchasedItemsUI(Transform purchasedItemsParent)
-    {
-        foreach (Transform child in purchasedItemsParent)
-        {
-            Destroy(child.gameObject);
-        }
-    }
-
     public void TransferDataToPlayerInventory()
     {
         PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
@@ -194,4 +217,53 @@ public class LoadoutManager : MonoBehaviour
         }
         playerInventory.SetInventory(selectedWeaponsAndAmmo);
     }
+    #endregion
+    #region  private methods
+    /// <summary>
+    /// above the loadout is a player model showcasing different weapons. 
+    /// these weapons are placed on different parts of the player model
+    /// this method is used to find the identifiers of the slots for these weapons.
+    /// </summary>
+    /// <param name="identifier"></param>
+    /// <returns></returns>
+    private GameObject FindWeaponModelByIdentifier(string identifier)
+    {
+        GameObject[] weaponModelsParents = GameObject.FindGameObjectsWithTag("WeaponModelsParent");
+        foreach (GameObject weaponModelsParent in weaponModelsParents)
+        {
+            Transform[] children = weaponModelsParent.GetComponentsInChildren<Transform>(true);
+            foreach (Transform child in children)
+            {
+                WeaponModelIdentifier weaponModelIdentifier = child.GetComponent<WeaponModelIdentifier>();
+                if (weaponModelIdentifier != null && weaponModelIdentifier.identifier == identifier)
+                {
+                    return child.gameObject;
+                }
+            }
+        }
+        return null;
+    }
+
+
+    private WeaponData FindWeaponDataByName(string weaponName)
+    {
+        foreach (WeaponData weaponData in availableWeapons)
+        {
+            if (weaponData.weaponName == weaponName)
+            {
+                return weaponData;
+            }
+        }
+        return null;
+    }
+
+    private void ClearPurchasedItemsUI(Transform purchasedItemsParent)
+    {
+        foreach (Transform child in purchasedItemsParent)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    #endregion
 }
