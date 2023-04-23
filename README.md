@@ -33,12 +33,14 @@ Launch the game and navigate through the main menu to purchase weapons, ammo, an
 Third-party assets: 
 - [Synty] Polygon Prototype pack https://syntystore.com/
 - [More Mountains] Feel https://feel.moremountains.com/
+- [Odin] Odin Inspector https://odininspector.com/
 
-## License
+## Copyright and No License
 
-[Choose a license](https://choosealicense.com/)
+Copyright © [2023] [Thomas Kretzschmar]. All rights reserved.
 
----
+This project and its contents are not licensed for distribution, modification, or use by any third party. Unauthorized copying, distribution, or use is strictly prohibited. For inquiries regarding permissions, please contact the author.
+
 
 ## Badges
 
