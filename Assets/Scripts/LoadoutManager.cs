@@ -30,8 +30,8 @@ public class LoadoutManager : MonoBehaviour
         UpdateBudgetUI(budgetText);
     }
     #endregion
-    #region public methods
 
+    #region public methods
     public bool PurchaseWeapon(WeaponData weaponData, TextMeshProUGUI budgetText, Transform purchasedItemsParent)
     {
         // Check if the weapon is already purchased
@@ -218,6 +218,7 @@ public class LoadoutManager : MonoBehaviour
         playerInventory.SetInventory(selectedWeaponsAndAmmo);
     }
     #endregion
+
     #region  private methods
     /// <summary>
     /// above the loadout is a player model showcasing different weapons. 
