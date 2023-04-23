@@ -44,7 +44,6 @@ public class LoadoutManager : MonoBehaviour
         return false;
     }
 
-
     public bool PurchaseAmmo(AmmoData ammoData, int units, TextMeshProUGUI budgetText, Transform purchasedItemsParent)
     {
         int totalAmmoCost = ammoData.Cost * units;
@@ -66,15 +65,11 @@ public class LoadoutManager : MonoBehaviour
         }
         return false;
     }
-
-
-
     // Update the UI to show the current budget
     public void UpdateBudgetUI(TextMeshProUGUI budgetText)
     {
         budgetText.text = $"Budget: ${currentBudget}";
     }
-
     public void AddWeaponToUI(WeaponData weaponData, Transform purchasedItemsParent)
     {
         // Determine the number of columns for the grid
@@ -110,9 +105,6 @@ public class LoadoutManager : MonoBehaviour
         rectTransform.pivot = new Vector2(0.5f, 0.5f);
         rectTransform.sizeDelta = new Vector2(cellWidth, cellHeight);
     }
-
-
-
     public void AddAmmoToUI(AmmoData ammoData, Transform purchasedItemsParent)
     {
         // Check if the ammo icon already exists in the UI
@@ -125,6 +117,10 @@ public class LoadoutManager : MonoBehaviour
             ammoText.text = selectedWeaponsAndAmmo[ammoData.ammoName].ToString();
             return;
         }
+        // Force the layout to recalculate before adding the ammo icon
+        // this is done so that a bug doesnt occur where the ammo icon takes up the whole panel
+        LayoutRebuilder.ForceRebuildLayoutImmediate(purchasedItemsParent.GetComponent<RectTransform>());
+
         // Create a new GameObject with an Image component
         GameObject ammoIcon = new GameObject(ammoData.ammoName + " Icon");
         Image ammoImage = ammoIcon.AddComponent<Image>();
@@ -153,12 +149,11 @@ public class LoadoutManager : MonoBehaviour
         TextMeshProUGUI ammoCountText = ammoCountTextObject.AddComponent<TextMeshProUGUI>();
         ammoCountText.text = selectedWeaponsAndAmmo[ammoData.ammoName].ToString();
         ammoCountText.alignment = TextAlignmentOptions.Center;
-        ammoCountText.color = Color.black;
+        ammoCountText.color = Color.white;
 
         // Set the TextMeshProUGUI object as a child of the ammo icon
         ammoCountTextObject.transform.SetParent(ammoIcon.transform, false);
     }
-
 
     public int GetCurrentBudget()
     {
@@ -168,5 +163,35 @@ public class LoadoutManager : MonoBehaviour
     public Dictionary<string, int> GetSelectedWeaponsAmmo()
     {
         return selectedWeaponsAndAmmo;
+    }
+
+    //this method should be called when pressing the reset button in the main menu 
+    // OR when dying in game 
+    // OR when returning to the main menu.
+    public void ResetLoadout(TextMeshProUGUI budgetText, Transform purchasedItemsParent)
+    {
+        currentBudget = startingBudget;
+        selectedWeaponsAndAmmo.Clear();
+        UpdateBudgetUI(budgetText);
+        ClearPurchasedItemsUI(purchasedItemsParent);
+    }
+
+    private void ClearPurchasedItemsUI(Transform purchasedItemsParent)
+    {
+        foreach (Transform child in purchasedItemsParent)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    public void TransferDataToPlayerInventory()
+    {
+        PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
+        if (playerInventory == null)
+        {
+            GameObject playerInventoryObject = new GameObject("PlayerInventory");
+            playerInventory = playerInventoryObject.AddComponent<PlayerInventory>();
+        }
+        playerInventory.SetInventory(selectedWeaponsAndAmmo);
     }
 }
