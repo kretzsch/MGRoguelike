@@ -1,21 +1,14 @@
-Unity Genre Switcher Game
-
-This Unity project is a genre-switching game where players progress through different genres, each represented by a level with its own unique style and enemies. When all enemies in a level are defeated, the game transitions to the next level using a custom animation effect and changes the background music. The project contains three main scripts: LevelManager, LevelAudioController, and StoreChildren. This README provides an overview of the project and instructions on how to set it up.
+Project Title: Genre-Switching Game
+A genre-switching game that combines elements of first-person shooter (FPS), platformer, puzzle, and other game genres, with a rich main menu, a loadout system, weapon and ammo purchasing, and interactive music using FMOD.
 
 Features
-
-Progress through multiple genres, each represented by a level with its own unique style and enemies.
-Defeat all enemies in a level to advance to the next genre.
-Transition between genres using a custom animation effect.
-Background music changes to match the genre of the current level.
-Setup
-
-Download or clone the repository.
-Open the project in Unity.
-Add the main scene to the build and build it. 
-Run the game and enjoy the genre-switching experience!
-
-Scripts Overview
-LevelManager: Handles switching between genres, activating and deactivating level objects, and coordinating the transition animations and audio changes.
-LevelAudioController: Manages the background music, switching between different tracks depending on the current genre.
-StoreChildren: Monitors enemy counts for each level and raises an event when all enemies in a level have been defeated.
+Genre Switching: Players will experience a unique gameplay experience, switching between various genres such as first-person shooter, platformer, puzzle, and more throughout the game. The seamless transitions keep players engaged and provide diverse challenges.
+Main Menu: The main menu features an intuitive design with tabs for different sections, such as Play, Shop, Settings, and Credits. Each tab opens a corresponding panel with relevant options and content.
+Shop: Players can purchase weapons, ammo, and other items in the Shop section. Items are organized into categories and displayed in a grid layout, making it easy for players to browse and select items.
+Loadout System: The loadout system allows players to manage their purchased weapons and ammo, customizing their equipment for each level and genre. The system persists through scene changes, ensuring the player's selections are maintained.
+FMOD Interactive Music: The game features dynamic and interactive music using FMOD, which responds to in-game events and player actions, creating an immersive and engaging audio experience.
+Unity Input System: The game utilizes Unity's new input system, enabling robust and flexible input handling for various genres and control schemes. Unity events facilitate communication between scripts and input events, streamlining the development process.
+Future Expansions
+Additional Genres: Integrate more genres into the game, offering players an even wider variety of gameplay experiences and challenges.
+Upgradable Weapons: Implement a system for upgrading weapons and equipment, allowing players to enhance their loadouts and improve their performance in each genre.
+Cosmetic Items: Introduce cosmetic items such as skins, emotes, and other customizations to provide players with a sense of personalization and progression.
