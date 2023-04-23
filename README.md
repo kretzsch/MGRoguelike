@@ -1,5 +1,7 @@
 # Genre-Switching Game
-
+![Unity](https://img.shields.io/badge/Unity-3D-green)
+![FMOD](https://img.shields.io/badge/FMOD-audio-red)
+![
 ## Description
 
 This genre-switching game offers a unique and engaging gaming experience by combining elements of first-person shooter (FPS), platformer, topdown, and other game genres. The project was motivated by the desire to create a diverse gaming experience that challenges players and offers variety in gameplay. It includes a rich main menu, a loadout system, weapon and ammo purchasing, and interactive music using FMOD.
@@ -40,10 +42,3 @@ Third-party assets:
 Copyright © [2023] [Thomas Kretzschmar]. All rights reserved.
 
 This project and its contents are not licensed for distribution, modification, or use by any third party. Unauthorized copying, distribution, or use is strictly prohibited. For inquiries regarding permissions, please contact the author.
-
-
-## Badges
-
-![Unity](https://img.shields.io/badge/Unity-3D-green)
-![FMOD](https://img.shields.io/badge/FMOD-audio-red)
-
