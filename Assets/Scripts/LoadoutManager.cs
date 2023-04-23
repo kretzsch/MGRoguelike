@@ -19,7 +19,8 @@ public class LoadoutManager : MonoBehaviour
 
 
     //this is used to display the weapons on the player model above the loadout 
-    private HashSet<string> activeMainMenuModels = new HashSet<string>();
+    private Dictionary<string, GameObject> activeMainMenuModels = new Dictionary<string, GameObject>();
+
 
     private void Awake()
     {
@@ -51,7 +52,7 @@ public class LoadoutManager : MonoBehaviour
             if (weaponModel != null)
             {
                 weaponModel.SetActive(true);
-                activeMainMenuModels.Add(weaponData.weaponName);
+                activeMainMenuModels[weaponData.weaponName] = weaponModel;
             }
             else
             {
@@ -218,21 +219,12 @@ public class LoadoutManager : MonoBehaviour
     public void ResetLoadout(TextMeshProUGUI budgetText, Transform purchasedItemsParent)
     {
         // Deactivate all active main menu models
-        // cycle through all tags as to fix a bug where some weapons models didnt get reset
-        GameObject[] weaponModelsParents = GameObject.FindGameObjectsWithTag("WeaponModelsParent");
-        foreach (GameObject weaponModelsParent in weaponModelsParents)
+        foreach (KeyValuePair<string, GameObject> kvp in activeMainMenuModels)
         {
-            Transform[] children = weaponModelsParent.GetComponentsInChildren<Transform>(true);
-            foreach (Transform child in children)
-            {
-                WeaponModelIdentifier weaponModelIdentifier = child.GetComponent<WeaponModelIdentifier>();
-                if (weaponModelIdentifier != null && activeMainMenuModels.Contains(weaponModelIdentifier.identifier))
-                {
-                    child.gameObject.SetActive(false);
-                }
-            }
+            kvp.Value.SetActive(false);
         }
         activeMainMenuModels.Clear();
+
 
         //reset the rest
         currentBudget = startingBudget;
