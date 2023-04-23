@@ -12,6 +12,10 @@ public class WeaponVisualsData : ScriptableObject
     public List<LevelVisual> levelVisuals;
     public Sprite mainMenuSprite;
 
+    //since you cant store a transform or gameobject into a scriptable object i went for a string 
+    // to prevent unnecessary complexion
+    public string mainMenuModelIdentifier;
+
     // The LevelVisual class holds the visual data for a weapon in a specific level or genre.
     [System.Serializable]
     public class LevelVisual

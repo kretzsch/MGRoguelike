@@ -20,3 +20,4 @@ MonoBehaviour:
     sprite: {fileID: 0}
     modelPrefab: {fileID: 0}
   mainMenuSprite: {fileID: 21300044, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
+  mainMenuModelIdentifier: ak47
