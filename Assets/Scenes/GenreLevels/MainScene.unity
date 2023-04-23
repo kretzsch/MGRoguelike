@@ -1620,7 +1620,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &376992210
 Transform:
   m_ObjectHideFlags: 0
@@ -14174,36 +14174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52b25f379aac03428c7cd0f922ddec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisRBPlatformer: {fileID: 0}
-  thisRBTopDown: {fileID: 0}
-  thisRBFPS: {fileID: 0}
-  sceneCamera: {fileID: 3147698013832622614}
-  isFPS: 0
-  isPlatformer: 1
-  isTopdown: 0
-  _movementInput: {x: 0, y: 0}
-  _moveDirection: {x: 0, y: 0}
-  _mousePosition: {x: 0, y: 0}
-  _defaultSpeedTopdown: 5
-  speedBuff: 0
-  _defaultSpeedPlatformer: 20
-  jumpForce: 70
-  groundCheck: {fileID: 3147698014980812443}
-  checkRadius: 1
-  groundLayer:
-    m_Bits: 64
-  isGrounded: 0
-  speed: 5
-  mouseSensitivity: 2
-  playerCamera: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  bulletSpawnPoint: {fileID: 0}
-  bulletSpeed: 10
-  fireRate: 1
-  mouseX: 0
-  mouseY: 0
-  verticalRotation: 0
-  nextFireTime: 0
 --- !u!114 &3147698014980812437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21209,9 +21179,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  OnShoot:
-    m_PersistentCalls:
-      m_Calls: []
+  bulletPrefab: {fileID: 0}
+  firePoint: {fileID: 0}
+  bulletSpeed: 10
+  fireRate: 0.25
 --- !u!114 &7678611848562367625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21265,8 +21236,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7678611848562367624}
         m_TargetAssemblyTypeName: TopDownController, Assembly-CSharp
-        m_MethodName: Move
-        m_Mode: 1
+        m_MethodName: OnMove
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -21281,8 +21252,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7678611848562367624}
         m_TargetAssemblyTypeName: TopDownController, Assembly-CSharp
-        m_MethodName: RotateToMouse
-        m_Mode: 1
+        m_MethodName: OnAim
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -21294,7 +21265,19 @@ MonoBehaviour:
     m_ActionId: 7490bad9-1c18-48df-9bfd-607dca620642
     m_ActionName: TopDown/Aim[/Mouse/position]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7678611848562367624}
+        m_TargetAssemblyTypeName: TopDownController, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 81137171-c533-45b4-ace2-3b43cd1d1270
     m_ActionName: TopDown/Shoot[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -21305,6 +21288,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 98dea56e-b636-4c4c-9a59-8a2c17423fb2
     m_ActionName: SpaceInvaders/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0b8b1c38-625e-469a-b913-ee6ced4e18d2
+    m_ActionName: Platformer/Move[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e2751662-8f6b-4df6-a6d6-e3de7a9d8c7d
+    m_ActionName: Platformer/Jump[/Keyboard/w]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: TopDown
@@ -22593,7 +22584,7 @@ GameObject:
   - component: {fileID: 7678611850238032501}
   - component: {fileID: 7678611850238032500}
   m_Layer: 0
-  m_Name: PlatformerCamera
+  m_Name: TopDownCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24508,48 +24499,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &8800923751640181874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8800923751640181878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b52b25f379aac03428c7cd0f922ddec3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thisRBPlatformer: {fileID: 8800923751640181873}
-  thisRBTopDown: {fileID: 0}
-  thisRBFPS: {fileID: 0}
-  sceneCamera: {fileID: 8800923752004791302}
-  isFPS: 0
-  isPlatformer: 1
-  isTopdown: 0
-  _movementInput: {x: 0, y: 0}
-  _moveDirection: {x: 0, y: 0}
-  _mousePosition: {x: 0, y: 0}
-  _defaultSpeedTopdown: 5
-  speedBuff: 0
-  _defaultSpeedPlatformer: 20
-  jumpForce: 70
-  groundCheck: {fileID: 8800923751640181877}
-  checkRadius: 1
-  groundLayer:
-    m_Bits: 64
-  isGrounded: 0
-  speed: 5
-  mouseSensitivity: 2
-  playerCamera: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  bulletSpawnPoint: {fileID: 0}
-  bulletSpeed: 10
-  fireRate: 1
-  mouseX: 0
-  mouseY: 0
-  verticalRotation: 0
-  nextFireTime: 0
 --- !u!114 &8800923751640181875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24618,9 +24567,10 @@ GameObject:
   - component: {fileID: 8800923751640181877}
   - component: {fileID: 8800923751640181872}
   - component: {fileID: 8800923751640181873}
-  - component: {fileID: 8800923751640181874}
   - component: {fileID: 8800923751640181875}
   - component: {fileID: 8800923751640181876}
+  - component: {fileID: 8800923751640181879}
+  - component: {fileID: 8800923751640181880}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -24628,6 +24578,129 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8800923751640181879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800923751640181878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a22ef68eaf98414ab438d1ba54c7526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 20
+  jumpForce: 70
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &8800923751640181880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800923751640181878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: be369739783846243853fe90ae5ffc6d, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c9a37016-ebef-4c5f-8f7a-279d66c838f3
+    m_ActionName: FirstPersonShooter/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 15b6d48c-2581-463d-929a-ba995afbce09
+    m_ActionName: FirstPersonShooter/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3c96a477-9282-475d-b949-0dbd726a4750
+    m_ActionName: FirstPersonShooter/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c0ec55eb-18db-4e2a-a1d1-3cb6150a309f
+    m_ActionName: FirstPersonShooter/Sprint[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c6bba953-402e-489d-afc4-715a3ee1abfb
+    m_ActionName: FirstPersonShooter/Aim[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4f4c3feb-d8cb-4588-b0c4-62d6e1226e7e
+    m_ActionName: FirstPersonShooter/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fd5d304d-5db8-4781-835b-135397558545
+    m_ActionName: TopDown/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7490bad9-1c18-48df-9bfd-607dca620642
+    m_ActionName: TopDown/Aim[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 81137171-c533-45b4-ace2-3b43cd1d1270
+    m_ActionName: TopDown/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6541c349-440f-4fe9-88d9-f73d71680e6f
+    m_ActionName: SpaceInvaders/Move[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 98dea56e-b636-4c4c-9a59-8a2c17423fb2
+    m_ActionName: SpaceInvaders/Shoot[/Mouse/leftButton,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8800923751640181879}
+        m_TargetAssemblyTypeName: PlatformerController, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0b8b1c38-625e-469a-b913-ee6ced4e18d2
+    m_ActionName: Platformer/Move[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8800923751640181879}
+        m_TargetAssemblyTypeName: PlatformerController, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e2751662-8f6b-4df6-a6d6-e3de7a9d8c7d
+    m_ActionName: Platformer/Jump[/Keyboard/w]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Platformer
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!224 &8800923751770401501
 RectTransform:
   m_ObjectHideFlags: 0
