@@ -30,5 +30,6 @@ public class PlayerInventory : MonoBehaviour
         return weaponsAndAmmo;
     }
 
-    // Add other methods to manage the player's inventory, such as adding or removing items, as needed.
+    // Add other methods to manage the player's inventory, such as adding or removing items, as needed. 
+    //Ammo being used up for example.
 }

@@ -245,7 +245,6 @@ public class LoadoutManager : MonoBehaviour
         return null;
     }
 
-
     private WeaponData FindWeaponDataByName(string weaponName)
     {
         foreach (WeaponData weaponData in availableWeapons)
