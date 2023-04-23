@@ -36,6 +36,7 @@ Third-party assets:
 - [Synty] Polygon Prototype pack https://syntystore.com/
 - [More Mountains] Feel https://feel.moremountains.com/
 - [Odin] Odin Inspector https://odininspector.com/
+- [Fmod] Fmod https://fmod.com/
 
 ## Copyright and No License
 
