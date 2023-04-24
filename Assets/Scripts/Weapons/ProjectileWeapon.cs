@@ -25,6 +25,8 @@ public class ProjectileWeapon : Weapon
 
             currentAmmo--;
             nextFireTime = Time.time + 1f / fireRate;
+            // Destroy the projectile after 3 seconds
+            Destroy(projectile, 3f);
         }
     }
 }

@@ -8,6 +8,8 @@ public class WeaponData : PurchaseableItem
     public int magazineSize;
     public WeaponVisualsData weaponVisualsData;
     public AmmoData compatibleAmmo;
+    public GameObject weaponPrefab;
+
 
     public override string ItemName => weaponName;
     public override int Cost => cost;

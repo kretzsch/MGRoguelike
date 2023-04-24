@@ -16,4 +16,5 @@ MonoBehaviour:
   cost: 100
   magazineSize: 0
   weaponVisualsData: {fileID: 11400000, guid: 862a681ba8144a943b9ad012309986ba, type: 2}
-  compatibleAmmo: {fileID: 11400000, guid: 795dbeefa68f3af4e890187a22406084, type: 2}
+  compatibleAmmo: {fileID: 11400000, guid: 7be2f504135d2644987365478607ed1b, type: 2}
+  weaponPrefab: {fileID: 0}

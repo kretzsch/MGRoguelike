@@ -13,11 +13,14 @@ public class TopDownController2D : MonoBehaviour
     private Camera _mainCamera;
     private float _lastFireTime;
     private Vector2 _inputVector;
-
+    [SerializeField] private WeaponManager _weaponManager;
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _mainCamera = Camera.main;
+
+        _weaponManager = FindObjectOfType<WeaponManager>();
+
     }
 
     private void Update()
@@ -44,13 +47,34 @@ public class TopDownController2D : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.started && Time.time > _lastFireTime + fireRate)
+        if (context.started)
         {
-            _lastFireTime = Time.time;
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Rigidbody2D bulletRigidbody2D = bullet.GetComponent<Rigidbody2D>();
-            bulletRigidbody2D.velocity = bullet.transform.up * bulletSpeed;
-            Destroy(bullet, 3f);
+            if (_weaponManager == null)
+            {
+                Debug.LogError("WeaponManager reference is not assigned.");
+                return;
+            }
+
+            if (_weaponManager.CurrentWeapon == null)
+            {
+                Debug.LogError("CurrentWeapon is not set in WeaponManager.");
+                return;
+            }
+
+            _weaponManager.CurrentWeapon.Shoot();
         }
     }
+
+
+    /* public void OnShoot(InputAction.CallbackContext context)
+     {
+         if (context.started && Time.time > _lastFireTime + fireRate)
+         {
+             _lastFireTime = Time.time;
+             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+             Rigidbody2D bulletRigidbody2D = bullet.GetComponent<Rigidbody2D>();
+             bulletRigidbody2D.velocity = bullet.transform.up * bulletSpeed;
+             Destroy(bullet, 3f);
+         }
+     }*/
 }
