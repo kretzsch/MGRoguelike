@@ -14,7 +14,7 @@ public class StartButton : MonoBehaviour
 
 private void StartGame()
     {
-        loadoutManager.TransferDataToPlayerInventory();
+        loadoutManager.TransferDataToLoadoutData();
         SceneManager.LoadScene("MainScene");
     }
 }
