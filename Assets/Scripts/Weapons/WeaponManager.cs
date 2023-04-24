@@ -5,24 +5,42 @@ public class WeaponManager : MonoBehaviour
 {
     [SerializeField]
     private Transform weaponHolder; // The parent Transform where weapon instances will be created
-    public void SetupWeapons()
+
+    private Dictionary<string, ProjectileWeapon> weapons = new Dictionary<string, ProjectileWeapon>();
+
+    public void SetupWeapons(Dictionary<string, int> weaponsAndAmmo)
     {
-        foreach (KeyValuePair<string, int> weaponAndAmmo in LoadoutData.selectedWeaponsAndAmmo)
+        foreach (KeyValuePair<string, int> weaponAndAmmo in weaponsAndAmmo)
         {
             // Get the weapon name and ammo
             string weaponName = weaponAndAmmo.Key;
             int weaponAmmo = weaponAndAmmo.Value;
 
-            Debug.Log(weaponName + weaponAmmo);
+            // Load the WeaponData from the Resources folder
+            WeaponData weaponData = Resources.Load<WeaponData>($"Weapons/{weaponName}");
 
-            // Find the weapon data in the weaponDataList
-            // ... (the same code as before)
+            if (weaponData != null)
+            {
+                // Instantiate the weapon and set up its visuals
+                GameObject weaponInstance = new GameObject(weaponName + " Sprite");
+                weaponInstance.AddComponent<SpriteRenderer>();
+                weaponInstance.GetComponent<SpriteRenderer>().sprite = weaponData.weaponVisualsData.mainMenuSprite;
 
-            // Instantiate the weapon and set up its visuals
-            // ... (the same code as before)
+                // Set the weapon instance parent to the weaponHolder
+                weaponInstance.transform.SetParent(weaponHolder);
 
-            // Set the weapon's ammo and add it to the weapons dictionary
-            // ... (the same code as before)
+                // Get the ProjectileWeapon component from the instantiated weapon
+                ProjectileWeapon projectileWeapon = weaponInstance.GetComponent<ProjectileWeapon>();
+
+                if (projectileWeapon != null)
+                {
+                    // Set the weapon's ammo
+                    projectileWeapon.SetAmmo(weaponAmmo);
+
+                    // Add the weapon to the weapons dictionary
+                    weapons.Add(weaponName, projectileWeapon);
+                }
+            }
         }
     }
 }

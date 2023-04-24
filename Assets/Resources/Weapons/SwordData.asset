@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45f96789b9a42d249acd39414d0a7c48, type: 3}
-  m_Name: pistolData
+  m_Name: SwordData
   m_EditorClassIdentifier: 
-  weaponName: pistol
+  weaponName: swordData
   cost: 100
   magazineSize: 0
-  weaponVisualsData: {fileID: 11400000, guid: 862a681ba8144a943b9ad012309986ba, type: 2}
-  compatibleAmmo: {fileID: 11400000, guid: 795dbeefa68f3af4e890187a22406084, type: 2}
+  weaponVisualsData: {fileID: 11400000, guid: 49a0f99fcde64d54b955d6bd41dbac51, type: 2}
+  compatibleAmmo: {fileID: 0}
