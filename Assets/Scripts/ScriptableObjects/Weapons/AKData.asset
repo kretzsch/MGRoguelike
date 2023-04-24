@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f96789b9a42d249acd39414d0a7c48, type: 3}
   m_Name: AKData
   m_EditorClassIdentifier: 
-  weaponName: test
+  weaponName: ak47
   cost: 300
   magazineSize: 30
   weaponVisualsData: {fileID: 11400000, guid: 8d080bc3db710a444bd21983c9be095f, type: 2}

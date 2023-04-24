@@ -216,24 +216,16 @@ public class LoadoutManager : MonoBehaviour
         UpdateBudgetUI(budgetText);
         ClearPurchasedItemsUI(purchasedItemsParent);
     }
-    public void TransferDataToPlayerInventory()
+    public void TransferDataToLoadoutData()
     {
-        PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
-        if (playerInventory == null)
+        // Clear the existing data in the static dictionary
+        LoadoutData.selectedWeaponsAndAmmo.Clear();
+
+        // Save the selected weapons and ammo in the static dictionary
+        foreach (KeyValuePair<string, int> weaponAndAmmo in selectedWeaponsAndAmmo)
         {
-            GameObject playerInventoryObject = new GameObject("PlayerInventory");
-            playerInventory = playerInventoryObject.AddComponent<PlayerInventory>();
+            LoadoutData.selectedWeaponsAndAmmo.Add(weaponAndAmmo.Key, weaponAndAmmo.Value);
         }
-        Dictionary<WeaponData, int> newInventory = new Dictionary<WeaponData, int>();
-        foreach (var weaponAndAmmo in selectedWeaponsAndAmmo)
-        {
-            WeaponData weaponData = allAvailableWeapons.Find(wd => wd.weaponName == weaponAndAmmo.Key);
-            if (weaponData != null)
-            {
-                newInventory.Add(weaponData, weaponAndAmmo.Value);
-            }
-        }
-        playerInventory.SetInventory(newInventory);
     }
 
     #endregion
