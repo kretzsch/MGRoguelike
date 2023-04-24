@@ -20,6 +20,7 @@ public class TopDownController2D : MonoBehaviour
         _mainCamera = Camera.main;
 
         _weaponManager = FindObjectOfType<WeaponManager>();
+        Debug.Log($"WeaponManager reference: {_weaponManager}");
 
     }
 
@@ -49,6 +50,7 @@ public class TopDownController2D : MonoBehaviour
     {
         if (context.started)
         {
+            Debug.Log("OnShoot called");
             if (_weaponManager == null)
             {
                 Debug.LogError("WeaponManager reference is not assigned.");
@@ -64,17 +66,4 @@ public class TopDownController2D : MonoBehaviour
             _weaponManager.CurrentWeapon.Shoot();
         }
     }
-
-
-    /* public void OnShoot(InputAction.CallbackContext context)
-     {
-         if (context.started && Time.time > _lastFireTime + fireRate)
-         {
-             _lastFireTime = Time.time;
-             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-             Rigidbody2D bulletRigidbody2D = bullet.GetComponent<Rigidbody2D>();
-             bulletRigidbody2D.velocity = bullet.transform.up * bulletSpeed;
-             Destroy(bullet, 3f);
-         }
-     }*/
 }

@@ -1,16 +1,14 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Renderer))]
 
 ///<summary>
 /// DamageableObject is a script that can be attached to any GameObject to make it damageable
 /// and react to damage, such as losing health and creating an explosion effect when destroyed.
 /// </summary>
-
 public class DamageableObject : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float health = 100f;
+    [SerializeField] private int health = 100;
     public GameObject explosionEffectPrefab;
     [SerializeField] private bool isEnemy;
     private bool _isDead = false;
@@ -23,7 +21,7 @@ public class DamageableObject : MonoBehaviour, IDamageable
     }
 
     // Apply damage to the object, check if it's dead, and trigger the appropriate reaction
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
         if (health <= 0 && !_isDead)
@@ -48,5 +46,17 @@ public class DamageableObject : MonoBehaviour, IDamageable
     private void SpawnExplosionEffect()
     {
         Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+    }
+
+    // Handle 3D collisions
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Handle 3D collision logic here
+    }
+
+    // Handle 2D collisions
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Handle 2D collision logic here
     }
 }

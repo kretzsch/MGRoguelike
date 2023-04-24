@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,9 @@ public class TopDownGameController : MonoBehaviour
         // Get the weapons and ammo data from LoadoutData
         Dictionary<string, int> weaponsAndAmmo = LoadoutData.selectedWeaponsAndAmmo;
 
+        // Debug the content of the dictionary
+        Debug.Log("LoadoutData content: " + string.Join(", ", weaponsAndAmmo.Select(kv => kv.Key + ": " + kv.Value).ToArray()));
+
         // Pass the weapons and ammo data to the WeaponManager
         weaponManager.SetupWeapons(weaponsAndAmmo);
 
@@ -27,7 +31,7 @@ public class TopDownGameController : MonoBehaviour
         foreach (KeyValuePair<string, int> weaponAndAmmo in LoadoutData.selectedWeaponsAndAmmo)
         {
             // Load the WeaponData from the Resources folder
-            WeaponData weaponData = Resources.Load<WeaponData>($"Weapons/{weaponAndAmmo.Key}");
+            WeaponData weaponData = Resources.Load<WeaponData>($"WeaponData/{weaponAndAmmo.Key}");
 
             if (weaponData != null)
             {

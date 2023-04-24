@@ -171,7 +171,7 @@ namespace StarterAssets
             if (_input.shoot)
             {
                 float fireRate = 0.25f; // Fire rate in seconds
-                float damage = 10f;
+                int damage = 10;
                 float range = 500f;
 
 

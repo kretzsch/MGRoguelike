@@ -14,6 +14,7 @@ public class WeaponManager : MonoBehaviour
         if (weapons.ContainsKey(weaponName))
         {
             CurrentWeapon = weapons[weaponName];
+            Debug.Log($"CurrentWeapon is set to: {weaponName}");
         }
     }
 
@@ -21,45 +22,54 @@ public class WeaponManager : MonoBehaviour
     {
         foreach (KeyValuePair<string, int> weaponAndAmmo in weaponsAndAmmo)
         {
-            // Get the weapon name and ammo
             string weaponName = weaponAndAmmo.Key;
             int weaponAmmo = weaponAndAmmo.Value;
 
-            // Load the WeaponData from the Resources folder
-            WeaponData weaponData = Resources.Load<WeaponData>($"Weapons/{weaponName}");
+            WeaponData weaponData = Resources.Load<WeaponData>($"WeaponData/{weaponName}");
+            Debug.Log($"Loaded WeaponData: {weaponData}");
 
             if (weaponData != null)
             {
+                GameObject weaponPrefab = Resources.Load<GameObject>($"WeaponPrefabs/{weaponName}");
+                Debug.Log($"Loaded weaponPrefab: {weaponPrefab}");
 
-                GameObject weaponPrefab = weaponData.weaponPrefab;
-                GameObject weaponInstance = Instantiate(weaponPrefab, weaponHolder);
-
-
-                // Set the weapon instance parent to the weaponHolder
-                weaponInstance.transform.SetParent(weaponHolder);
-
-                // Get the ProjectileWeapon component from the instantiated weapon
-                ProjectileWeapon projectileWeapon = weaponInstance.GetComponent<ProjectileWeapon>();
-
-                if (projectileWeapon != null)
+                if (weaponPrefab != null)
                 {
-                    // Set the weapon's data
-                    projectileWeapon.weaponData = weaponData;
+                    GameObject weaponInstance = Instantiate(weaponPrefab, weaponHolder); // Instantiate the weapon prefab
+                    ProjectileWeapon projectileWeapon = weaponInstance.GetComponent<ProjectileWeapon>(); // Get the ProjectileWeapon component from the instantiated weapon
+                    Debug.Log($"Loaded projectileWeapon: {projectileWeapon}");
 
-                    // Set the weapon's ammo
-                    projectileWeapon.SetAmmo(weaponAmmo);
+                    if (projectileWeapon != null)
+                    {
+                        projectileWeapon.weaponData = weaponData;
+                        if (weaponData.compatibleAmmo != null)
+                        {
+                            // Get the compatible ammo key from the weapon data
+                            string ammoKey = weaponData.compatibleAmmo.ammoName;
 
-                    // Add the weapon to the weapons dictionary
-                    weapons.Add(weaponName, projectileWeapon);
+                            // Check if the ammo key exists in the weaponsAndAmmo dictionary
+                            if (weaponsAndAmmo.ContainsKey(ammoKey))
+                            {
+                                weaponAmmo = weaponsAndAmmo[ammoKey];
+                            }
+                        }
+                        projectileWeapon.SetAmmo(weaponAmmo);
 
-                    Debug.Log($"Weapon {weaponName} added to the weapons dictionary.");
+                        weapons.Add(weaponName, projectileWeapon);
+                        Debug.Log($"Weapon {weaponName} added to the weapons dictionary.");
 
+                        // Set the CurrentWeapon if it's not set yet
+                        if (CurrentWeapon == null)
+                        {
+                            SetCurrentWeapon(weaponName);
+                        }
+                    }
                 }
+                // Handle other weapon types, if needed
             }
-        }   // Set the first weapon in the dictionary as the current weapon (if any)
-        if (weapons.Count > 0)
-        {
-            SetCurrentWeapon(weapons.Keys.First());
         }
     }
+
+
+
 }
