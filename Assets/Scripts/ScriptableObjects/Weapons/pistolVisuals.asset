@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelVisuals:
   - levelName: 
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300028, guid: 0bd96f6f4899f644ea1ffd9b4735a5e6, type: 3}
     modelPrefab: {fileID: 0}
   - levelName: 
     sprite: {fileID: 0}
