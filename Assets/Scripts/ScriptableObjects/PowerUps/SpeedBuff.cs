@@ -13,13 +13,13 @@ public class SpeedBuff : PowerUpSO
   //Apply the buff
   public override void Apply(GameObject target)
   {
-    target.GetComponent<PlayerController>().speedBuff += amount;
+ //   target.GetComponent<TopDownPlayerController>().speedBuff += amount;
   }
 
 
   //after wait X seconds do remove buff
   public override void Remove(GameObject target)
   {
-    target.GetComponent<PlayerController>().speedBuff -= amount;
+  //  target.GetComponent<TopDownPlayerController>().speedBuff -= amount;
   }
 }

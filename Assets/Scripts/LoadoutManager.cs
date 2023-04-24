@@ -6,6 +6,12 @@ using UnityEngine.UI;
 /// <summary>
 /// LoadoutManager handles the player's weapon and ammo purchases, as well as the UI updates for budget and purchased items.
 /// It also handles the activation and deactivation of weapon models in the main menu.
+/// 
+/// 1.	Players select weapons and ammo in the main menu, and the LoadoutManager stores the selected weapons and ammo.
+/// 2.  The LoadoutManager.TransferDataToPlayerInventory() method is called, which transfers the selected weapons and ammo to the PlayerInventory.
+/// 3.	When the top-down level is loaded, the TopDownGameController script gets the PlayerInventory instance and gets the weapons and ammo.
+/// 4.	The TopDownGameController passes the weapons and ammo to the WeaponManager in the top-down scene.
+/// 5.	The WeaponManager sets up the weapons and ammo for the top-down game based on the transferred data.
 /// </summary>
 public class LoadoutManager : MonoBehaviour
 {
@@ -20,6 +26,9 @@ public class LoadoutManager : MonoBehaviour
 
     //this is used to display the weapons on the player model above the loadout 
     private Dictionary<string, GameObject> activeMainMenuModels = new Dictionary<string, GameObject>();
+    [SerializeField]
+    private List<WeaponData> allAvailableWeapons;
+
 
     #region monobehaviour methods
     private void Awake()
@@ -30,8 +39,8 @@ public class LoadoutManager : MonoBehaviour
         UpdateBudgetUI(budgetText);
     }
     #endregion
-    #region public methods
 
+    #region public methods
     public bool PurchaseWeapon(WeaponData weaponData, TextMeshProUGUI budgetText, Transform purchasedItemsParent)
     {
         // Check if the weapon is already purchased
@@ -215,9 +224,20 @@ public class LoadoutManager : MonoBehaviour
             GameObject playerInventoryObject = new GameObject("PlayerInventory");
             playerInventory = playerInventoryObject.AddComponent<PlayerInventory>();
         }
-        playerInventory.SetInventory(selectedWeaponsAndAmmo);
+        Dictionary<WeaponData, int> newInventory = new Dictionary<WeaponData, int>();
+        foreach (var weaponAndAmmo in selectedWeaponsAndAmmo)
+        {
+            WeaponData weaponData = allAvailableWeapons.Find(wd => wd.weaponName == weaponAndAmmo.Key);
+            if (weaponData != null)
+            {
+                newInventory.Add(weaponData, weaponAndAmmo.Value);
+            }
+        }
+        playerInventory.SetInventory(newInventory);
     }
+
     #endregion
+
     #region  private methods
     /// <summary>
     /// above the loadout is a player model showcasing different weapons. 
@@ -243,7 +263,6 @@ public class LoadoutManager : MonoBehaviour
         }
         return null;
     }
-
 
     private WeaponData FindWeaponDataByName(string weaponName)
     {
