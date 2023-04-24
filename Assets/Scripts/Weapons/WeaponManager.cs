@@ -14,7 +14,6 @@ public class WeaponManager : MonoBehaviour
         if (weapons.ContainsKey(weaponName))
         {
             CurrentWeapon = weapons[weaponName];
-            Debug.Log($"CurrentWeapon is set to: {weaponName}");
         }
     }
 
@@ -26,18 +25,15 @@ public class WeaponManager : MonoBehaviour
             int weaponAmmo = weaponAndAmmo.Value;
 
             WeaponData weaponData = Resources.Load<WeaponData>($"WeaponData/{weaponName}");
-            Debug.Log($"Loaded WeaponData: {weaponData}");
 
             if (weaponData != null)
             {
                 GameObject weaponPrefab = Resources.Load<GameObject>($"WeaponPrefabs/{weaponName}");
-                Debug.Log($"Loaded weaponPrefab: {weaponPrefab}");
 
                 if (weaponPrefab != null)
                 {
                     GameObject weaponInstance = Instantiate(weaponPrefab, weaponHolder); // Instantiate the weapon prefab
                     ProjectileWeapon projectileWeapon = weaponInstance.GetComponent<ProjectileWeapon>(); // Get the ProjectileWeapon component from the instantiated weapon
-                    Debug.Log($"Loaded projectileWeapon: {projectileWeapon}");
 
                     if (projectileWeapon != null)
                     {
@@ -56,7 +52,6 @@ public class WeaponManager : MonoBehaviour
                         projectileWeapon.SetAmmo(weaponAmmo);
 
                         weapons.Add(weaponName, projectileWeapon);
-                        Debug.Log($"Weapon {weaponName} added to the weapons dictionary.");
 
                         // Set the CurrentWeapon if it's not set yet
                         if (CurrentWeapon == null)

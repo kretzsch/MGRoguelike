@@ -50,19 +50,15 @@ public class TopDownController2D : MonoBehaviour
     {
         if (context.started)
         {
-            Debug.Log("OnShoot called");
             if (_weaponManager == null)
             {
-                Debug.LogError("WeaponManager reference is not assigned.");
                 return;
             }
 
             if (_weaponManager.CurrentWeapon == null)
             {
-                Debug.LogError("CurrentWeapon is not set in WeaponManager.");
                 return;
             }
-
             _weaponManager.CurrentWeapon.Shoot();
         }
     }

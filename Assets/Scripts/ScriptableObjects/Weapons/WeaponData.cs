@@ -12,6 +12,12 @@ public class WeaponData : PurchaseableItem
     public AmmoData compatibleAmmo;
     public GameObject weaponPrefab;
 
+    public enum GameGenre
+    {
+        Platformer,
+        TopDown,
+        // Add other genres here
+    }
 
     public override string ItemName => weaponName;
     public override int Cost => cost;
