@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -7,40 +8,68 @@ public class WeaponManager : MonoBehaviour
     private Transform weaponHolder; // The parent Transform where weapon instances will be created
 
     private Dictionary<string, ProjectileWeapon> weapons = new Dictionary<string, ProjectileWeapon>();
+    public ProjectileWeapon CurrentWeapon { get; set; }
+    public void SetCurrentWeapon(string weaponName)
+    {
+        if (weapons.ContainsKey(weaponName))
+        {
+            CurrentWeapon = weapons[weaponName];
+            Debug.Log($"CurrentWeapon is set to: {weaponName}");
+        }
+    }
 
     public void SetupWeapons(Dictionary<string, int> weaponsAndAmmo)
     {
         foreach (KeyValuePair<string, int> weaponAndAmmo in weaponsAndAmmo)
         {
-            // Get the weapon name and ammo
             string weaponName = weaponAndAmmo.Key;
             int weaponAmmo = weaponAndAmmo.Value;
 
-            // Load the WeaponData from the Resources folder
-            WeaponData weaponData = Resources.Load<WeaponData>($"Weapons/{weaponName}");
+            WeaponData weaponData = Resources.Load<WeaponData>($"WeaponData/{weaponName}");
+            Debug.Log($"Loaded WeaponData: {weaponData}");
 
             if (weaponData != null)
             {
-                // Instantiate the weapon and set up its visuals
-                GameObject weaponInstance = new GameObject(weaponName + " Sprite");
-                weaponInstance.AddComponent<SpriteRenderer>();
-                weaponInstance.GetComponent<SpriteRenderer>().sprite = weaponData.weaponVisualsData.mainMenuSprite;
+                GameObject weaponPrefab = Resources.Load<GameObject>($"WeaponPrefabs/{weaponName}");
+                Debug.Log($"Loaded weaponPrefab: {weaponPrefab}");
 
-                // Set the weapon instance parent to the weaponHolder
-                weaponInstance.transform.SetParent(weaponHolder);
-
-                // Get the ProjectileWeapon component from the instantiated weapon
-                ProjectileWeapon projectileWeapon = weaponInstance.GetComponent<ProjectileWeapon>();
-
-                if (projectileWeapon != null)
+                if (weaponPrefab != null)
                 {
-                    // Set the weapon's ammo
-                    projectileWeapon.SetAmmo(weaponAmmo);
+                    GameObject weaponInstance = Instantiate(weaponPrefab, weaponHolder); // Instantiate the weapon prefab
+                    ProjectileWeapon projectileWeapon = weaponInstance.GetComponent<ProjectileWeapon>(); // Get the ProjectileWeapon component from the instantiated weapon
+                    Debug.Log($"Loaded projectileWeapon: {projectileWeapon}");
 
-                    // Add the weapon to the weapons dictionary
-                    weapons.Add(weaponName, projectileWeapon);
+                    if (projectileWeapon != null)
+                    {
+                        projectileWeapon.weaponData = weaponData;
+                        if (weaponData.compatibleAmmo != null)
+                        {
+                            // Get the compatible ammo key from the weapon data
+                            string ammoKey = weaponData.compatibleAmmo.ammoName;
+
+                            // Check if the ammo key exists in the weaponsAndAmmo dictionary
+                            if (weaponsAndAmmo.ContainsKey(ammoKey))
+                            {
+                                weaponAmmo = weaponsAndAmmo[ammoKey];
+                            }
+                        }
+                        projectileWeapon.SetAmmo(weaponAmmo);
+
+                        weapons.Add(weaponName, projectileWeapon);
+                        Debug.Log($"Weapon {weaponName} added to the weapons dictionary.");
+
+                        // Set the CurrentWeapon if it's not set yet
+                        if (CurrentWeapon == null)
+                        {
+                            SetCurrentWeapon(weaponName);
+                        }
+                    }
                 }
+                // Handle other weapon types, if needed
             }
         }
     }
+
+
+
 }
