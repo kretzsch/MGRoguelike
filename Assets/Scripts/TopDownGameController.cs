@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TopDownGameController : MonoBehaviour
@@ -6,7 +7,10 @@ public class TopDownGameController : MonoBehaviour
 
     private void Start()
     {
+        // Get the weapons and ammo data from LoadoutData
+        Dictionary<string, int> weaponsAndAmmo = LoadoutData.selectedWeaponsAndAmmo;
+
         // Pass the weapons and ammo data to the WeaponManager
-        weaponManager.SetupWeapons();
+        weaponManager.SetupWeapons(weaponsAndAmmo);
     }
 }
