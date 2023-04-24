@@ -2586,6 +2586,69 @@ PrefabInstance:
       objectReference: {fileID: 418582442}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+--- !u!1 &592049409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 592049410}
+  - component: {fileID: 592049411}
+  m_Layer: 5
+  m_Name: Weaponsicons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &592049410
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592049409}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7678611848400521165}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &592049411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592049409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1001 &617136400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3618,6 +3681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponManager: {fileID: 1090090245}
+  weaponItemsParent: {fileID: 592049410}
 --- !u!1001 &787196626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8863,16 +8927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: ecdab1557a1848040846c6d9d25daefe, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 63084873850722275}
-  descriptionText: {fileID: 63084874047148804}
-  manaText: {fileID: 63084874277925914}
-  weaponPrefab: {fileID: 1845142893778450883}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!222 &63084873031711381
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9105,16 +9159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: f4808bde6ce147e4abbde794d59ad18d, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 63084874752626552}
-  descriptionText: {fileID: 63084874285829023}
-  manaText: {fileID: 63084874056019073}
-  weaponPrefab: {fileID: 3817032909854875160}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!114 &63084873231134940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9262,16 +9306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: ecdab1557a1848040846c6d9d25daefe, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 63084874584923439}
-  descriptionText: {fileID: 63084874386430408}
-  manaText: {fileID: 63084874223730390}
-  weaponPrefab: {fileID: 1845142893778450883}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!222 &63084873354997849
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9369,16 +9403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: f4808bde6ce147e4abbde794d59ad18d, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 63084874496519652}
-  descriptionText: {fileID: 63084874575505667}
-  manaText: {fileID: 63084873799896605}
-  weaponPrefab: {fileID: 3817032909854875160}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!224 &63084873442869396
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9672,16 +9696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: 8b4c2611d4027fc418b8cb9f7811bf57, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 63084874397646640}
-  descriptionText: {fileID: 63084874612784087}
-  manaText: {fileID: 63084873768787145}
-  weaponPrefab: {fileID: 4457334338864618970}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!222 &63084873697539128
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9837,16 +9851,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: 8b4c2611d4027fc418b8cb9f7811bf57, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 63084873151334340}
-  descriptionText: {fileID: 63084872670348067}
-  manaText: {fileID: 63084873513526333}
-  weaponPrefab: {fileID: 4457334338864618970}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!224 &63084873735285428
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11826,16 +11830,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: f4808bde6ce147e4abbde794d59ad18d, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 63084873231134940}
-  descriptionText: {fileID: 63084873697539131}
-  manaText: {fileID: 63084872788333349}
-  weaponPrefab: {fileID: 3817032909854875160}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!224 &63084874729758124
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12052,15 +12046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4750b68b67f0a4a47a5b9def363ea057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6076453033836274827, guid: 9a53b763db3c8a340a48a7d6e1c1561b, type: 3}
-  weapon: {fileID: 11400000, guid: e6451e6f02c513a48806b91434c5517f, type: 2}
-  firePoint: {fileID: 7310789264846347127}
-  fireForce: 5
-  text: {fileID: 8800923752133573051}
-  currentClip: 10
-  maxClipSize: 10
-  currentAmmo: 0
-  maxAmmoSize: 100
 --- !u!114 &1120989672925084866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12073,15 +12058,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4750b68b67f0a4a47a5b9def363ea057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 5594619525339152266, guid: 7182f4744c5accd4983385d2e06d8250, type: 3}
-  weapon: {fileID: 11400000, guid: c7256ca382efa954da1b68b072b9edac, type: 2}
-  firePoint: {fileID: 6393552150208327328}
-  fireForce: 20
-  text: {fileID: 7678611849701511538}
-  currentClip: 10
-  maxClipSize: 10
-  currentAmmo: 10
-  maxAmmoSize: 100
 --- !u!1 &1845142893778450883
 GameObject:
   m_ObjectHideFlags: 0
@@ -12283,15 +12259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4750b68b67f0a4a47a5b9def363ea057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6076453033836274827, guid: 9a53b763db3c8a340a48a7d6e1c1561b, type: 3}
-  weapon: {fileID: 11400000, guid: e6451e6f02c513a48806b91434c5517f, type: 2}
-  firePoint: {fileID: 8492070723943406087}
-  fireForce: 5
-  text: {fileID: 7678611849701511538}
-  currentClip: 10
-  maxClipSize: 10
-  currentAmmo: 0
-  maxAmmoSize: 100
 --- !u!114 &2243442862292133764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12304,15 +12271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4750b68b67f0a4a47a5b9def363ea057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 5594619525339152266, guid: 7182f4744c5accd4983385d2e06d8250, type: 3}
-  weapon: {fileID: 11400000, guid: c7256ca382efa954da1b68b072b9edac, type: 2}
-  firePoint: {fileID: 5194537686047684070}
-  fireForce: 20
-  text: {fileID: 8800923752133573051}
-  currentClip: 10
-  maxClipSize: 10
-  currentAmmo: 10
-  maxAmmoSize: 100
 --- !u!224 &3147698013501915081
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13426,8 +13384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205c50095952acb41b1a940da7248ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpSO: {fileID: 11400000, guid: 4bcafc32360591947a49ad849681a6d3, type: 2}
-  pickupEffect: {fileID: 0}
 --- !u!4 &3147698014112655197
 Transform:
   m_ObjectHideFlags: 0
@@ -14051,8 +14007,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205c50095952acb41b1a940da7248ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpSO: {fileID: 11400000, guid: 0536ea3575b603f4290181aec75b9e7a, type: 2}
-  pickupEffect: {fileID: 0}
 --- !u!1 &3147698014841361326
 GameObject:
   m_ObjectHideFlags: 0
@@ -14638,27 +14592,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f139c009d92d40438768b2278c75a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardSOArray: []
-  deck:
-  - {fileID: 63084873354997848}
-  - {fileID: 63084873031711380}
-  - {fileID: 63084873735285427}
-  - {fileID: 63084873546994247}
-  - {fileID: 63084874729758123}
-  - {fileID: 63084873442869395}
-  - {fileID: 63084873187287567}
-  decksizeTxt: {fileID: 3147698014367028947}
-  discardPile: []
-  discardsizeTxt: {fileID: 3147698015464712879}
-  handSlots:
-  - {fileID: 3147698015305482863}
-  - {fileID: 3147698014480946329}
-  - {fileID: 3147698014990253720}
-  - {fileID: 3147698014366599184}
-  - {fileID: 3147698013853149462}
-  availableHandSlots: 0101010101
-  hand: []
-  currentCard: {fileID: 0}
 --- !u!4 &3147698015213674513
 Transform:
   m_ObjectHideFlags: 0
@@ -15312,15 +15245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4750b68b67f0a4a47a5b9def363ea057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6076453033836274827, guid: 9a53b763db3c8a340a48a7d6e1c1561b, type: 3}
-  weapon: {fileID: 11400000, guid: e9e982825e25add4bae20e339002497b, type: 2}
-  firePoint: {fileID: 4457334339732986341}
-  fireForce: 50
-  text: {fileID: 3147698013501915087}
-  currentClip: 10
-  maxClipSize: 10
-  currentAmmo: 0
-  maxAmmoSize: 100
 --- !u!1 &4457334338864618970
 GameObject:
   m_ObjectHideFlags: 0
@@ -17042,15 +16966,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4750b68b67f0a4a47a5b9def363ea057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 5594619525339152266, guid: 7182f4744c5accd4983385d2e06d8250, type: 3}
-  weapon: {fileID: 11400000, guid: c7256ca382efa954da1b68b072b9edac, type: 2}
-  firePoint: {fileID: 1845142895113980137}
-  fireForce: 20
-  text: {fileID: 3147698013501915087}
-  currentClip: 10
-  maxClipSize: 10
-  currentAmmo: 10
-  maxAmmoSize: 100
 --- !u!1 &5867601476646924577
 GameObject:
   m_ObjectHideFlags: 0
@@ -17738,16 +17653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: f4808bde6ce147e4abbde794d59ad18d, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 5867601477854803455}
-  descriptionText: {fileID: 5867601478067351832}
-  manaText: {fileID: 5867601478231528966}
-  weaponPrefab: {fileID: 7310789265644661341}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!222 &5867601476934981769
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19600,16 +19505,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: f4808bde6ce147e4abbde794d59ad18d, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 5867601476959369574}
-  descriptionText: {fileID: 5867601476753112449}
-  manaText: {fileID: 5867601477654272671}
-  weaponPrefab: {fileID: 7310789265644661341}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!1 &5867601477851911189
 GameObject:
   m_ObjectHideFlags: 0
@@ -19834,16 +19729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: ecdab1557a1848040846c6d9d25daefe, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 5867601476752809804}
-  descriptionText: {fileID: 5867601476959722411}
-  manaText: {fileID: 5867601477198101685}
-  weaponPrefab: {fileID: 5194537684715603148}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!224 &5867601478041694780
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20264,16 +20149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: f4808bde6ce147e4abbde794d59ad18d, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 5867601477625833211}
-  descriptionText: {fileID: 5867601477159395868}
-  manaText: {fileID: 5867601476996187394}
-  weaponPrefab: {fileID: 7310789265644661341}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!222 &5867601478241356685
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20363,16 +20238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: ecdab1557a1848040846c6d9d25daefe, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 5867601477565694969}
-  descriptionText: {fileID: 5867601477216306974}
-  manaText: {fileID: 5867601476918435840}
-  weaponPrefab: {fileID: 5194537684715603148}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!222 &5867601478315650703
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20470,16 +20335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: 8b4c2611d4027fc418b8cb9f7811bf57, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 5867601477291430618}
-  descriptionText: {fileID: 5867601477489792573}
-  manaText: {fileID: 5867601476646924579}
-  weaponPrefab: {fileID: 7806522491348211965}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!114 &5867601478670688784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20561,16 +20416,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb7909033099094d931047d0cd8adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBeenPlayed: 0
-  _handIndex: 0
-  card: {fileID: 11400000, guid: 8b4c2611d4027fc418b8cb9f7811bf57, type: 2}
-  artworkImage: {fileID: 0}
-  nameText: {fileID: 5867601477214326625}
-  descriptionText: {fileID: 5867601477538646918}
-  manaText: {fileID: 5867601476837272728}
-  weaponPrefab: {fileID: 7806522491348211965}
-  ammoAmount: 0
-  shieldAmount: 0
 --- !u!222 &5867601478670688791
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20708,15 +20553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4750b68b67f0a4a47a5b9def363ea057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6076453033836274827, guid: 9a53b763db3c8a340a48a7d6e1c1561b, type: 3}
-  weapon: {fileID: 11400000, guid: e6451e6f02c513a48806b91434c5517f, type: 2}
-  firePoint: {fileID: 3817032910116679474}
-  fireForce: 5
-  text: {fileID: 3147698013501915087}
-  currentClip: 10
-  maxClipSize: 10
-  currentAmmo: 0
-  maxAmmoSize: 100
 --- !u!1 &7310789264846347126
 GameObject:
   m_ObjectHideFlags: 0
@@ -21006,8 +20842,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7678611849171008907}
-  - {fileID: 7678611849701511540}
   - {fileID: 7678611849553683172}
+  - {fileID: 592049410}
   m_Father: {fileID: 7678611849072009360}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21091,14 +20927,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9607843, g: 0.9647059, b: 0.98039216, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c124c6f21e4f0b74eb5c6d3ef9cab139, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d544428c0d678544871e82e35a61718, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21794,10 +21630,10 @@ RectTransform:
   m_Father: {fileID: 7678611848400521165}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -700, y: 475}
-  m_SizeDelta: {x: 387.2277, y: 64.7184}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -193.61377, y: -32.35919}
+  m_SizeDelta: {x: 387.22766, y: 64.71838}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7678611849171008909
 MonoBehaviour:
@@ -21964,8 +21800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205c50095952acb41b1a940da7248ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpSO: {fileID: 11400000, guid: 0536ea3575b603f4290181aec75b9e7a, type: 2}
-  pickupEffect: {fileID: 0}
 --- !u!61 &7678611849419356519
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22057,7 +21891,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7678611848400521165}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -22362,8 +22196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205c50095952acb41b1a940da7248ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpSO: {fileID: 11400000, guid: 4bcafc32360591947a49ad849681a6d3, type: 2}
-  pickupEffect: {fileID: 0}
 --- !u!212 &7678611849659423259
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22416,141 +22248,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7678611849701511538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7678611849701511539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: (ammo text goes here)
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &7678611849701511539
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7678611849701511540}
-  - component: {fileID: 7678611849701511541}
-  - component: {fileID: 7678611849701511538}
-  m_Layer: 5
-  m_Name: Ammo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &7678611849701511540
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7678611849701511539}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7678611848400521165}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 1, y: 1}
---- !u!222 &7678611849701511541
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7678611849701511539}
-  m_CullTransparentMesh: 1
 --- !u!1 &7678611849816973702
 GameObject:
   m_ObjectHideFlags: 0
@@ -22919,15 +22616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4750b68b67f0a4a47a5b9def363ea057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6076453033836274827, guid: 9a53b763db3c8a340a48a7d6e1c1561b, type: 3}
-  weapon: {fileID: 11400000, guid: e9e982825e25add4bae20e339002497b, type: 2}
-  firePoint: {fileID: 7806522490043899074}
-  fireForce: 50
-  text: {fileID: 8800923752133573051}
-  currentClip: 10
-  maxClipSize: 10
-  currentAmmo: 0
-  maxAmmoSize: 100
 --- !u!212 &7806522491348211967
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23501,27 +23189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f139c009d92d40438768b2278c75a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardSOArray: []
-  deck:
-  - {fileID: 5867601478041694779}
-  - {fileID: 5867601478315650702}
-  - {fileID: 5867601478588350381}
-  - {fileID: 5867601478670688790}
-  - {fileID: 5867601476934981768}
-  - {fileID: 5867601477851911185}
-  - {fileID: 5867601478241356684}
-  decksizeTxt: {fileID: 8800923751916148873}
-  discardPile: []
-  discardsizeTxt: {fileID: 8800923750622658896}
-  handSlots:
-  - {fileID: 8800923751770401501}
-  - {fileID: 8800923750760233673}
-  - {fileID: 8800923751833852164}
-  - {fileID: 8800923750534382784}
-  - {fileID: 8800923750580102585}
-  availableHandSlots: 0101010101
-  hand: []
-  currentCard: {fileID: 0}
 --- !u!4 &8800923750674577037
 Transform:
   m_ObjectHideFlags: 0
@@ -24987,8 +24654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205c50095952acb41b1a940da7248ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpSO: {fileID: 11400000, guid: 4bcafc32360591947a49ad849681a6d3, type: 2}
-  pickupEffect: {fileID: 0}
 --- !u!4 &8800923751850526767
 Transform:
   m_ObjectHideFlags: 0
@@ -25354,8 +25019,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205c50095952acb41b1a940da7248ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpSO: {fileID: 11400000, guid: 0536ea3575b603f4290181aec75b9e7a, type: 2}
-  pickupEffect: {fileID: 0}
 --- !u!61 &8800923752045740404
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26073,15 +25736,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4750b68b67f0a4a47a5b9def363ea057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6076453033836274827, guid: 9a53b763db3c8a340a48a7d6e1c1561b, type: 3}
-  weapon: {fileID: 11400000, guid: e9e982825e25add4bae20e339002497b, type: 2}
-  firePoint: {fileID: 9005677079644128406}
-  fireForce: 50
-  text: {fileID: 7678611849701511538}
-  currentClip: 10
-  maxClipSize: 10
-  currentAmmo: 0
-  maxAmmoSize: 100
 --- !u!212 &9005677078264316075
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f96789b9a42d249acd39414d0a7c48, type: 3}
   m_Name: pistolData
   m_EditorClassIdentifier: 
-  weaponName: pistol
+  weaponName: pistolData
   cost: 100
   magazineSize: 0
   weaponVisualsData: {fileID: 11400000, guid: 862a681ba8144a943b9ad012309986ba, type: 2}
