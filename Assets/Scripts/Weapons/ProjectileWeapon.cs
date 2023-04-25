@@ -30,7 +30,8 @@ public class ProjectileWeapon : Weapon
             projectileScript.damage = damage;
 
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-            rb.velocity = projectileSpawnPoint.up * projectileSpeed;
+            rb.velocity = Quaternion.Euler(0, 0, -90f) * (projectileSpawnPoint.up) * projectileSpeed;
+
 
             currentAmmo--;
             nextFireTime = Time.time + 1f / fireRate;
