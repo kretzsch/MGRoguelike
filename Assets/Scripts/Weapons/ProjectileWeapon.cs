@@ -32,8 +32,12 @@ public class ProjectileWeapon : Weapon
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
             rb.velocity = Quaternion.Euler(0, 0, -90f) * (projectileSpawnPoint.up) * projectileSpeed;
 
-
             currentAmmo--;
+            LoadoutData.UpdateAmmoCount(weaponData.compatibleAmmo.ammoName, currentAmmo, weaponData.magazineSize);
+            Debug.Log($"Shoot - AmmoName: {weaponData.compatibleAmmo.ammoName}, CurrentAmmo: {currentAmmo}");
+
+
+            //LoadoutData.UpdateAmmoCount(compatibleAmmo.ammoName, currentAmmo);
             nextFireTime = Time.time + 1f / fireRate;
             // Destroy the projectile after 3 seconds
             Destroy(projectile, 3f);
