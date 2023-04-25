@@ -64,7 +64,16 @@ public class WeaponManager : MonoBehaviour
             }
         }
     }
+    public void SwitchWeapon(int direction)
+    {
+        // Get the index of the current weapon in the weapons dictionary
+        int currentIndex = weapons.Values.ToList().IndexOf(CurrentWeapon);
 
+        // Increment or decrement the index based on the direction value (wrap around if necessary)
+        currentIndex = (currentIndex + direction + weapons.Count) % weapons.Count;
 
+        // Set the new current weapon
+        SetCurrentWeapon(weapons.Keys.ToList()[currentIndex]);
+    }
 
 }

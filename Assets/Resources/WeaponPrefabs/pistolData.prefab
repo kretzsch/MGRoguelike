@@ -134,6 +134,7 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 8592174904065263794}
   projectileSpeed: 40
   fireRate: 20
+  bulletPrefab: {fileID: 8809042992057867358, guid: df4ce044f37e76d46a4463494c55997b, type: 3}
   damage: 10
 --- !u!1 &8592174904065263693
 GameObject:
