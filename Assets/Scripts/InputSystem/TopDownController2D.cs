@@ -85,14 +85,16 @@ public class TopDownController2D : MonoBehaviour
     }
     public void OnSwitchWeapon(InputAction.CallbackContext context)
     {
-        float scrollValue = context.ReadValue<float>();
-        if (scrollValue != 0 && _weaponManager != null)
+        if (context.performed)
         {
-            int direction = scrollValue > 0 ? 1 : -1;
-            _weaponManager.SwitchWeapon(direction);
+            float scrollValue = context.ReadValue<float>();
+            if (scrollValue != 0 && _weaponManager != null)
+            {
+                int direction = scrollValue > 0 ? 1 : -1;
+                _weaponManager.SwitchWeapon(direction);
+            }
         }
     }
-
 
     #endregion
 }

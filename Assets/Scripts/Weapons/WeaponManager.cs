@@ -13,12 +13,25 @@ public class WeaponManager : MonoBehaviour
     {
         if (weapons.ContainsKey(weaponName))
         {
+            Debug.Log($"Switching to weapon: {weaponName}");
+            // Hide all weapons
+            foreach (var weapon in weapons.Values)
+            {
+                weapon.gameObject.SetActive(false);
+            }
+
+            // Show only the current weapon
             CurrentWeapon = weapons[weaponName];
+            CurrentWeapon.gameObject.SetActive(true);
         }
+        else { Debug.Log($"Weapon not found: {weaponName}"); }
     }
+
 
     public void SetupWeapons(Dictionary<string, int> weaponsAndAmmo)
     {
+        Debug.Log("Setting up weapons:");
+        bool firstWeapon = true;
         foreach (KeyValuePair<string, int> weaponAndAmmo in weaponsAndAmmo)
         {
             string weaponName = weaponAndAmmo.Key;
@@ -38,6 +51,7 @@ public class WeaponManager : MonoBehaviour
                     if (projectileWeapon != null)
                     {
                         projectileWeapon.weaponData = weaponData;
+                        firstWeapon = false;
                         if (weaponData.compatibleAmmo != null)
                         {
                             // Get the compatible ammo key from the weapon data
@@ -52,6 +66,7 @@ public class WeaponManager : MonoBehaviour
                         projectileWeapon.SetAmmo(weaponAmmo);
 
                         weapons.Add(weaponName, projectileWeapon);
+                        Debug.Log($"Added weapon: {weaponName}"); // Log the weapon being added
 
                         // Set the CurrentWeapon if it's not set yet
                         if (CurrentWeapon == null)
@@ -64,13 +79,17 @@ public class WeaponManager : MonoBehaviour
             }
         }
     }
+
     public void SwitchWeapon(int direction)
     {
         // Get the index of the current weapon in the weapons dictionary
         int currentIndex = weapons.Values.ToList().IndexOf(CurrentWeapon);
+        Debug.Log($"Current weapon index: {currentIndex}");
+
 
         // Increment or decrement the index based on the direction value (wrap around if necessary)
         currentIndex = (currentIndex + direction + weapons.Count) % weapons.Count;
+        Debug.Log($"New weapon index: {currentIndex}");
 
         // Set the new current weapon
         SetCurrentWeapon(weapons.Keys.ToList()[currentIndex]);
