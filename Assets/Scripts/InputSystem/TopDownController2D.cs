@@ -13,6 +13,9 @@ public class TopDownController2D : MonoBehaviour
     private Camera _mainCamera;
     private float _lastFireTime;
     private Vector2 _inputVector;
+
+
+
     [SerializeField] private WeaponManager _weaponManager;
     private void Awake()
     {
@@ -42,27 +45,24 @@ public class TopDownController2D : MonoBehaviour
         Vector3 worldMousePosition = _mainCamera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _mainCamera.nearClipPlane));
         Vector2 aimDirection = (Vector2)worldMousePosition - _rigidbody2D.position;
 
-        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
+        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 0f;
         _rigidbody2D.rotation = aimAngle;
+  
     }
 
     public void OnShoot(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Debug.Log("OnShoot called");
             if (_weaponManager == null)
             {
-                Debug.LogError("WeaponManager reference is not assigned.");
                 return;
             }
 
             if (_weaponManager.CurrentWeapon == null)
             {
-                Debug.LogError("CurrentWeapon is not set in WeaponManager.");
                 return;
             }
-
             _weaponManager.CurrentWeapon.Shoot();
         }
     }

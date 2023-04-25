@@ -12,18 +12,14 @@ public class ProjectileWeapon : Weapon
 
     public override void Shoot()
     {
-        Debug.Log("ProjectileWeapon Shoot() called");
         if (Time.time >= nextFireTime && currentAmmo > 0)
         {
-            Debug.Log("Shooting conditions met");
             if (bulletPrefab == null)
             {
-                Debug.LogError("Bullet prefab is not assigned.");
                 return;
             }
 
             GameObject projectile = Instantiate(bulletPrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
-            Debug.Log("Bullet instantiated");
 
             // Add the Projectile script and set the damage
             Projectile projectileScript = projectile.GetComponent<Projectile>();
@@ -34,7 +30,8 @@ public class ProjectileWeapon : Weapon
             projectileScript.damage = damage;
 
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-            rb.velocity = projectileSpawnPoint.up * projectileSpeed;
+            rb.velocity = Quaternion.Euler(0, 0, -90f) * (projectileSpawnPoint.up) * projectileSpeed;
+
 
             currentAmmo--;
             nextFireTime = Time.time + 1f / fireRate;
