@@ -1,6 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// This class is responsible for the player's movement, aiming, shooting, reloading, and weapon switching. 
+/// It utilizes input events from the new Unity Input System to handle various actions 
+/// and interfaces with the WeaponManager to control the active weapon.
+/// </summary>
 public class TopDownController2D : MonoBehaviour
 {
     public float moveSpeed = 5.0f;

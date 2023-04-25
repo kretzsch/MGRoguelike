@@ -2,6 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// This class is responsible for managing the player's available weapons. 
+/// It instantiates weapon prefabs and
+/// sets up their corresponding ProjectileWeapon components based on the provided WeaponData. 
+/// It also manages weapon switching, toggling the visibility of weapon sprites according to the selected weapon.
+/// </summary>
 public class WeaponManager : MonoBehaviour
 {
     [SerializeField]
