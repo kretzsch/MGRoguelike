@@ -10,7 +10,7 @@ public class WeaponData : PurchaseableItem
 
     public WeaponVisualsData weaponVisualsData;
     public AmmoData compatibleAmmo;
-    public GameObject weaponPrefab;
+    public GameObject weaponPrefab; // currently this is the topdown prefab only
 
     public enum GameGenre
     {

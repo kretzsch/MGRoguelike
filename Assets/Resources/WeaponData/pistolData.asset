@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: pistolData
   cost: 100
-  magazineSize: 0
+  magazineSize: 15
   damage: 10
   weaponVisualsData: {fileID: 11400000, guid: 862a681ba8144a943b9ad012309986ba, type: 2}
   compatibleAmmo: {fileID: 11400000, guid: 7be2f504135d2644987365478607ed1b, type: 2}
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 8592174903124859902, guid: 864d14446d7a8684cb97c6eeeee8d977, type: 3}
