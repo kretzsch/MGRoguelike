@@ -20,6 +20,44 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 - Main menu with tabs and panels for weapon and ammo purchasing.
 - Loadout system for managing weapons and ammo.
 - Interactive music using FMOD for seamless transitions and dynamic audio.
+Here's the flowchart of the codebase in a format suitable for adding to a README file:
+
+## Codebase Flowchart: Weapons from MainMenu to Playable Scene
+
+1. **MainMenu scene**
+   - Player selects weapons and ammo in the shop.
+   - Selected weapons and ammo are stored in `LoadoutData.selectedWeaponsAndAmmo` (a dictionary) and `LoadoutData.remainingAmmo` (also a dictionary).
+   - When the player starts the game, the playable scene is loaded.
+
+2. **Playable scene**
+   - **TopDownGameController** initializes the game.
+      - Finds a reference to the `WeaponManager` in the scene.
+      - Calls `WeaponManager.SetupWeapons` with `LoadoutData.selectedWeaponsAndAmmo` as the parameter.
+   - **WeaponManager.SetupWeapons** creates instances of the selected weapons.
+      - For each weapon in the `LoadoutData.selectedWeaponsAndAmmo`, loads the corresponding `WeaponData` (ScriptableObject) and weapon prefab.
+      - Instantiates the weapon prefab and assigns the `WeaponData` to the `ProjectileWeapon` component.
+      - Sets up ammo for each weapon and adds it to the `weapons` dictionary.
+      - Sets the initial current weapon.
+
+3. **InGameUISetup**
+   - Sets up in-game UI elements for the selected weapons and ammo.
+      - Adds weapon images and ammo count text elements to the UI.
+      - Initializes ammo counts in `LoadoutData.remainingAmmo`.
+
+4. **TopDownController2D**
+   - Controls player movement, aiming, shooting, reloading, and weapon switching.
+      - Listens for input actions and calls corresponding methods (e.g., `OnShoot`, `OnReload`, `OnSwitchWeapon`).
+      - Interacts with the `WeaponManager` and the currently selected weapon.
+
+5. **Weapon and ProjectileWeapon classes**
+   - **Weapon**: Abstract base class for weapons, manages weapon data and ammo.
+   - **ProjectileWeapon**: Inherits from Weapon, implements shooting logic by spawning projectiles.
+
+6. **Projectile**
+   - Represents a projectile fired by a weapon.
+   - Handles collisions and applies damage to objects implementing the IDamageable interface.
+
+This flowchart illustrates the relationship between the different classes and how they interact with each other, particularly focusing on the loading and usage of weapons from the main menu to the playable scene.
 
 ## Installation
 
