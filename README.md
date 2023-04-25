@@ -20,7 +20,6 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 - Main menu with tabs and panels for weapon and ammo purchasing.
 - Loadout system for managing weapons and ammo.
 - Interactive music using FMOD for seamless transitions and dynamic audio.
-Here's the flowchart of the codebase in a format suitable for adding to a README file:
 
 ## Codebase Flowchart: Weapons from MainMenu to Playable Scene
 
