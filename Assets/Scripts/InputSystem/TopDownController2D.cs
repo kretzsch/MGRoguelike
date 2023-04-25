@@ -34,6 +34,7 @@ public class TopDownController2D : MonoBehaviour
         _rigidbody2D.MovePosition(newPosition);
     }
 
+    #region input methods
     public void OnMove(InputAction.CallbackContext context)
     {
         _inputVector = context.ReadValue<Vector2>();
@@ -48,6 +49,22 @@ public class TopDownController2D : MonoBehaviour
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 0f;
         _rigidbody2D.rotation = aimAngle;
   
+    }
+    public void OnReload(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            if (_weaponManager == null)
+            {
+                return;
+            }
+
+            if (_weaponManager.CurrentWeapon == null)
+            {
+                return;
+            }
+            _weaponManager.CurrentWeapon.Reload();
+        }
     }
 
     public void OnShoot(InputAction.CallbackContext context)
@@ -66,4 +83,5 @@ public class TopDownController2D : MonoBehaviour
             _weaponManager.CurrentWeapon.Shoot();
         }
     }
+    #endregion
 }

@@ -12372,6 +12372,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e2751662-8f6b-4df6-a6d6-e3de7a9d8c7d
     m_ActionName: Platformer/Jump[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7678611848562367624}
+        m_TargetAssemblyTypeName: TopDownController2D, Assembly-CSharp
+        m_MethodName: OnReload
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2395f31d-9b05-49ee-9337-3bea0093c991
+    m_ActionName: TopDown/Reload[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: TopDown
