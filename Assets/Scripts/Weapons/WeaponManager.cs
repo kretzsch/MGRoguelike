@@ -7,6 +7,7 @@ using System.Linq;
 /// It instantiates weapon prefabs and
 /// sets up their corresponding ProjectileWeapon components based on the provided WeaponData. 
 /// It also manages weapon switching, toggling the visibility of weapon sprites according to the selected weapon.
+/// this class is reuseable for every genre in this game. 
 /// </summary>
 public class WeaponManager : MonoBehaviour
 {
@@ -34,10 +35,9 @@ public class WeaponManager : MonoBehaviour
     }
 
 
-    public void SetupWeapons(Dictionary<string, int> weaponsAndAmmo)
+    public void SetupWeapons(Dictionary<string, int> weaponsAndAmmo, WeaponData.GameGenre currentGenre)
     {
         Debug.Log("Setting up weapons:");
-        bool firstWeapon = true;
         foreach (KeyValuePair<string, int> weaponAndAmmo in weaponsAndAmmo)
         {
             string weaponName = weaponAndAmmo.Key;
@@ -47,7 +47,7 @@ public class WeaponManager : MonoBehaviour
 
             if (weaponData != null)
             {
-                GameObject weaponPrefab = Resources.Load<GameObject>($"WeaponPrefabs/{weaponName}");
+                GameObject weaponPrefab = weaponData.genrePrefabs.Find(gp => gp.genre == currentGenre)?.prefab;
 
                 if (weaponPrefab != null)
                 {
@@ -57,7 +57,6 @@ public class WeaponManager : MonoBehaviour
                     if (projectileWeapon != null)
                     {
                         projectileWeapon.weaponData = weaponData;
-                        firstWeapon = false;
                         if (weaponData.compatibleAmmo != null)
                         {
                             // Get the compatible ammo key from the weapon data
@@ -85,6 +84,7 @@ public class WeaponManager : MonoBehaviour
             }
         }
     }
+
 
     public void SwitchWeapon(int direction)
     {
