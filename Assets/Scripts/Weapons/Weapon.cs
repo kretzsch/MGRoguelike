@@ -1,5 +1,13 @@
 using UnityEngine;
 
+/// <summary>
+/// This abstract class represents a generic weapon with common properties and methods. 
+/// It holds a reference to the WeaponData and manages the current ammo count. 
+/// The Shoot method is defined as abstract,
+/// meaning that derived classes must implement their own version of the method. 
+/// The Reload method is virtual, allowing derived classes to override it if necessary. 
+/// Helper methods to set and get the current ammo are also included.
+/// </summary>
 public abstract class Weapon : MonoBehaviour
 {
     public WeaponData weaponData;

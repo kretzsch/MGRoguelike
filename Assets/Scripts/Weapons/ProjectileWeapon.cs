@@ -1,5 +1,11 @@
 using UnityEngine;
 
+/// <summary>
+/// This class represents a weapon that fires projectiles. 
+/// It contains methods for shooting, reloading, and managing ammo. 
+/// It also has a reference to WeaponData, which holds information about the weapon's properties, 
+/// such as damage, fire rate, and compatible ammo.
+/// </summary>
 public class ProjectileWeapon : Weapon
 {
     [SerializeField] private Transform projectileSpawnPoint;

@@ -3,6 +3,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+///  This class is responsible for setting up and managing the in-game user interface elements, such as
+///  the weapon icons and ammo counters. 
+///  It reads the selected weapons and ammo from LoadoutData and creates UI elements accordingly. 
+///  The class also listens for ammo count changes in LoadoutData and
+///  updates the corresponding ammo count text in the UI.
+/// </summary>
 public class InGameUISetup : MonoBehaviour
 {
     [SerializeField] private Transform weaponItemsParent;
