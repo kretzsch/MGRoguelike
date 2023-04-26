@@ -22,4 +22,4 @@ MonoBehaviour:
   - genre: 1
     prefab: {fileID: 8592174903124859902, guid: 864d14446d7a8684cb97c6eeeee8d977, type: 3}
   - genre: 0
-    prefab: {fileID: 0}
+    prefab: {fileID: 8592174903124859902, guid: 864d14446d7a8684cb97c6eeeee8d977, type: 3}

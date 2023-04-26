@@ -3680,6 +3680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbe6ecef6722c142a30ece74fbc4c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentGenre: 1
   weaponManager: {fileID: 1090090245}
 --- !u!1001 &787196626
 PrefabInstance:

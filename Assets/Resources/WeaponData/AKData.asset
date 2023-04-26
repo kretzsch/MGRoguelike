@@ -19,7 +19,7 @@ MonoBehaviour:
   weaponVisualsData: {fileID: 11400000, guid: 8d080bc3db710a444bd21983c9be095f, type: 2}
   compatibleAmmo: {fileID: 11400000, guid: 795dbeefa68f3af4e890187a22406084, type: 2}
   genrePrefabs:
-  - genre: 0
-    prefab: {fileID: 8592174903124859902, guid: b8fd6064a9f2fe14d82954484473219c, type: 3}
   - genre: 1
     prefab: {fileID: 8592174903124859902, guid: b8fd6064a9f2fe14d82954484473219c, type: 3}
+  - genre: 0
+    prefab: {fileID: 0}
