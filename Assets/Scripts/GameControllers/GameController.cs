@@ -2,10 +2,21 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TopDownGameController : MonoBehaviour
+/// <summary>
+/// this class is reuseable for every genre. 
+/// The gamecontroller gets the weapon and ammo data from the loadoutdata thats saved between scenes.
+/// this in turn calls the weaponmanager.setupweapons to set up the weapons with the loaded data.
+/// </summary>
+public class GameController : MonoBehaviour
 {
+    [SerializeField] private WeaponData.GameGenre currentGenre;
     [SerializeField] private WeaponManager weaponManager;
-    public WeaponData.GameGenre currentGenre = WeaponData.GameGenre.TopDown; // we can hardcode this since we're already in the topdowncontroller.
+
+    private void Awake()
+    {
+        weaponManager = FindObjectOfType<WeaponManager>();
+        Debug.Log($"WeaponManager reference: {weaponManager}");
+    }
 
     private void Start()
     {
@@ -19,3 +30,4 @@ public class TopDownGameController : MonoBehaviour
         weaponManager.SetupWeapons(weaponsAndAmmo, currentGenre);
     }
 }
+

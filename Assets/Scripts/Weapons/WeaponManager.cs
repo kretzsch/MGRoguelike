@@ -3,11 +3,11 @@ using UnityEngine;
 using System.Linq;
 
 /// <summary>
+/// this class is reuseable for every genre in this game. 
 /// This class is responsible for managing the player's available weapons. 
 /// It instantiates weapon prefabs and
 /// sets up their corresponding ProjectileWeapon components based on the provided WeaponData. 
 /// It also manages weapon switching, toggling the visibility of weapon sprites according to the selected weapon.
-/// this class is reuseable for every genre in this game. 
 /// </summary>
 public class WeaponManager : MonoBehaviour
 {
