@@ -21,6 +21,12 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 - Loadout system for managing weapons and ammo.
 - Interactive music using FMOD for seamless transitions and dynamic audio.
 
+## Backlog
+
+- Refactor the runtime loading code to use Addressables API instead of Resources API.
+- Divide levels up into several scenes with Loadsceneasync
+- Gameplay
+
 ## Codebase Flowchart: Weapons from MainMenu to Playable Scene
 
 1. **MainMenu scene**
@@ -55,8 +61,6 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 6. **Projectile**
    - Represents a projectile fired by a weapon.
    - Handles collisions and applies damage to objects implementing the IDamageable interface.
-
-This flowchart illustrates the relationship between the different classes and how they interact with each other, particularly focusing on the loading and usage of weapons from the main menu to the playable scene.
 
 ## Installation
 
