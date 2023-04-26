@@ -32,7 +32,7 @@ public class TopDownController2D : MonoBehaviour
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // Move the character continuously
         Vector2 newPosition = _rigidbody2D.position + _inputVector * moveSpeed * Time.deltaTime;
