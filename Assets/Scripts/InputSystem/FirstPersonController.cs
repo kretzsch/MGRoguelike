@@ -23,6 +23,37 @@ public class FirstPersonController : MonoBehaviour
     [Tooltip("How far in degrees can you move the camera down")]
     public float BottomClamp = -90.0f;
 
+
+    [Space(10)]
+    [Tooltip("The height the player can jump")]
+    public float JumpHeight = 1.2f;
+    [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
+    public float Gravity = -15.0f;
+
+    [Space(10)]
+    [Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
+    public float JumpTimeout = 0.1f;
+    [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
+    public float FallTimeout = 0.15f;
+
+    [Header("Player Grounded")]
+    [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
+    public bool Grounded = true;
+    [Tooltip("Useful for rough ground")]
+    public float GroundedOffset = -0.14f;
+    [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
+    public float GroundedRadius = 0.5f;
+    [Tooltip("What layers the character uses as ground")]
+    public LayerMask GroundLayers;
+
+
+
+    private bool _grounded;
+    private float _jumpTimeoutDelta;
+    private float _fallTimeoutDelta;
+    private bool _inputJump;
+
+
     // cinemachine
     private float _cinemachineTargetPitch;
 
@@ -62,17 +93,87 @@ public class FirstPersonController : MonoBehaviour
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        _cinemachineTargetPitch = CinemachineCameraTarget.transform.localEulerAngles.x;
+        if (_cinemachineTargetPitch > 180f)
+        {
+            _cinemachineTargetPitch -= 420f; // the weed number
+        }
     }
     private void FixedUpdate()
     {
-        Look();
+        JumpAndGravity();
+        GroundedCheck();
         Move();
     }
+
+    private void LateUpdate()
+    {
+        Look();
+    }
+
+    private void JumpAndGravity()
+    {
+        if (_grounded)
+        {
+            _fallTimeoutDelta = FallTimeout;
+
+            if (_verticalVelocity < 0.0f)
+            {
+                _verticalVelocity = -2f;
+            }
+
+            if (_inputJump && _jumpTimeoutDelta <= 0.0f)
+            {
+                _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+                _inputJump = false;
+            }
+
+            if (_jumpTimeoutDelta >= 0.0f)
+            {
+                _jumpTimeoutDelta -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            _jumpTimeoutDelta = JumpTimeout;
+
+            if (_fallTimeoutDelta >= 0.0f)
+            {
+                _fallTimeoutDelta -= Time.deltaTime;
+            }
+        }
+
+        if (_verticalVelocity < _terminalVelocity)
+        {
+            _verticalVelocity += Gravity * Time.deltaTime;
+        }
+
+        _characterController.Move(new Vector3(0, _verticalVelocity, 0) * Time.deltaTime);
+    }
+
+
+    private void GroundedCheck()
+    {
+        // set sphere position, with offset
+        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
+        _grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+    }
+
     #region input methods
     public void OnMove(InputAction.CallbackContext context)
     {
         _moveInput = context.ReadValue<Vector2>();
     }
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.started && _grounded)
+        {
+            _inputJump = true;
+            _jumpTimeoutDelta = 0.0f;
+        }
+    }
+
+
     //the input system uses Delta pointer for onlook
     //todo: research if this is the best way to do this
     public void OnLook(InputAction.CallbackContext context)
