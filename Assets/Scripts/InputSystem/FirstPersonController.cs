@@ -122,8 +122,7 @@ public class FirstPersonController : MonoBehaviour
     #endregion
     private void Look()
     {
-        float deltaTimeMultiplier = Time.deltaTime;
-
+      
         _cinemachineTargetPitch += _lookInput.y * RotationSpeed * deltaTimeMultiplier;
         _rotationVelocity = _lookInput.x * RotationSpeed * deltaTimeMultiplier;
         Debug.Log($"_cinemachineTargetPitch: {_cinemachineTargetPitch}");
