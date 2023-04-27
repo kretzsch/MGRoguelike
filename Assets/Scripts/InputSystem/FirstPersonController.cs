@@ -39,6 +39,13 @@ public class FirstPersonController : MonoBehaviour
     //input variables
     private Vector2 _moveInput;
     private Vector2 _lookInput;
+    private bool IsCurrentDeviceMouse
+    {
+        get
+        {
+            return Mouse.current != null && Mouse.current == InputSystem.GetDevice<Mouse>();
+        }
+    }
 
     private void Awake()
     {
@@ -122,7 +129,7 @@ public class FirstPersonController : MonoBehaviour
     #endregion
     private void Look()
     {
-        //Don't multiply mouse input by Time.deltaTime
+        // Don't multiply mouse input by Time.deltaTime
         float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
         _cinemachineTargetPitch += _lookInput.y * RotationSpeed * deltaTimeMultiplier;
@@ -134,6 +141,7 @@ public class FirstPersonController : MonoBehaviour
         CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
         transform.Rotate(Vector3.up * _rotationVelocity);
     }
+
     public void Move()
     {
         Vector3 moveDirection = transform.right * _moveInput.x + transform.forward * _moveInput.y;
