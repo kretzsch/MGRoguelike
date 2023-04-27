@@ -9,10 +9,6 @@ using UnityEngine.InputSystem;
 public class TopDownController2D : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-    public float bulletSpeed = 10f;
-    public float fireRate = 0.25f;
 
     private Rigidbody2D _rigidbody2D;
     private Camera _mainCamera;
@@ -21,7 +17,8 @@ public class TopDownController2D : MonoBehaviour
 
 
 
-    [SerializeField] private WeaponManager _weaponManager;
+    
+    private WeaponManager _weaponManager;
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();

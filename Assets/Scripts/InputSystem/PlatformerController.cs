@@ -14,18 +14,19 @@ public class PlatformerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private WeaponManager weaponManager;
 
+    private WeaponManager _weaponManager;
     private Rigidbody2D rb;
     private Vector2 moveDirection;
     private bool isGrounded;
     private float jumpCooldown;
+    private Camera _mainCamera;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        weaponManager = FindObjectOfType<WeaponManager>();
-        Debug.Log($"WeaponManager reference: {weaponManager}");
+        _weaponManager = FindObjectOfType<WeaponManager>();
+        _mainCamera = Camera.main;
     }
 
     private void Update()
@@ -55,52 +56,41 @@ public class PlatformerController : MonoBehaviour
 
     public void OnAim(InputAction.CallbackContext context)
     {
-        // Add platformer-specific aiming logic here
+        if (_weaponManager == null || _weaponManager.CurrentWeapon == null) return;
+
+        Vector2 mousePosition = context.ReadValue<Vector2>();
+        Vector3 worldMousePosition = _mainCamera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _mainCamera.nearClipPlane));
+        Vector2 aimDirection = (Vector2)worldMousePosition - (Vector2)_weaponManager.CurrentWeapon.transform.position;
+
+        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        _weaponManager.CurrentWeapon.transform.rotation = Quaternion.Euler(0, 0, aimAngle);
     }
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && _weaponManager != null && _weaponManager.CurrentWeapon != null)
         {
-            if (weaponManager == null)
-            {
-                return;
-            }
-
-            if (weaponManager.CurrentWeapon == null)
-            {
-                return;
-            }
-            weaponManager.CurrentWeapon.Shoot();
+            _weaponManager.CurrentWeapon.Shoot();
         }
     }
 
     public void OnReload(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && _weaponManager != null && _weaponManager.CurrentWeapon != null)
         {
-            if (weaponManager == null)
-            {
-                return;
-            }
-
-            if (weaponManager.CurrentWeapon == null)
-            {
-                return;
-            }
-            weaponManager.CurrentWeapon.Reload();
+            _weaponManager.CurrentWeapon.Reload();
         }
     }
 
     public void OnSwitchWeapon(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _weaponManager != null)
         {
             float scrollValue = context.ReadValue<float>();
-            if (scrollValue != 0 && weaponManager != null)
+            if (scrollValue != 0)
             {
                 int direction = scrollValue > 0 ? 1 : -1;
-                weaponManager.SwitchWeapon(direction);
+                _weaponManager.SwitchWeapon(direction);
             }
         }
     }

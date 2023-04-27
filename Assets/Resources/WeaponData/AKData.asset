@@ -22,4 +22,6 @@ MonoBehaviour:
   - genre: 1
     prefab: {fileID: 8592174903124859902, guid: b8fd6064a9f2fe14d82954484473219c, type: 3}
   - genre: 0
-    prefab: {fileID: 0}
+    prefab: {fileID: 8592174903124859902, guid: b26d95a6ab5054a479db66e45fcd4e14, type: 3}
+  - genre: 3
+    prefab: {fileID: 8592174903124859902, guid: a3d32aecf84d38347aaee90d43a28eb0, type: 3}
