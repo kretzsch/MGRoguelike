@@ -122,7 +122,8 @@ public class FirstPersonController : MonoBehaviour
     #endregion
     private void Look()
     {
-        float deltaTimeMultiplier = Time.deltaTime;
+        //Don't multiply mouse input by Time.deltaTime
+        float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
         _cinemachineTargetPitch += _lookInput.y * RotationSpeed * deltaTimeMultiplier;
         _rotationVelocity = _lookInput.x * RotationSpeed * deltaTimeMultiplier;
