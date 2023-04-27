@@ -42,37 +42,9 @@ public class ProjectileWeapon : Weapon
             LoadoutData.UpdateAmmoCount(weaponData.compatibleAmmo.ammoName, currentAmmo, weaponData.magazineSize);
             Debug.Log($"Shoot - AmmoName: {weaponData.compatibleAmmo.ammoName}, CurrentAmmo: {currentAmmo}");
 
-
-            //LoadoutData.UpdateAmmoCount(compatibleAmmo.ammoName, currentAmmo);
             nextFireTime = Time.time + 1f / fireRate;
             // Destroy the projectile after 3 seconds
             Destroy(projectile, 3f);
-        }
-    }
-
-    // Handle 3D collisions
-    private void OnCollisionEnter(Collision collision)
-    {
-        IDamageable damageable = collision.collider.GetComponent<IDamageable>();
-        if (damageable != null)
-        {
-            // Apply damage
-            damageable.TakeDamage(weaponData.damage);
-            // Destroy projectile
-            Destroy(gameObject);
-        }
-    }
-
-    // Handle 2D collisions
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        IDamageable damageable = collision.collider.GetComponent<IDamageable>();
-        if (damageable != null)
-        {
-            // Apply damage
-            damageable.TakeDamage(weaponData.damage);
-            // Destroy projectile
-            Destroy(gameObject);
         }
     }
 }
