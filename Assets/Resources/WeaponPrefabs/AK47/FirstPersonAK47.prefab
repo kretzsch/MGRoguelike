@@ -414,6 +414,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7142067087731568425}
     m_Modifications:
+    - target: {fileID: 8072693534331672913, guid: 19ff0a5cacd095047abc0c40d707bbc0, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8072693534331701269, guid: 19ff0a5cacd095047abc0c40d707bbc0, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8072693534345528195, guid: 19ff0a5cacd095047abc0c40d707bbc0, type: 3}
       propertyPath: m_Name
       value: GunShot_Smoke_FX
@@ -490,16 +498,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2000821012509467758, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000821012509467758, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2000821012509467758, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2000821012509467758, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.641
+      value: -0.411
       objectReference: {fileID: 0}
     - target: {fileID: 2000821012509467758, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
       propertyPath: m_LocalRotation.w
