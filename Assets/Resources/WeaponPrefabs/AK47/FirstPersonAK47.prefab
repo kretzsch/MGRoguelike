@@ -315,16 +315,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 8e08396aca67b6a4bb9af321e8a3cade, type: 2}
-  projectileSpawnPoint: {fileID: 0}
+  projectileSpawnPoint: {fileID: 7142067087731568425}
   projectileSpeed: 30
-  fireRate: 20
   bulletPrefab: {fileID: 8809042992057867358, guid: df4ce044f37e76d46a4463494c55997b, type: 3}
-  mainCamera: {fileID: 0}
   is3D: 1
   gunShootParticles: {fileID: 8072693534331701269, guid: 19ff0a5cacd095047abc0c40d707bbc0, type: 3}
   bulletTrail: {fileID: 2002198026919436076, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
   firePoint: {fileID: 7142067087731568425}
   damage: 10
+  fireRate: 20
 --- !u!1 &7142067088483075568
 GameObject:
   m_ObjectHideFlags: 0

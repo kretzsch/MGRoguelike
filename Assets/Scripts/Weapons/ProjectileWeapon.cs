@@ -31,16 +31,23 @@ public class ProjectileWeapon : Weapon
 
     private void Awake()
     {
-        // get a reference to our main camera
         if (_mainCamera == null)
         {
             _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
+
+        Debug.Log($"Main Camera assigned: {_mainCamera}");
     }
     public override void Shoot()
     {
+        Debug.Log("Shoot method called"); 
+
+
         if (Time.time >= nextFireTime && currentAmmo > 0)
         {
+            Debug.Log("Shoot method : first if"); 
+
+
             if (is3D)
             {
                 Shoot3D();
@@ -59,6 +66,7 @@ public class ProjectileWeapon : Weapon
 
     private void Shoot2D()
     {
+        Debug.Log("Shoot2D method called");
         if (bulletPrefab == null)
         {
             return;
@@ -83,7 +91,8 @@ public class ProjectileWeapon : Weapon
 
     private void Shoot3D()
     {
-            lastFireTime = Time.time;
+        Debug.Log("Shoot3D method called");
+        lastFireTime = Time.time;
             RaycastHit hit;
             if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 500f))
             {
