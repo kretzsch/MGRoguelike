@@ -10,25 +10,45 @@ using UnityEngine;
 
 public class ProjectileWeapon : Weapon
 {
+    [Header("2D")]
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField] private float projectileSpeed;
-    [SerializeField] private float fireRate;
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Camera mainCamera;
-    [SerializeField] private bool useRaycast;
-    [SerializeField] private ParticleSystem gunShootParticles;
-    [SerializeField] private GameObject bulletTrail;
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject bulletPrefab;//2D
 
+    [Header("3D")]
+    private GameObject _mainCamera;
+    [SerializeField] private bool is3D;
+    [SerializeField] private ParticleSystem gunShootParticles;
+    [SerializeField] private GameObject bulletTrail; //3D
+    [SerializeField] private Transform firePoint; //3D
+
+    [Header("global")]
     public int damage;
+    [SerializeField] private float fireRate;
     private float nextFireTime;
     private float lastFireTime;
 
+
+    private void Awake()
+    {
+        if (_mainCamera == null)
+        {
+            _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        }
+
+        Debug.Log($"Main Camera assigned: {_mainCamera}");
+    }
     public override void Shoot()
     {
+        Debug.Log("Shoot method called"); 
+
+
         if (Time.time >= nextFireTime && currentAmmo > 0)
         {
-            if (useRaycast)
+            Debug.Log("Shoot method : first if"); 
+
+
+            if (is3D)
             {
                 Shoot3D();
             }
@@ -46,6 +66,7 @@ public class ProjectileWeapon : Weapon
 
     private void Shoot2D()
     {
+        Debug.Log("Shoot2D method called");
         if (bulletPrefab == null)
         {
             return;
@@ -70,9 +91,10 @@ public class ProjectileWeapon : Weapon
 
     private void Shoot3D()
     {
-            lastFireTime = Time.time;
+        Debug.Log("Shoot3D method called");
+        lastFireTime = Time.time;
             RaycastHit hit;
-            if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 500f))
+            if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 500f))
             {
                 // Instantiate bulletTrail and play shoot particle fx
                 gunShootParticles.Play();

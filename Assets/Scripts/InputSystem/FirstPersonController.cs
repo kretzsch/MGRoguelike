@@ -182,7 +182,6 @@ public class FirstPersonController : MonoBehaviour
     public void OnLook(InputAction.CallbackContext context)
     {
         _lookInput = context.ReadValue<Vector2>();
-        Debug.Log($"OnLookInput: {_lookInput}");
     }
 
     public void OnReload(InputAction.CallbackContext context)
@@ -194,8 +193,11 @@ public class FirstPersonController : MonoBehaviour
     }
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.started)
+
+        Debug.Log("onshoot");
+        if (context.performed)
         {
+            Debug.Log("context started");
             if (_weaponManager == null)
             {
                 return;
@@ -205,6 +207,8 @@ public class FirstPersonController : MonoBehaviour
             {
                 return;
             }
+            Debug.Log($"Current weapon: {_weaponManager.CurrentWeapon.name}");
+
             _weaponManager.CurrentWeapon.Shoot();
         }
     }
@@ -229,8 +233,6 @@ public class FirstPersonController : MonoBehaviour
 
         _cinemachineTargetPitch += _lookInput.y * RotationSpeed * deltaTimeMultiplier;
         _rotationVelocity = _lookInput.x * RotationSpeed * deltaTimeMultiplier;
-        Debug.Log($"_cinemachineTargetPitch: {_cinemachineTargetPitch}");
-        Debug.Log($"_rotationVelocity: {_rotationVelocity}");
         _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
         CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
