@@ -4,6 +4,8 @@
 
 ## Description
 
+Note: This Game is still in it's prototype phase; therefor a lot of code optimization is still not implemented to prevent the potential of painting myself into a corner. "Premature optimisation is the root of all evil".
+
 This genre-switching game offers a unique and engaging gaming experience by combining elements of first-person shooter (FPS), platformer, topdown, and other game genres. The project was motivated by the desire to create a diverse gaming experience that challenges players and offers variety in gameplay. It includes a rich main menu, a loadout system, weapon and ammo purchasing, and interactive music using FMOD.
 
 ## Table of Contents
