@@ -24,6 +24,7 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 ## Backlog
 
 - Refactor the runtime loading code to use Addressables API instead of Resources API.
+- SOLID when rapid prototype phase is over
 - Divide levels up into several scenes with Loadsceneasync
 - Optimize projectile handling by using object pooling to reduce the overhead of instantiating and destroying projectiles during gameplay.
 - Weapon stats display 
