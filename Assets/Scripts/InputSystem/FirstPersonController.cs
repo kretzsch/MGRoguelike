@@ -184,20 +184,11 @@ public class FirstPersonController : MonoBehaviour
         _lookInput = context.ReadValue<Vector2>();
         Debug.Log($"OnLookInput: {_lookInput}");
     }
-   
+
     public void OnReload(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && _weaponManager != null && _weaponManager.CurrentWeapon != null)
         {
-            if (_weaponManager == null)
-            {
-                return;
-            }
-
-            if (_weaponManager.CurrentWeapon == null)
-            {
-                return;
-            }
             _weaponManager.CurrentWeapon.Reload();
         }
     }

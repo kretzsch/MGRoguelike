@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -14,16 +15,20 @@ public class ProjectileWeapon : Weapon
     [SerializeField] private float fireRate;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private bool is3D;
+    [SerializeField] private bool useRaycast;
+    [SerializeField] private ParticleSystem gunShootParticles;
+    [SerializeField] private GameObject bulletTrail;
+    [SerializeField] private Transform firePoint;
 
     public int damage;
     private float nextFireTime;
+    private float lastFireTime;
 
     public override void Shoot()
     {
         if (Time.time >= nextFireTime && currentAmmo > 0)
         {
-            if (is3D)
+            if (useRaycast)
             {
                 Shoot3D();
             }
@@ -65,15 +70,62 @@ public class ProjectileWeapon : Weapon
 
     private void Shoot3D()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 500f))
-        {
-            // Apply damage to hit object
-            IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
-            if (damageableObject != null)
+            lastFireTime = Time.time;
+            RaycastHit hit;
+            if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 500f))
             {
-                damageableObject.TakeDamage(damage);
+                // Instantiate bulletTrail and play shoot particle fx
+                gunShootParticles.Play();
+                bulletTrail.transform.position = firePoint.transform.position;
+
+                StartCoroutine(MoveBulletTrail(bulletTrail, bulletTrail.transform.position, bulletTrail.transform.position + bulletTrail.transform.forward * 7, fireRate));
+
+                // Change the color of the object hit
+                Renderer hitObjectRenderer = hit.collider.GetComponent<Renderer>();
+                IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
+
+                if (hitObjectRenderer != null && damageableObject != null)
+                {
+                    StartCoroutine(FlickerAndResetColor(hitObjectRenderer, damageableObject, Color.red, 0.05f, 2));
+                }
+
+                // Apply damage to hit object
+                if (damageableObject != null)
+                {
+                    damageableObject.TakeDamage(damage);
+                }
             }
+    }
+
+    private IEnumerator FlickerAndResetColor(Renderer renderer, IDamageable damageable, Color flickerColor, float flickerDuration, int flickerCount)
+    {
+        Color originalColor = renderer.material.color;
+
+        for (int i = 0; i < flickerCount; i++)
+        {
+            if (renderer != null && damageable != null && !damageable.IsDead())
+            {
+                renderer.material.color = flickerColor;
+                yield return new WaitForSeconds(flickerDuration);
+                if (renderer != null)
+                {
+                    renderer.material.color = originalColor;
+                }
+            }
+            yield return new WaitForSeconds(flickerDuration);
         }
+    }
+    private IEnumerator MoveBulletTrail(GameObject bulletTrail, Vector3 startPos, Vector3 endPos, float duration)
+    {
+        float elapsedTime = 0;
+
+        while (elapsedTime < duration)
+        {
+            bulletTrail.transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        bulletTrail.transform.position = endPos;
     }
 }
