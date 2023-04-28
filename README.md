@@ -31,6 +31,8 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 - Improve error handling
 - Implement support for different projectile types, such as homing projectiles or projectiles that bounce off surfaces.
 - Add support for weapon attachments, like scopes, silencers, or extended magazines, which would modify weapon behavior and visuals.
+- Basic enemy AI 
+
 
 ## Installation
 
