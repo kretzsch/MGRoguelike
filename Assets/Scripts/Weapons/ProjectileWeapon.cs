@@ -101,9 +101,11 @@ public class ProjectileWeapon : Weapon
                 bulletTrail.transform.position = firePoint.transform.position;
 
                 StartCoroutine(MoveBulletTrail(bulletTrail, bulletTrail.transform.position, bulletTrail.transform.position + bulletTrail.transform.forward * 7, fireRate));
+            Debug.Log($"Bullet trail instantiated: {bulletTrail}");
+            Debug.Log($"Muzzle flash instantiated: {gunShootParticles}");
 
-                // Change the color of the object hit
-                Renderer hitObjectRenderer = hit.collider.GetComponent<Renderer>();
+            // Change the color of the object hit
+            Renderer hitObjectRenderer = hit.collider.GetComponent<Renderer>();
                 IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
 
                 if (hitObjectRenderer != null && damageableObject != null)

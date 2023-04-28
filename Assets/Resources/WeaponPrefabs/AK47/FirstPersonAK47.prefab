@@ -319,8 +319,8 @@ MonoBehaviour:
   projectileSpeed: 30
   bulletPrefab: {fileID: 8809042992057867358, guid: df4ce044f37e76d46a4463494c55997b, type: 3}
   is3D: 1
-  gunShootParticles: {fileID: 8072693534331701269, guid: 19ff0a5cacd095047abc0c40d707bbc0, type: 3}
-  bulletTrail: {fileID: 2002198026919436076, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
+  gunShootParticles: {fileID: 7142067088920948262}
+  bulletTrail: {fileID: 7142190621445638944}
   firePoint: {fileID: 7142067087731568425}
   damage: 10
   fireRate: 20
@@ -418,6 +418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunShot_Smoke_FX
       objectReference: {fileID: 0}
+    - target: {fileID: 8072693534345528195, guid: 19ff0a5cacd095047abc0c40d707bbc0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8072693534345859529, guid: 19ff0a5cacd095047abc0c40d707bbc0, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -469,6 +473,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8072693534345859529, guid: 19ff0a5cacd095047abc0c40d707bbc0, type: 3}
   m_PrefabInstance: {fileID: 1376500402887534131}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &7142067088920948262 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8072693534331701269, guid: 19ff0a5cacd095047abc0c40d707bbc0, type: 3}
+  m_PrefabInstance: {fileID: 1376500402887534131}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8707451460631237644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -486,11 +495,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000821012509467758, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2000821012509467758, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.232
+      value: -0.641
       objectReference: {fileID: 0}
     - target: {fileID: 2000821012509467758, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -526,12 +535,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2002198026919436076, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
 --- !u!4 &7139134376517972066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2000821012509467758, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
+  m_PrefabInstance: {fileID: 8707451460631237644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7142190621445638944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2002198026919436076, guid: 14b61db704b857b4380e9d470a00105f, type: 3}
   m_PrefabInstance: {fileID: 8707451460631237644}
   m_PrefabAsset: {fileID: 0}
