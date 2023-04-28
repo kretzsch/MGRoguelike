@@ -51,7 +51,7 @@ public class FirstPersonController : MonoBehaviour
     private bool _grounded;
     private float _jumpTimeoutDelta;
     private float _fallTimeoutDelta;
-    private bool _inputJump;
+   
 
 
     // cinemachine
@@ -70,6 +70,7 @@ public class FirstPersonController : MonoBehaviour
     //input variables
     private Vector2 _moveInput;
     private Vector2 _lookInput;
+    private bool _jumpInput;
     private bool IsCurrentDeviceMouse
     {
         get
@@ -122,10 +123,10 @@ public class FirstPersonController : MonoBehaviour
                 _verticalVelocity = -2f;
             }
 
-            if (_inputJump && _jumpTimeoutDelta <= 0.0f)
+            if (_jumpInput && _jumpTimeoutDelta <= 0.0f)
             {
                 _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-                _inputJump = false;
+                _jumpInput = false;
             }
 
             if (_jumpTimeoutDelta >= 0.0f)
@@ -168,10 +169,12 @@ public class FirstPersonController : MonoBehaviour
     {
         if (context.started && _grounded)
         {
-            _inputJump = true;
+            _jumpInput = true;
             _jumpTimeoutDelta = 0.0f;
         }
     }
+
+   
 
 
     //the input system uses Delta pointer for onlook
