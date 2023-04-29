@@ -324,6 +324,7 @@ MonoBehaviour:
   firePoint: {fileID: 7142067087731568425}
   damage: 10
   fireRate: 20
+  bulletTrailSpeed: 1000
 --- !u!1 &7142067088483075568
 GameObject:
   m_ObjectHideFlags: 0
