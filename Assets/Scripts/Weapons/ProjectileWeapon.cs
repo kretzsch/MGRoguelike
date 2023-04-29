@@ -25,6 +25,7 @@ public class ProjectileWeapon : Weapon
     [Header("global")]
     public int damage;
     [SerializeField] private float fireRate;
+    [SerializeField] private float bulletTrailSpeed;
     private float nextFireTime;
     private float lastFireTime;
 
@@ -91,32 +92,32 @@ public class ProjectileWeapon : Weapon
 
     private void Shoot3D()
     {
-        Debug.Log("Shoot3D method called");
         lastFireTime = Time.time;
-            RaycastHit hit;
-            if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 500f))
+        RaycastHit hit;
+        if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 500f))
+        {
+            PlayShootEffects();
+
+            IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
+            Renderer hitObjectRenderer = hit.collider.GetComponent<Renderer>();
+
+            if (hitObjectRenderer != null && damageableObject != null)
             {
-                // Instantiate bulletTrail and play shoot particle fx
-                gunShootParticles.Play();
-                bulletTrail.transform.position = firePoint.transform.position;
-
-                StartCoroutine(MoveBulletTrail(bulletTrail, bulletTrail.transform.position, bulletTrail.transform.position + bulletTrail.transform.forward * 7, fireRate));
-
-                // Change the color of the object hit
-                Renderer hitObjectRenderer = hit.collider.GetComponent<Renderer>();
-                IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
-
-                if (hitObjectRenderer != null && damageableObject != null)
-                {
-                    StartCoroutine(FlickerAndResetColor(hitObjectRenderer, damageableObject, Color.red, 0.05f, 2));
-                }
-
-                // Apply damage to hit object
-                if (damageableObject != null)
-                {
-                    damageableObject.TakeDamage(damage);
-                }
+                StartCoroutine(FlickerAndResetColor(hitObjectRenderer, damageableObject, Color.red, 0.05f, 2));
             }
+
+            if (damageableObject != null)
+            {
+                damageableObject.TakeDamage(damage);
+            }
+        }
+    }
+
+    private void PlayShootEffects()
+    {
+        gunShootParticles.Play();
+        GameObject newBulletTrail = Instantiate(bulletTrail, firePoint.transform.position, firePoint.transform.rotation);
+        StartCoroutine(MoveBulletTrail(newBulletTrail, newBulletTrail.transform.position, newBulletTrail.transform.position + newBulletTrail.transform.forward * bulletTrailSpeed, fireRate));
     }
 
     private IEnumerator FlickerAndResetColor(Renderer renderer, IDamageable damageable, Color flickerColor, float flickerDuration, int flickerCount)
@@ -137,6 +138,7 @@ public class ProjectileWeapon : Weapon
             yield return new WaitForSeconds(flickerDuration);
         }
     }
+
     private IEnumerator MoveBulletTrail(GameObject bulletTrail, Vector3 startPos, Vector3 endPos, float duration)
     {
         float elapsedTime = 0;
@@ -149,5 +151,7 @@ public class ProjectileWeapon : Weapon
         }
 
         bulletTrail.transform.position = endPos;
+        Destroy(bulletTrail, duration);
     }
+
 }
