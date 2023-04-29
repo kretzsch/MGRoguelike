@@ -42,8 +42,19 @@ public class LevelManager : MonoBehaviour
 
     public void SwitchToNextLevel()
     {
-        int nextLevelIndex = (currentLevelIndex + 1) % levels.Count;
+        int nextLevelIndex = GetRandomLevelIndex();
         SwitchLevel(nextLevelIndex);
+    }
+
+    private int GetRandomLevelIndex()
+    {
+        int randomIndex;
+        do
+        {
+            randomIndex = Random.Range(0, levels.Count);
+        } while (randomIndex == currentLevelIndex);
+
+        return randomIndex;
     }
 
     private IEnumerator PerformTransition(int targetLevelIndex)

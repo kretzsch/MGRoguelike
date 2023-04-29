@@ -76,10 +76,10 @@ public class PlatformerController : MonoBehaviour
 
     public void OnReload(InputAction.CallbackContext context)
     {
-        if (context.started && _weaponManager != null && _weaponManager.CurrentWeapon != null)
-        {
-            _weaponManager.CurrentWeapon.Reload();
-        }
+        //if (context.started && _weaponManager != null && _weaponManager.CurrentWeapon != null)
+        //{
+            _weaponManager?.CurrentWeapon?.Reload();
+       // }
     }
 
     public void OnSwitchWeapon(InputAction.CallbackContext context)
