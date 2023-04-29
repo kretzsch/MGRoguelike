@@ -14,7 +14,7 @@ public class LevelAudioController : MonoBehaviour
     private void Awake()
     {
         // Subscribe to the OnAllEnemiesDeadEvent from the StoreChildren component
-        StoreChildren storeChildren = FindObjectOfType<StoreChildren>();
+        EnemyManager storeChildren = FindObjectOfType<EnemyManager>();
         if (storeChildren != null)
         {
             storeChildren.OnAllEnemiesDeadEvent += OnAllEnemiesDead;
@@ -31,7 +31,7 @@ public class LevelAudioController : MonoBehaviour
     private void OnDestroy()
     {
         // Unsubscribe from the OnAllEnemiesDeadEvent when the object is destroyed
-        StoreChildren storeChildren = FindObjectOfType<StoreChildren>();
+        EnemyManager storeChildren = FindObjectOfType<EnemyManager>();
         if (storeChildren != null)
         {
             storeChildren.OnAllEnemiesDeadEvent -= OnAllEnemiesDead;
