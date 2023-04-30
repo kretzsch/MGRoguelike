@@ -44,6 +44,12 @@ public class LevelManager : MonoBehaviour
             SwitchLevelWithoutTransition(levelIndex);
         }
 
+
+        isTransitionRunning = false;
+    }
+
+    public void SwitchToNextLevel()
+    {
         // Add the current level index to the list of completed levels
         completedLevelIndices.Add(currentLevelIndex);
 
@@ -51,15 +57,12 @@ public class LevelManager : MonoBehaviour
         {
             // All levels are completed, load the new scene
             LoadNextScene();
-            yield break;
         }
 
-        isTransitionRunning = false;
-    }
-
-    public void SwitchToNextLevel()
-    {
-        StartCoroutine(SwitchLevel(GetRandomLevelIndex()));
+        if (completedLevelIndices.Count < levels.Count)
+        {
+            StartCoroutine(SwitchLevel(GetRandomLevelIndex()));
+        }
     }
 
     private int GetRandomLevelIndex()
