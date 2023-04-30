@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class LevelManager : MonoBehaviour
 
     private int currentLevelIndex = -1;
     private bool isTransitionRunning = false;
+    private List<int> completedLevelIndices = new List<int>();
 
     private void Awake()
     {
@@ -42,6 +44,16 @@ public class LevelManager : MonoBehaviour
             SwitchLevelWithoutTransition(levelIndex);
         }
 
+        // Add the current level index to the list of completed levels
+        completedLevelIndices.Add(currentLevelIndex);
+
+        if (completedLevelIndices.Count == levels.Count)
+        {
+            // All levels are completed, load the new scene
+            LoadNextScene();
+            yield break;
+        }
+
         isTransitionRunning = false;
     }
 
@@ -56,7 +68,7 @@ public class LevelManager : MonoBehaviour
         do
         {
             randomIndex = Random.Range(0, levels.Count);
-        } while (randomIndex == currentLevelIndex);
+        } while (completedLevelIndices.Contains(randomIndex));
 
         return randomIndex;
     }
@@ -101,6 +113,13 @@ public class LevelManager : MonoBehaviour
 
         // Update the current level index
         currentLevelIndex = targetLevelIndex;
+    }
+
+    private void LoadNextScene()
+    {
+        // Assuming the next scene is in the build settings, just load it by index
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextSceneIndex);
     }
 
     public void SubscribeToEnemyManager(EnemyManager enemyManager)
