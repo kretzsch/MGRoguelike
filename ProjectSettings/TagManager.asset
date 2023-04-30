@@ -11,6 +11,8 @@ TagManager:
   - CinemachineTarget
   - WeaponModelsParent
   - EnemyManager
+  - WeaponManager
+  - LevelManager
   layers:
   - Default
   - TransparentFX

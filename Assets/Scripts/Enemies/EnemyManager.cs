@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class EnemyManager : MonoBehaviour
 {
+    [SerializeField] private LevelManager levelManager;
+
     public delegate void OnAllEnemiesDead();
     public event OnAllEnemiesDead OnAllEnemiesDeadEvent;
 
