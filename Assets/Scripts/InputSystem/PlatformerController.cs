@@ -60,7 +60,7 @@ public class PlatformerController : MonoBehaviour
 
         Vector2 mousePosition = context.ReadValue<Vector2>();
         Vector3 worldMousePosition = _mainCamera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _mainCamera.nearClipPlane));
-        Vector2 aimDirection = (Vector2)worldMousePosition - (Vector2)_weaponManager.CurrentWeapon.transform.position;
+        Vector2 aimDirection = (Vector2)worldMousePosition - (Vector2)_weaponManager?.CurrentWeapon?.transform.position;
 
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         _weaponManager.CurrentWeapon.transform.rotation = Quaternion.Euler(0, 0, aimAngle);
@@ -68,18 +68,12 @@ public class PlatformerController : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.started && _weaponManager != null && _weaponManager.CurrentWeapon != null)
-        {
-            _weaponManager.CurrentWeapon.Shoot();
-        }
+            _weaponManager?.CurrentWeapon?.Shoot();
     }
 
     public void OnReload(InputAction.CallbackContext context)
     {
-        //if (context.started && _weaponManager != null && _weaponManager.CurrentWeapon != null)
-        //{
             _weaponManager?.CurrentWeapon?.Reload();
-       // }
     }
 
     public void OnSwitchWeapon(InputAction.CallbackContext context)
@@ -90,7 +84,7 @@ public class PlatformerController : MonoBehaviour
             if (scrollValue != 0)
             {
                 int direction = scrollValue > 0 ? 1 : -1;
-                _weaponManager.SwitchWeapon(direction);
+                _weaponManager?.SwitchWeapon(direction);
             }
         }
     }

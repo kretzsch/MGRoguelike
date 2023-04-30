@@ -23,11 +23,13 @@ public class EnemyManager : MonoBehaviour
 
     public void RegisterEnemy(GameObject enemy)
     {
+        Debug.Log("RegisterEnemy called");
         enemies.Add(enemy);
     }
 
     public void UnregisterEnemy(GameObject enemy)
     {
+        Debug.Log("UnRegisterEnemy called");
         enemies.Remove(enemy);
         CheckAllEnemiesDead();
     }

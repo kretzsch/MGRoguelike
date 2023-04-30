@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
         public GameObject levelObject;
         public string audioParameterLabel;
     }
+    [SerializeField] private EnemyManager enemyManager;
 
     [SerializeField] private List<Level> levels;
     [SerializeField] private LevelAudioController levelAudioController;
@@ -19,9 +20,15 @@ public class LevelManager : MonoBehaviour
 
     private int currentLevelIndex = -1;
 
-    private void  Awake()
+    private void Awake()
     {
-        SwitchLevel(0,false);
+        int randomStartIndex = GetRandomLevelIndex();
+        SwitchLevel(randomStartIndex, false);
+
+        if (enemyManager != null)
+        {
+            enemyManager.OnAllEnemiesDeadEvent += SwitchToNextLevel;
+        }
     }
 
     public void SwitchLevel(int levelIndex, bool playTransition = true)
@@ -42,6 +49,7 @@ public class LevelManager : MonoBehaviour
 
     public void SwitchToNextLevel()
     {
+        Debug.Log("SwitchToNextLevel called");
         int nextLevelIndex = GetRandomLevelIndex();
         SwitchLevel(nextLevelIndex);
     }
@@ -83,6 +91,9 @@ public class LevelManager : MonoBehaviour
       
         // Update the current level index
         currentLevelIndex = targetLevelIndex;
+
+        // Assign the active EnemyManager
+        AssignEnemyManager();
     }
     private void SwitchLevelWithoutTransition(int targetLevelIndex)
     {
@@ -100,7 +111,28 @@ public class LevelManager : MonoBehaviour
 
         // Update the current level index
         currentLevelIndex = targetLevelIndex;
+
+        // Assign the active EnemyManager
+        AssignEnemyManager();
     }
 
 
+    /// <summary>
+    /// This assigns an enemymanager the moment a new level gets activated
+    /// because each level has its own enemymanager object
+    /// </summary>
+    private void AssignEnemyManager()
+    {
+        if (enemyManager != null)
+        {
+            enemyManager.OnAllEnemiesDeadEvent -= SwitchToNextLevel;
+        }
+
+        enemyManager = FindObjectOfType<EnemyManager>();
+
+        if (enemyManager != null)
+        {
+            enemyManager.OnAllEnemiesDeadEvent += SwitchToNextLevel;
+        }
+    }
 }

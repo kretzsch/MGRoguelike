@@ -14,10 +14,10 @@ public class LevelAudioController : MonoBehaviour
     private void Awake()
     {
         // Subscribe to the OnAllEnemiesDeadEvent from the StoreChildren component
-        EnemyManager storeChildren = FindObjectOfType<EnemyManager>();
-        if (storeChildren != null)
+        EnemyManager enemyManager = FindObjectOfType<EnemyManager>();
+        if (enemyManager != null)
         {
-            storeChildren.OnAllEnemiesDeadEvent += OnAllEnemiesDead;
+            enemyManager.OnAllEnemiesDeadEvent += OnAllEnemiesDead;
         }
     }
 
