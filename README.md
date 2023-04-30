@@ -45,7 +45,7 @@ Clone the repository and open the project in Unity. Ensure that all required ass
 
 Launch the game and navigate through the main menu to purchase weapons, ammo, and other items. The game features various genres and levels, allowing players to experience diverse gameplay styles. Complete levels to progress through the game and unlock new challenges.
 
-![Main Menu Screenshot](assets/images/main-menu-screenshot.png)
+![Main Menu Screenshot](Assets/Sprites/mainmenugif.gif)
 
 ## Credits
 Third-party assets (not included in git repo): 
