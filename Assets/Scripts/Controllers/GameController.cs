@@ -10,12 +10,17 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField] private WeaponData.GameGenre currentGenre;
-    [SerializeField] private WeaponManager weaponManager;
+    private WeaponManager _weaponManager;
+    private LevelManager _levelManager;
+    private EnemyManager _enemyManager;
+
 
     private void Awake()
     {
-        weaponManager = FindObjectOfType<WeaponManager>();
-        Debug.Log($"WeaponManager reference: {weaponManager}");
+        _weaponManager = FindObjectOfType<WeaponManager>();
+        _levelManager = FindObjectOfType<LevelManager>();
+        _enemyManager = FindObjectOfType<EnemyManager>();
+        Debug.Log($"WeaponManager reference: {_weaponManager}");
     }
 
     private void Start()
@@ -27,7 +32,27 @@ public class GameController : MonoBehaviour
         Debug.Log("LoadoutData content: " + string.Join(", ", weaponsAndAmmo.Select(kv => kv.Key + ": " + kv.Value).ToArray()));
 
         // Pass the weapons and ammo data to the WeaponManager
-        weaponManager.SetupWeapons(weaponsAndAmmo, currentGenre);
+        _weaponManager.SetupWeapons(weaponsAndAmmo, currentGenre);
+
+        // Subscribe to EnemyManager's event
+
+
+        if (_levelManager != null && _enemyManager != null)
+        {
+            _levelManager.SubscribeToEnemyManager(_enemyManager);
+        }
+    }
+
+    private void OnDisable()
+    {
+        // Unsubscribe from EnemyManager's event
+        _levelManager = FindObjectOfType<LevelManager>();
+        _enemyManager = FindObjectOfType<EnemyManager>();
+
+        if (_levelManager != null && _enemyManager != null)
+        {
+            _levelManager.UnsubscribeFromEnemyManager(_enemyManager);
+        }
     }
 }
 
