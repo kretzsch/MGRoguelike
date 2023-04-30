@@ -12,12 +12,12 @@ public class DamageableObject : MonoBehaviour, IDamageable
     public GameObject explosionEffectPrefab;
     [SerializeField] private bool isEnemy;
     private bool _isDead = false;
-    private EnemyManager _storeChildren;
+    private EnemyManager _enemyManager;
 
     public void Start()
     {
         // If this object is an enemy, get the StoreChildren component from its parent
-        if (isEnemy) _storeChildren = transform.parent.GetComponent<EnemyManager>();
+        if (isEnemy) _enemyManager = transform.parent.GetComponent<EnemyManager>();
     }
 
     // Apply damage to the object, check if it's dead, and trigger the appropriate reaction
@@ -30,7 +30,7 @@ public class DamageableObject : MonoBehaviour, IDamageable
             SpawnExplosionEffect();
             if (isEnemy)
             {
-                _storeChildren.RemoveChild(gameObject);
+                _enemyManager.UnregisterEnemy(gameObject);
             }
             Destroy(gameObject);
         }
