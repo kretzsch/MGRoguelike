@@ -29,6 +29,8 @@ public class ProjectileWeapon : Weapon
     private float nextFireTime;
     private float lastFireTime;
 
+    [Header("Object Pooling")]
+    public string bulletPoolTag;
 
     private void Awake()
     {
@@ -37,7 +39,8 @@ public class ProjectileWeapon : Weapon
             _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
 
-        Debug.Log($"Main Camera assigned: {_mainCamera}");
+        bulletPoolTag = weaponData.weaponName;
+        ObjectPool.Instance.CreatePool(bulletPoolTag, bulletPrefab, weaponData.magazineSize);
     }
     public override void Shoot()
     {
@@ -65,15 +68,17 @@ public class ProjectileWeapon : Weapon
         }
     }
 
+
     private void Shoot2D()
     {
-        Debug.Log("Shoot2D method called");
-        if (bulletPrefab == null)
+        GameObject projectile = ObjectPool.Instance.GetObject(bulletPoolTag);
+        if (projectile == null)
         {
             return;
         }
 
-        GameObject projectile = Instantiate(bulletPrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+        projectile.transform.position = projectileSpawnPoint.position;
+        projectile.transform.rotation = projectileSpawnPoint.rotation;
 
         // Add the Projectile script and set the damage
         Projectile projectileScript = projectile.GetComponent<Projectile>();
@@ -86,9 +91,10 @@ public class ProjectileWeapon : Weapon
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         rb.velocity = Quaternion.Euler(0, 0, -90f) * (projectileSpawnPoint.up) * projectileSpeed;
 
-        // Destroy the projectile after 3 seconds
-        Destroy(projectile, 3f);
+        // Return the projectile to the pool after 3 seconds
+        StartCoroutine(ReturnProjectileToPool(projectile, 3f));
     }
+
 
     private void Shoot3D()
     {
@@ -110,6 +116,15 @@ public class ProjectileWeapon : Weapon
             {
                 damageableObject.TakeDamage(damage);
             }
+        }
+    }
+    private IEnumerator ReturnProjectileToPool(GameObject projectile, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (projectile != null)
+        {
+            ObjectPool.Instance.ReturnObject(projectile, weaponData.compatibleAmmo.ammoName);
         }
     }
 
