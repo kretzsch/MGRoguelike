@@ -26,7 +26,7 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 
 ## Screenshots 
 ![Main Menu](Assets/Sprites/mainmenugif.gif)
-![FPS] (Assets/Sprites/fpsgif.gif)
+![FPS](Assets/Sprites/fpsgif.gif)
 
 ## Backlog
 
