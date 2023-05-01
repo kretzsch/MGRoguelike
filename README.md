@@ -11,6 +11,7 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 ## Table of Contents
 
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
@@ -22,6 +23,10 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 - Main menu with tabs and panels for weapon and ammo purchasing.
 - Loadout system for managing weapons and ammo.
 - Interactive music using FMOD for seamless transitions and dynamic audio.
+
+## Screenshots 
+![Main Menu](Assets/Sprites/mainmenugif.gif)
+![FPS] (Assets/Sprites/fpsgif.gif)
 
 ## Backlog
 
@@ -45,8 +50,6 @@ Clone the repository and open the project in Unity. Ensure that all required ass
 ## Usage
 
 Launch the game and navigate through the main menu to purchase weapons, ammo, and other items. The game features various genres and levels, allowing players to experience diverse gameplay styles. Complete levels to progress through the game and unlock new challenges.
-
-![Main Menu Screenshot](Assets/Sprites/mainmenugif.gif)
 
 ## Credits
 Third-party assets (not included in git repo): 
