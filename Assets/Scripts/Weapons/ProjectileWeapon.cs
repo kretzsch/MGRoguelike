@@ -16,12 +16,13 @@ public class ProjectileWeapon : Weapon
     [SerializeField] private GameObject bulletPrefab;//2D
 
     [Header("3D")]
-    private GameObject _mainCamera;
+ 
     [SerializeField] private bool is3D;
     [SerializeField] private ParticleSystem gunShootParticles;
     [SerializeField] private GameObject bulletTrail; //3D
     [SerializeField] private Transform firePoint; //3D
     public bool canShoot = true;
+    private GameObject _mainCamera;
 
 
     [Header("global")]
