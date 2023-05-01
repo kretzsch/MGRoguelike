@@ -12589,7 +12589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  jumpForce: 50
+  jumpForce: 80
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -13239,6 +13239,8 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 64
+  reloadTime: 1
+  throwForce: 10
 --- !u!1 &9005220658148368329
 GameObject:
   m_ObjectHideFlags: 0
