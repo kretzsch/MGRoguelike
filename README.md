@@ -26,6 +26,7 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 ## Backlog
 
 -  ~~Object Pooling~~
+- Platformer controller upgrade ->  use coyote timer; jump holding ; fall gravity scale; 2D physics material on player
 - Refactor the runtime loading code to use Addressables API instead of Resources API.
 - SOLID when rapid prototype phase is over
 - Divide levels up into several scenes with Loadsceneasync
