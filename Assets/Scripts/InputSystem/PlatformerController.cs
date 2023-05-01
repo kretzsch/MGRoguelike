@@ -71,7 +71,10 @@ public class PlatformerController : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-            _weaponManager?.CurrentWeapon?.Shoot();
+        if (_weaponManager != null && _weaponManager.CurrentWeapon != null && _weaponManager.isActiveAndEnabled && _weaponManager.CurrentWeapon.isActiveAndEnabled)
+        {
+            _weaponManager.CurrentWeapon.Shoot();
+        }
     }
 
     public void OnReload(InputAction.CallbackContext context)
