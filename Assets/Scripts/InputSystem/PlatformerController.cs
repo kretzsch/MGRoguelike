@@ -60,10 +60,13 @@ public class PlatformerController : MonoBehaviour
 
         Vector2 mousePosition = context.ReadValue<Vector2>();
         Vector3 worldMousePosition = _mainCamera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _mainCamera.nearClipPlane));
-        Vector2 aimDirection = (Vector2)worldMousePosition - (Vector2)_weaponManager?.CurrentWeapon?.transform.position;
+        Vector2 aimDirection = (Vector2)worldMousePosition - (Vector2)transform.position; // Change this line
 
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         _weaponManager.CurrentWeapon.transform.rotation = Quaternion.Euler(0, 0, aimAngle);
+
+        Vector2 weaponPosition = (Vector2)transform.position + (aimDirection.normalized ); //* weaponDistance
+        _weaponManager.CurrentWeapon.transform.position = new Vector3(weaponPosition.x, weaponPosition.y, _weaponManager.CurrentWeapon.transform.position.z);
     }
 
     public void OnShoot(InputAction.CallbackContext context)
