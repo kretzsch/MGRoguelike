@@ -1,6 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The ObjectPool class is a script for managing object pooling in Unity projects. It optimizes game performance by reusing objects
+/// instead of constantly creating and destroying them. The class provides features for creating and managing object pools, retrieving
+/// and returning objects to the pool, and accessing pool information.
+/// Object pooling is implemented in such a way that it pools depending on the bought loadout 
+/// </summary>
 public class ObjectPool : MonoBehaviour
 {
     public static ObjectPool Instance { get; private set; }
