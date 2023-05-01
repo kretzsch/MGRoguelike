@@ -71,6 +71,13 @@ public class FirstPersonController : MonoBehaviour
     private Vector2 _moveInput;
     private Vector2 _lookInput;
     private bool _jumpInput;
+
+
+    //used for the spawn animation of a new weapon
+    [SerializeField] private float reloadTime = 1f;
+    [SerializeField] private float throwForce = 20f;
+
+
     private bool IsCurrentDeviceMouse
     {
         get
@@ -186,11 +193,12 @@ public class FirstPersonController : MonoBehaviour
 
     public void OnReload(InputAction.CallbackContext context)
     {
-        if (context.started && _weaponManager != null && _weaponManager.CurrentWeapon != null)
+        if (context.started)
         {
-            _weaponManager.CurrentWeapon.Reload();
+            StartCoroutine(ReloadSequence());
         }
     }
+
     public void OnShoot(InputAction.CallbackContext context)
     {
 
@@ -250,6 +258,51 @@ public class FirstPersonController : MonoBehaviour
         if (lfAngle > 360f) lfAngle -= 360f;
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
+    private IEnumerator ReloadSequence()
+    {
+        // Store references
+        MeshRenderer weaponMeshRenderer = _weaponManager.CurrentWeapon.GetComponent<MeshRenderer>();
+        MeshRenderer[] weaponMeshRenderers = _weaponManager.CurrentWeapon.GetComponentsInChildren<MeshRenderer>();
+        ProjectileWeapon currentWeaponScript = _weaponManager.CurrentWeapon;
+        ParticleSystem weaponParticleSystem = _weaponManager.CurrentWeapon.transform.Find("WeaponSpawn").GetComponent<ParticleSystem>();
+
+
+
+        // Disable weapon visuals and functionality
+        foreach (MeshRenderer renderer in weaponMeshRenderers)
+        {
+            renderer.enabled = false;
+        }
+        weaponMeshRenderer.enabled = false;
+        currentWeaponScript.canShoot = false;
+
+        // Spawn and throw the fake weapon
+        GameObject fakeWeapon = Instantiate(currentWeaponScript.gameObject, currentWeaponScript.transform.position, currentWeaponScript.transform.rotation);
+        fakeWeapon.GetComponent<MeshRenderer>().enabled = true;
+        fakeWeapon.GetComponent<ProjectileWeapon>().canShoot = false;
+        Rigidbody rb = fakeWeapon.AddComponent<Rigidbody>();
+        fakeWeapon.AddComponent<BoxCollider>();
+        rb.AddForce(_weaponManager.transform.forward * throwForce, ForceMode.VelocityChange);
+
+        // Wait for some time
+        yield return new WaitForSeconds(1.5f);
+
+        // Enable weapon visuals and functionality
+        foreach (MeshRenderer renderer in weaponMeshRenderers)
+        {
+            renderer.enabled = true;
+        }
+        weaponMeshRenderer.enabled = true;
+        currentWeaponScript.canShoot = true;
+        weaponParticleSystem.Play();
+
+        // Perform the actual reload
+        currentWeaponScript.Reload();
+
+        // Destroy the fake weapon
+        Destroy(fakeWeapon, 2f);
+    }
+
 }
 
 

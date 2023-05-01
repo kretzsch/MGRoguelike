@@ -307,9 +307,11 @@ MonoBehaviour:
   gunShootParticles: {fileID: 633478245078884847}
   bulletTrail: {fileID: 633039085071336681}
   firePoint: {fileID: 633478246268592352}
+  canShoot: 1
   damage: 10
   fireRate: 20
   bulletTrailSpeed: 1000
+  bulletPoolTag: 
 --- !u!1 &1294220510423628991
 GameObject:
   m_ObjectHideFlags: 0

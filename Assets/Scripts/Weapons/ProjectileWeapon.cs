@@ -21,6 +21,8 @@ public class ProjectileWeapon : Weapon
     [SerializeField] private ParticleSystem gunShootParticles;
     [SerializeField] private GameObject bulletTrail; //3D
     [SerializeField] private Transform firePoint; //3D
+    public bool canShoot = true;
+
 
     [Header("global")]
     public int damage;
@@ -52,7 +54,7 @@ public class ProjectileWeapon : Weapon
             Debug.Log("Shoot method : first if"); 
 
 
-            if (is3D)
+            if (is3D && canShoot)
             {
                 Shoot3D();
             }
