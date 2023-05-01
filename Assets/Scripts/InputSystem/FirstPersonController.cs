@@ -77,6 +77,10 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float reloadTime = 1f;
     [SerializeField] private float throwForce = 20f;
 
+    //used for recoil anim
+    [SerializeField] private float recoilAmount = 5f;
+
+
 
     private bool IsCurrentDeviceMouse
     {
@@ -201,23 +205,16 @@ public class FirstPersonController : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-
-        Debug.Log("onshoot");
         if (context.performed)
         {
-            Debug.Log("context started");
-            if (_weaponManager == null)
+            if (_weaponManager != null && _weaponManager.CurrentWeapon != null && _weaponManager.isActiveAndEnabled && _weaponManager.CurrentWeapon.isActiveAndEnabled &&_weaponManager.CurrentWeapon.canShoot)
             {
-                return;
+                _weaponManager.CurrentWeapon.Shoot();
+                Debug.Log("Shooting and attempting recoil");
+                StartCoroutine(ApplyRecoilAnimation());
             }
+           
 
-            if (_weaponManager.CurrentWeapon == null)
-            {
-                return;
-            }
-            Debug.Log($"Current weapon: {_weaponManager.CurrentWeapon.name}");
-
-            _weaponManager.CurrentWeapon.Shoot();
         }
     }
 
@@ -301,6 +298,36 @@ public class FirstPersonController : MonoBehaviour
 
         // Destroy the fake weapon
         Destroy(fakeWeapon, 2f);
+    }
+    private IEnumerator ApplyRecoilAnimation()
+    {
+        Quaternion initialWeaponRotation = _weaponManager.CurrentWeapon.transform.localRotation;
+        float recoilSpeed = 5f;
+
+        float recoilTime = 0.1f;
+        float returnTime = 0.1f;
+        float elapsed = 0f;
+
+        float maxRecoil_x = -recoilAmount;
+        float maxRecoil_y = Random.Range(-recoilAmount/2, recoilAmount/2);
+        float maxRecoil_z = Random.Range(-recoilAmount, recoilAmount);
+        Quaternion maxRecoil = Quaternion.Euler(maxRecoil_x, maxRecoil_y, maxRecoil_z);
+
+        while (elapsed < recoilTime)
+        {
+            _weaponManager.CurrentWeapon.transform.localRotation = Quaternion.Slerp(_weaponManager.CurrentWeapon.transform.localRotation, maxRecoil, Time.deltaTime * recoilSpeed);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        elapsed = 0f;
+
+        while (elapsed < returnTime)
+        {
+            _weaponManager.CurrentWeapon.transform.localRotation = Quaternion.Slerp(_weaponManager.CurrentWeapon.transform.localRotation, initialWeaponRotation, Time.deltaTime * recoilSpeed / 2);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
     }
 
 }
