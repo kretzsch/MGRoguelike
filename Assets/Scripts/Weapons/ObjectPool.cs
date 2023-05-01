@@ -69,12 +69,23 @@ public class ObjectPool : MonoBehaviour
         }
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-        objectToSpawn.SetActive(true);
 
+        // Check if the object is still active in the scene
+        if (objectToSpawn == null || objectToSpawn.Equals(null))
+        {
+            // Create a new instance of the prefab and add it to the pool
+            Pool pool = pools.Find(p => p.tag == tag);
+            objectToSpawn = Instantiate(pool.prefab);
+            objectToSpawn.SetActive(false);
+            poolDictionary[tag].Enqueue(objectToSpawn);
+        }
+
+        objectToSpawn.SetActive(true);
         poolDictionary[tag].Enqueue(objectToSpawn);
 
         return objectToSpawn;
     }
+
 
     public void ReturnObject(GameObject objectToReturn, string tag)
     {
