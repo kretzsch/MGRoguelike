@@ -47,12 +47,12 @@ public class ProjectileWeapon : Weapon
     }
     public override void Shoot()
     {
-        Debug.Log("Shoot method called"); 
+        Debug.Log("Shoot method called");
 
 
         if (Time.time >= nextFireTime && currentAmmo > 0)
         {
-            Debug.Log("Shoot method : first if"); 
+            Debug.Log("Shoot method : first if");
 
 
             if (is3D && canShoot)
@@ -68,6 +68,9 @@ public class ProjectileWeapon : Weapon
             currentAmmo--;
             LoadoutData.UpdateAmmoCount(weaponData.compatibleAmmo.ammoName, currentAmmo, weaponData.magazineSize);
             Debug.Log($"Shoot - AmmoName: {weaponData.compatibleAmmo.ammoName}, CurrentAmmo: {currentAmmo}");
+        } else if (currentAmmo <= 0)
+        {
+            canShoot = false;
         }
     }
 
