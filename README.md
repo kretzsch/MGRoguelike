@@ -25,6 +25,7 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 - Interactive music using FMOD for seamless transitions and dynamic audio.
 - Object pooling based on loadout through scriptableobjects.
 - New unity Inputsystem with different action maps for each genre.
+- Easily expandable due to decoupling of code (check backlog for future additions)
 
 ## Screenshots 
 ![Main Menu](Assets/Sprites/mainmenugif.gif)
