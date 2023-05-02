@@ -21,8 +21,10 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 
 - Genre-switching gameplay with FPS, platformer, topdown, and more.
 - Main menu with tabs and panels for weapon and ammo purchasing.
-- Loadout system for managing weapons and ammo.
+- Loadout system for managing weapons and ammo with scriptableobjects.
 - Interactive music using FMOD for seamless transitions and dynamic audio.
+- Object pooling based on loadout through scriptableobjects.
+- New unity Inputsystem with different action maps for each genre.
 
 ## Screenshots 
 ![Main Menu](Assets/Sprites/mainmenugif.gif)
@@ -31,6 +33,7 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 ## Backlog
 
 -  ~~Object Pooling~~
+- recoil animation and reuseable reload animation. 
 - Platformer controller upgrade ->  use coyote timer; jump holding ; fall gravity scale; 2D physics material on player
 - Refactor the runtime loading code to use Addressables API instead of Resources API.
 - SOLID when rapid prototype phase is over
