@@ -12,6 +12,7 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 
 - [Features](#features)
 - [Screenshots](#screenshots)
+- [Backlog](#backlog)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
@@ -25,6 +26,7 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 - Interactive music using FMOD for seamless transitions and dynamic audio.
 - Object pooling based on loadout through scriptableobjects.
 - New unity Inputsystem with different action maps for each genre.
+- Different weapon functions for each genre even with the same weapons
 - Easily expandable due to decoupling of code (check backlog for future additions)
 
 ## Screenshots 
@@ -34,7 +36,8 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 ## Backlog
 
 -  ~~Object Pooling~~
-- recoil animation and reuseable reload animation. 
+- Make Main menu buttons reuseable and working with a single buybutton class
+- Recoil animation and reuseable reload animation. 
 - Platformer controller upgrade ->  use coyote timer; jump holding ; fall gravity scale; 2D physics material on player
 - Refactor the runtime loading code to use Addressables API instead of Resources API.
 - SOLID when rapid prototype phase is over
