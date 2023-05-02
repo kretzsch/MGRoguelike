@@ -21,7 +21,9 @@ public class WeaponManager : MonoBehaviour
     {
         // this is to make sure only one weapon is showing up on the start 
         // in a relative hacky way. 
-        SetCurrentWeapon(weapons.Keys.FirstOrDefault());
+        //SetCurrentWeapon(weapons.Keys.FirstOrDefault());
+        //another hacky way to make sure all the ammo is shown the correct way in the ui
+     //   CurrentWeapon.Reload(); 
     }
 
     public void SetCurrentWeapon(string weaponName)
