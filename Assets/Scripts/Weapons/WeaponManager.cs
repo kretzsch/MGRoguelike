@@ -16,6 +16,16 @@ public class WeaponManager : MonoBehaviour
 
     private Dictionary<string, ProjectileWeapon> weapons = new Dictionary<string, ProjectileWeapon>();
     public ProjectileWeapon CurrentWeapon { get; set; }
+
+    void Start()
+    {
+        // this is to make sure only one weapon is showing up on the start 
+        // in a relative hacky way. 
+        //SetCurrentWeapon(weapons.Keys.FirstOrDefault());
+        //another hacky way to make sure all the ammo is shown the correct way in the ui
+     //   CurrentWeapon.Reload(); 
+    }
+
     public void SetCurrentWeapon(string weaponName)
     {
         if (weapons.ContainsKey(weaponName))
