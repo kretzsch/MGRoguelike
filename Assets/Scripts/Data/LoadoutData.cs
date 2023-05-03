@@ -22,11 +22,9 @@ public static class LoadoutData
             if (remainingAmmo.ContainsKey(ammoName))
             {
                 int totalAmmo = selectedWeaponsAndAmmo[ammoName] + remainingAmmo[ammoName];
-                int remaining = Mathf.Max(0, totalAmmo - newCurrentAmmo);
+                int remaining = Mathf.Max(0, totalAmmo - magazineSize);
                 remainingAmmo[ammoName] = remaining;
                 OnAmmoCountChanged?.Invoke(ammoName, newCurrentAmmo, remaining);
-                Debug.Log($"UpdateAmmoCount - AmmoName: {ammoName}, NewCurrentAmmo: {newCurrentAmmo}, RemainingAmmo: {remaining}");
-
             }
         }
     }
@@ -36,9 +34,8 @@ public static class LoadoutData
     {
         if (!remainingAmmo.ContainsKey(ammoName))
         {
-            remainingAmmo.Add(ammoName, Mathf.Max(0, initialAmmo - magazineSize));
+            remainingAmmo.Add(ammoName, Mathf.Max(0, initialAmmo));
             Debug.Log($"InitializeRemainingAmmo - AmmoName: {ammoName}, InitialAmmo: {initialAmmo}, RemainingAmmo: {remainingAmmo[ammoName]}");
-
         }
     }
 }
