@@ -15,6 +15,10 @@ public class WeaponData : PurchaseableItem
     [Tooltip("Genre-specific prefabs for this weapon")]
     public List<GenrePrefab> genrePrefabs;
 
+    //used to initialize the UI ammo shown
+    public int initialAmmoInMagazine;
+
+
     public enum GameGenre
     {
         Platformer,
