@@ -45,6 +45,12 @@ public class ProjectileWeapon : Weapon
         bulletPoolTag = weaponData.weaponName;
         ObjectPool.Instance.CreatePool(bulletPoolTag, bulletPrefab, weaponData.magazineSize);
     }
+
+    private void Start()
+    {
+        InitializeAmmo();
+    }
+
     public override void Shoot()
     {
         Debug.Log("Shoot method called");

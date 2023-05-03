@@ -39,4 +39,21 @@ public abstract class Weapon : MonoBehaviour
     {
         return currentAmmo;
     }
+
+    public void InitializeAmmo()
+    {
+        if (weaponData != null)
+        {
+            string ammoName = weaponData.compatibleAmmo.ammoName;
+
+            if (LoadoutData.selectedWeaponsAndAmmo.ContainsKey(ammoName))
+            {
+                int ammoToLoad = Mathf.Min(LoadoutData.selectedWeaponsAndAmmo[ammoName], weaponData.magazineSize);
+                SetAmmo(ammoToLoad);
+                LoadoutData.remainingAmmo[ammoName] -= ammoToLoad;
+                LoadoutData.UpdateAmmoCount(ammoName, currentAmmo, LoadoutData.remainingAmmo[ammoName]);
+            }
+        }
+    }
+
 }
