@@ -25,6 +25,8 @@ public static class LoadoutData
                 int remaining = Mathf.Max(0, totalAmmo - newCurrentAmmo);
                 remainingAmmo[ammoName] = remaining;
                 OnAmmoCountChanged?.Invoke(ammoName, newCurrentAmmo, remaining);
+                Debug.Log($"UpdateAmmoCount - AmmoName: {ammoName}, NewCurrentAmmo: {newCurrentAmmo}, RemainingAmmo: {remaining}");
+
             }
         }
     }

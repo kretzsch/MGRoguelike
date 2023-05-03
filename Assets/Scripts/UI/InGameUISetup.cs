@@ -42,9 +42,11 @@ public class InGameUISetup : MonoBehaviour
                     int ammoCount = LoadoutData.selectedWeaponsAndAmmo[ammoKey];
                     AddWeaponItemToUI(weaponData, ammoCount, weaponItemsParent);
 
-                    // Initialize remaining ammo
-                    LoadoutData.InitializeRemainingAmmo(ammoKey, ammoCount, weaponData.magazineSize);
+                    // Get the initial ammo in the magazine
+                    int initialAmmoInMagazine = weaponData.initialAmmoInMagazine;
 
+                    // Initialize remaining ammo
+                    LoadoutData.InitializeRemainingAmmo(ammoKey, ammoCount, initialAmmoInMagazine);
                 }
             }
         }
