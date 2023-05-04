@@ -23,6 +23,7 @@ public class ProjectileWeapon : Weapon
     [SerializeField] private Transform firePoint; //3D
     public bool canShoot = true;
     private GameObject _mainCamera;
+    private Animator _animator;
 
 
     [Header("global")]
@@ -44,6 +45,7 @@ public class ProjectileWeapon : Weapon
 
         bulletPoolTag = weaponData.weaponName;
         ObjectPool.Instance.CreatePool(bulletPoolTag, bulletPrefab, weaponData.magazineSize);
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -110,10 +112,13 @@ public class ProjectileWeapon : Weapon
 
     private void Shoot3D()
     {
+
+        _animator.SetTrigger("Recoil");
         lastFireTime = Time.time;
         RaycastHit hit;
         if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 500f))
         {
+          
             PlayShootEffects();
 
             IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
@@ -180,5 +185,4 @@ public class ProjectileWeapon : Weapon
         bulletTrail.transform.position = endPos;
         Destroy(bulletTrail, duration);
     }
-
 }
