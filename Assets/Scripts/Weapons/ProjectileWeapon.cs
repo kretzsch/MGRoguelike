@@ -112,8 +112,7 @@ public class ProjectileWeapon : Weapon
 
     private void Shoot3D()
     {
-
-        _animator.SetTrigger("Recoil");
+        _animator.Play("Recoil", -1, 0f);
         lastFireTime = Time.time;
         RaycastHit hit;
         if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 500f))
