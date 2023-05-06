@@ -29,6 +29,10 @@ public class LoadoutManager : MonoBehaviour
     [SerializeField]
     private List<WeaponData> allAvailableWeapons;
 
+    //main menu music adaptive to purchases
+    [SerializeField] private AudioLayerController audioLayerController;
+    private int currentLayer;
+
 
     #region monobehaviour methods
     private void Awake()
@@ -37,6 +41,7 @@ public class LoadoutManager : MonoBehaviour
         currentBudget = startingBudget;
         selectedWeaponsAndAmmo = new Dictionary<string, int>();
         UpdateBudgetUI(budgetText);
+        currentLayer = 0;
     }
     #endregion
 
@@ -56,7 +61,7 @@ public class LoadoutManager : MonoBehaviour
             selectedWeaponsAndAmmo[weaponData.weaponName] = 0;
             UpdateBudgetUI(budgetText);
             AddWeaponToUI(weaponData, purchasedItemsParent);
-
+            AddMusicLayer();
 
             // Activate the weapon model in the main menu
             GameObject weaponModel = FindWeaponModelByIdentifier(weaponData.weaponVisualsData.mainMenuModelIdentifier);
@@ -276,5 +281,11 @@ public class LoadoutManager : MonoBehaviour
         }
     }
 
+    private void AddMusicLayer()
+    {
+        currentLayer++;
+        Debug.Log(currentLayer);
+        audioLayerController.ChangeLayer(currentLayer);
+    }
     #endregion
 }
