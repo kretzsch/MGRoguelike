@@ -3435,6 +3435,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1796915182}
   - component: {fileID: 1796915183}
+  - component: {fileID: 1796915184}
+  - component: {fileID: 1796915185}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -3470,6 +3472,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventPath: event:/FmodEvents/MainMenu
+--- !u!114 &1796915184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796915181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+--- !u!114 &1796915185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796915181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72eeeac9e9f38024892e36da348f2091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1826797138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3655,6 +3682,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 795dbeefa68f3af4e890187a22406084, type: 2}
   budgetText: {fileID: 1462589041}
   allAvailableWeapons: []
+  audioLayerController: {fileID: 0}
 --- !u!1 &1967974140
 GameObject:
   m_ObjectHideFlags: 0

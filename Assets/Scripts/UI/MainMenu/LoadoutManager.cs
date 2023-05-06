@@ -284,6 +284,7 @@ public class LoadoutManager : MonoBehaviour
     private void AddMusicLayer()
     {
         currentLayer++;
+        Debug.Log(currentLayer);
         audioLayerController.ChangeLayer(currentLayer);
     }
     #endregion
