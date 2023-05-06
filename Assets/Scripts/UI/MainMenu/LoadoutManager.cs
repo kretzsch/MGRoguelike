@@ -213,14 +213,14 @@ public class LoadoutManager : MonoBehaviour
             kvp.Value.SetActive(false);
         }
         activeMainMenuModels.Clear();
-        ResetMusic();
-
 
         //reset the rest
         currentBudget = startingBudget;
         selectedWeaponsAndAmmo.Clear();
         UpdateBudgetUI(budgetText);
         ClearPurchasedItemsUI(purchasedItemsParent);
+        ResetMusic();
+
     }
     public void TransferDataToLoadoutData()
     {
@@ -292,6 +292,7 @@ public class LoadoutManager : MonoBehaviour
     private void ResetMusic()
     {
         currentLayer = 0; // reset the music to an index of 0 , edit the indexing in the fmod project. 
+        audioLayerController.ChangeLayer(currentLayer);
     }
     #endregion
 }
