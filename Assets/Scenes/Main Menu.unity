@@ -3682,7 +3682,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 795dbeefa68f3af4e890187a22406084, type: 2}
   budgetText: {fileID: 1462589041}
   allAvailableWeapons: []
-  audioLayerController: {fileID: 0}
+  audioLayerController: {fileID: 1796915183}
 --- !u!1 &1967974140
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class AudioLayerController : MonoBehaviour
     {
         if (eventInstance.isValid())
         {
-            SetParameterValueByLabel(eventInstance, "Layer", layer.ToString());
+            SetParameterValue(eventInstance, "Layer", layer);
         }
         else
         {
@@ -32,8 +32,10 @@ public class AudioLayerController : MonoBehaviour
         }
     }
 
-    private void SetParameterValueByLabel(EventInstance eventInstance, string parameterName, string label)
+
+    private void SetParameterValue(EventInstance eventInstance, string parameterName, int index)
     {
-        eventInstance.setParameterByNameWithLabel(parameterName, label);
+        eventInstance.setParameterByName(parameterName, index);
     }
+
 }
