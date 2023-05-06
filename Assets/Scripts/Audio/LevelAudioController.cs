@@ -24,7 +24,7 @@ public class LevelAudioController : MonoBehaviour
     private void Start()
     {
         // Create and play the main FMOD event instance
-        _instance = FMODAudioManager.Instance.CreateEventInstance("event:/FmodEvents/MainEvent");
+        _instance = FMODAudioManager.Instance.CreateEventInstance("event:/FmodEvents/MainEvent"); // lets not hardcode this
         FMODAudioManager.Instance.PlayEvent(_instance);
     }
 
