@@ -41,7 +41,7 @@ public class LoadoutManager : MonoBehaviour
         currentBudget = startingBudget;
         selectedWeaponsAndAmmo = new Dictionary<string, int>();
         UpdateBudgetUI(budgetText);
-        currentLayer = 0;
+        ResetMusic();
     }
     #endregion
 
@@ -213,6 +213,7 @@ public class LoadoutManager : MonoBehaviour
             kvp.Value.SetActive(false);
         }
         activeMainMenuModels.Clear();
+        ResetMusic();
 
 
         //reset the rest
@@ -286,6 +287,11 @@ public class LoadoutManager : MonoBehaviour
         currentLayer++;
         Debug.Log(currentLayer);
         audioLayerController.ChangeLayer(currentLayer);
+    }
+
+    private void ResetMusic()
+    {
+        currentLayer = 0; // reset the music to an index of 0 , edit the indexing in the fmod project. 
     }
     #endregion
 }
