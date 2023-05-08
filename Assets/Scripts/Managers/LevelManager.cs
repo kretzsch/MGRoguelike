@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     }
 
     [SerializeField] private List<Level> levels;
-    [SerializeField] private LevelAudioController levelAudioController;
+    private LevelAudioController levelAudioController;
     [SerializeField] private Animator transitionAnimator;
     [SerializeField] private string transitionTriggerName = "Switch";
 
@@ -24,6 +24,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        levelAudioController = FindObjectOfType<LevelAudioController>();
         int randomStartIndex = GetRandomLevelIndex();
         StartCoroutine(SwitchLevel(randomStartIndex, false));
     }

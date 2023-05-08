@@ -9,23 +9,32 @@ public class LevelAudioController : MonoBehaviour
 {
     // EventInstance to control the main FMOD event
     private EventInstance _instance;
-    [SerializeField] private LevelManager levelManager;
+    private LevelManager levelManager;
 
     private void Awake()
     {
-        // Subscribe to the OnAllEnemiesDeadEvent from the StoreChildren component
-        EnemyManager enemyManager = FindObjectOfType<EnemyManager>();
-        if (enemyManager != null)
+        // Find the LevelManager in the scene
+        levelManager = FindObjectOfType<LevelManager>();
+
+        // If LevelManager is present, subscribe to the OnAllEnemiesDeadEvent from the EnemyManager component
+        if (levelManager != null)
         {
-            enemyManager.OnAllEnemiesDeadEvent += OnAllEnemiesDead;
+            EnemyManager enemyManager = FindObjectOfType<EnemyManager>();
+            if (enemyManager != null)
+            {
+                enemyManager.OnAllEnemiesDeadEvent += OnAllEnemiesDead;
+            }
         }
     }
 
     private void Start()
     {
-        // Create and play the main FMOD event instance
-        _instance = FMODAudioManager.Instance.CreateEventInstance("event:/FmodEvents/MainEvent"); // lets not hardcode this
-        FMODAudioManager.Instance.PlayEvent(_instance);
+        if (levelManager != null)
+        {
+            // Create and play the main FMOD event instance
+            _instance = FMODAudioManager.Instance.CreateEventInstance("event:/FmodEvents/MainEvent"); // lets not hardcode this
+            FMODAudioManager.Instance.PlayEvent(_instance);
+        }
     }
 
     private void OnDestroy()
