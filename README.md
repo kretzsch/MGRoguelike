@@ -27,6 +27,7 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 - Object pooling based on loadout through scriptableobjects.
 - New unity Inputsystem with different action maps for each genre.
 - Different weapon functions for each genre even with the same weapons
+- FMOD dynamic music for main menu and main game
 - Easily expandable due to decoupling of code (check backlog for future additions)
 
 ## Screenshots 
