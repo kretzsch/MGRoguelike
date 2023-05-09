@@ -13,9 +13,10 @@ public class AudioLayerController : MonoBehaviour
     private EventInstance eventInstance;
     private FMODAudioManager audioManager;
 
-    private void Start()
+    private void OnEnable()
     {
         audioManager = FMODAudioManager.Instance;
+        Debug.Log(audioManager);
         eventInstance = audioManager.CreateEventInstance(eventPath);
         audioManager.PlayEvent(eventInstance);
     }
@@ -38,4 +39,14 @@ public class AudioLayerController : MonoBehaviour
         eventInstance.setParameterByName(parameterName, index);
     }
 
+/// <summary>
+/// the start and stopaudio methods are used in the audiocontrollermanager
+/// </summary>
+    public void StopAudio()
+    {
+        if (eventInstance.isValid())
+        {
+            FMODAudioManager.Instance.StopEvent(eventInstance);
+        }
+    }
 }

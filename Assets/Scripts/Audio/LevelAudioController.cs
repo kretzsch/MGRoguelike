@@ -26,8 +26,7 @@ public class LevelAudioController : MonoBehaviour
             }
         }
     }
-
-    private void Start()
+    private void OnEnable()
     {
         if (levelManager != null)
         {
@@ -58,5 +57,14 @@ public class LevelAudioController : MonoBehaviour
     public void SetFmodParameter(string parameter, string label)
     {
         _instance.setParameterByNameWithLabel(parameter, label);
+    }
+
+
+    public void StopAudio()
+    {
+        if (_instance.isValid())
+        {
+            FMODAudioManager.Instance.StopEvent(_instance);
+        }
     }
 }
