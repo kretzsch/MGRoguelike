@@ -10,21 +10,20 @@ using FMODUnity;
 public class AudioLayerController : MonoBehaviour
 {
     [SerializeField] private string eventPath;
-    private EventInstance eventInstance;
+    private EventInstance _instance;
     private FMODAudioManager audioManager;
 
     private void Start()
     {
         audioManager = FMODAudioManager.Instance;
-        eventInstance = audioManager.CreateEventInstance(eventPath);
-        audioManager.PlayEvent(eventInstance);
+        _instance = audioManager.CreateEventInstance(eventPath);
+        audioManager.PlayEvent(_instance);
     }
-
     public void ChangeLayer(int layer)
     {
-        if (eventInstance.isValid())
+        if (_instance.isValid())
         {
-            SetParameterValue(eventInstance, "Layer", layer);
+            SetParameterValue(_instance, "Layer", layer);
         }
         else
         {
@@ -37,5 +36,15 @@ public class AudioLayerController : MonoBehaviour
     {
         eventInstance.setParameterByName(parameterName, index);
     }
-
+    private void OnDestroy()
+    {
+        StopAudio();
+    }
+    public void StopAudio()
+    {
+        if (_instance.isValid())
+        {
+            FMODAudioManager.Instance.StopEvent(_instance);
+        }
+    }
 }
