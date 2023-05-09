@@ -207,14 +207,16 @@ public class FirstPersonController : MonoBehaviour
     {
         if (context.performed)
         {
-            if (_weaponManager != null && _weaponManager.CurrentWeapon != null && _weaponManager.isActiveAndEnabled && _weaponManager.CurrentWeapon.isActiveAndEnabled &&_weaponManager.CurrentWeapon.canShoot)
+            if (_weaponManager != null && _weaponManager.CurrentWeapon != null && _weaponManager.isActiveAndEnabled && _weaponManager.CurrentWeapon.isActiveAndEnabled && _weaponManager.CurrentWeapon.canShoot)
             {
                 _weaponManager.CurrentWeapon.Shoot();
                 Debug.Log("Shooting and attempting recoil");
-                StartCoroutine(ApplyRecoilAnimation());
-            }
-           
 
+                if (gameObject.activeInHierarchy)
+                {
+                    StartCoroutine(ApplyRecoilAnimation());
+                }
+            }
         }
     }
 
