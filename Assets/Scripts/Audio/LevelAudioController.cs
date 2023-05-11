@@ -26,6 +26,10 @@ public class LevelAudioController : MonoBehaviour
         // Create and play the main FMOD event instance
         _instance = FMODAudioManager.Instance.CreateEventInstance("event:/FmodEvents/MainEvent"); // lets not hardcode this
         FMODAudioManager.Instance.PlayEvent(_instance);
+
+
+        //We do this because the default state is the FPS game due to FMOD things.
+        levelManager.SwitchToNextLevel();
     }
 
     private void OnDestroy()
