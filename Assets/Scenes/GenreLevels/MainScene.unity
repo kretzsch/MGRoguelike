@@ -12136,9 +12136,6 @@ MonoBehaviour:
   - levelName: TopDown
     levelObject: {fileID: 7678611849072009361}
     audioParameterLabel: Topdown
-  - levelName: Invaders
-    levelObject: {fileID: 3147698015336545295}
-    audioParameterLabel: Invaders
   levelAudioController: {fileID: 1940819103876368600}
   transitionAnimator: {fileID: 1913303997}
   transitionTriggerName: Switch

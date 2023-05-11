@@ -11,13 +11,13 @@ public class AudioLayerController : MonoBehaviour
 {
     [SerializeField] private string eventPath;
     private EventInstance _instance;
-    private FMODAudioManager audioManager;
+    private FMODAudioManager _audioManager;
 
     private void Start()
     {
-        audioManager = FMODAudioManager.Instance;
-        _instance = audioManager.CreateEventInstance(eventPath);
-        audioManager.PlayEvent(_instance);
+        _audioManager = FMODAudioManager.Instance;
+        _instance = _audioManager.CreateEventInstance(eventPath);
+        _audioManager.PlayEvent(_instance);
     }
     public void ChangeLayer(int layer)
     {
