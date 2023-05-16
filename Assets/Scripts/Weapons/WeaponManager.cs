@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Collections;
 
 /// <summary>
 /// this class is reuseable for every genre in this game. 
@@ -19,11 +20,23 @@ public class WeaponManager : MonoBehaviour
 
     void Start()
     {
-        // this is to make sure only one weapon is showing up on the start 
-        // in a relative hacky way. 
-        SwitchWeapon(1);
+        StartCoroutine(InitializeWeapons());
     }
 
+    private IEnumerator InitializeWeapons()
+    {
+        // Wait for end of frame to ensure SetupWeapons has been called
+        yield return new WaitForEndOfFrame();
+
+        if (weapons.Count > 0)
+        {
+            SwitchWeapon(1);
+        }
+        else
+        {
+            Debug.LogError("No weapons setup in WeaponManager.");
+        }
+    }
     public void SetCurrentWeapon(string weaponName)
     {
         if (weapons.ContainsKey(weaponName))
