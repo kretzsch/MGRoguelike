@@ -24,12 +24,8 @@ public class LevelAudioController : MonoBehaviour
     private void Start()
     {
         // Create and play the main FMOD event instance
-        _instance = FMODAudioManager.Instance.CreateEventInstance("event:/FmodEvents/MainEvent"); // lets not hardcode this
+        _instance = FMODAudioManager.Instance.CreateEventInstance("event:/FmodEvents/MainEvent");
         FMODAudioManager.Instance.PlayEvent(_instance);
-
-
-        //We do this because the default state is the FPS game due to FMOD things.
-        levelManager.SwitchToNextLevel();
     }
 
     private void OnDestroy()
@@ -44,6 +40,7 @@ public class LevelAudioController : MonoBehaviour
     }
 
     // Called when all enemies in the level are dead
+    //why is this in the levelaudiocontroller? 
     public void OnAllEnemiesDead()
     {
         // Assuming you have a method in LevelManager to switch to the next level
