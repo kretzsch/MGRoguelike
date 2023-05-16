@@ -44,22 +44,26 @@ public class LevelManager : MonoBehaviour
             SwitchLevelWithoutTransition(levelIndex);
         }
 
+        // Add the completed level index to the list of completed levels
+        if (currentLevelIndex != -1)
+        {
+            completedLevelIndices.Add(currentLevelIndex);
+        }
+
+        // Update the current level index
+        currentLevelIndex = levelIndex;
 
         isTransitionRunning = false;
     }
 
     public void SwitchToNextLevel()
     {
-        // Add the current level index to the list of completed levels
-        completedLevelIndices.Add(currentLevelIndex);
-
         if (completedLevelIndices.Count == levels.Count)
         {
             // All levels are completed, load the new scene
             LoadNextScene();
         }
-
-        if (completedLevelIndices.Count < levels.Count)
+        else if (completedLevelIndices.Count < levels.Count)
         {
             StartCoroutine(SwitchLevel(GetRandomLevelIndex()));
         }
