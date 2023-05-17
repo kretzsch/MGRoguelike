@@ -24,8 +24,9 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        int randomStartIndex = GetRandomLevelIndex();
-        StartCoroutine(SwitchLevel(randomStartIndex, false));
+       // int randomStartIndex = GetRandomLevelIndex();
+        StartCoroutine(SwitchLevel(GetRandomLevelIndex()));
+        //SwitchLevel(randomStartIndex);
     }
 
     public IEnumerator SwitchLevel(int levelIndex, bool playTransition = true)
@@ -106,6 +107,9 @@ public class LevelManager : MonoBehaviour
 
     private void SwitchLevelWithoutTransition(int targetLevelIndex)
     {
+        // Switch the audio
+        levelAudioController.SetFmodParameter("level", levels[targetLevelIndex].audioParameterLabel);
+
         // Deactivate the current level object
         if (currentLevelIndex >= 0)
         {
@@ -115,9 +119,7 @@ public class LevelManager : MonoBehaviour
         // Activate the target level object
         levels[targetLevelIndex].levelObject.SetActive(true);
 
-        // Switch the audio
-        levelAudioController.SetFmodParameter("level", levels[targetLevelIndex].audioParameterLabel);
-
+       
         // Update the current level index
         currentLevelIndex = targetLevelIndex;
     }
