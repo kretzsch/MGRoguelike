@@ -1,47 +1,75 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
+    [Header("Health")]
     [SerializeField]
-    private float maxHealth = 100; // The maximum health of the enemy
-    private float currentHealth; // The current health of the enemy
-    [SerializeField]
-    private float knockbackForce = 2.0f; // The base knockback force of the enemy
-    private Rigidbody2D rb; // The Rigidbody2D component of the enemy
+    private float maxHealth = 100;
+    private float currentHealth;
 
-    private void Start()
+    [Header("Knockback")]
+    [SerializeField]
+    private float knockbackForce = 2.0f;
+    private Rigidbody2D rb;
+
+    [Header("Movement")]
+    [SerializeField]
+    private float speed = 2f;
+    private Vector2 direction;
+
+    [Header("Destruction")]
+    public GameObject explosionEffectPrefab;
+    private bool _isDead = false;
+
+    void Start()
     {
-        currentHealth = maxHealth; // Initialize the current health
-        rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component
+        currentHealth = maxHealth;
+        rb = GetComponent<Rigidbody2D>();
+        direction = Vector2.left; // The enemy will start moving to the left. Change as needed.
     }
 
-    // This method is called when the enemy is hit
-    public void TakeDamage(float damage, Vector2 direction)
+    void Update()
     {
-        currentHealth -= damage; // Decrease the health by the damage amount
+        if (!_isDead)
+        {
+            Move();
+        }
+    }
 
-        // If the health drops to 0 or below, call the Die method
+    public void TakeDamage(int damage, Vector2 direction)
+    {
+        currentHealth -= damage;
         if (currentHealth <= 0)
         {
             Die();
         }
 
-        // Apply the knockback
         ApplyKnockback(direction);
     }
-
-    // This method handles the knockback effect
     public void ApplyKnockback(Vector2 direction)
     {
-        // Apply the knockback force in the opposite direction of the hit
         rb.AddForce(direction.normalized * knockbackForce, ForceMode2D.Impulse);
     }
 
-    // This method is called when the enemy dies
+    public bool IsDead()
+    {
+        return _isDead;
+    }
+
     private void Die()
     {
-        // Here you can add whatever should happen when the enemy dies
-        // For now we'll just destroy the enemy object
+        _isDead = true;
+        SpawnExplosionEffect();
         Destroy(gameObject);
+    }
+
+    private void SpawnExplosionEffect()
+    {
+        Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+    }
+
+    private void Move()
+    {
+        rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
     }
 }
