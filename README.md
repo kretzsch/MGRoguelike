@@ -40,7 +40,7 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 -  ~~Dynamic main menu audio~~
 -  art direction. frog sim?
 - Create SFX variety through FMOD
-- Dynamic footsteps with FMOD
+- Dynamic footsteps with FMOD ( think botw/ totk with seperate footsteps)
 - Make Main menu buttons reuseable and working with a single buybutton class
 - Recoil animation and reuseable reload animation. 
 - Platformer controller upgrade ->  use coyote timer; jump holding ; fall gravity scale; 2D physics material on player
