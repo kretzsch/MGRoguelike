@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponName: AKData
   cost: 300
   magazineSize: 30
-  damage: 10
+  damage: 20
   weaponVisualsData: {fileID: 11400000, guid: 8d080bc3db710a444bd21983c9be095f, type: 2}
   compatibleAmmo: {fileID: 11400000, guid: 795dbeefa68f3af4e890187a22406084, type: 2}
   genrePrefabs:
@@ -27,3 +27,4 @@ MonoBehaviour:
     prefab: {fileID: 8592174903124859902, guid: a3d32aecf84d38347aaee90d43a28eb0, type: 3}
   - genre: 2
     prefab: {fileID: 7142067088290600284, guid: 607925a21f9829742a829c85ce6f3b37, type: 3}
+  initialAmmoInMagazine: 0
