@@ -409,7 +409,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 621929540}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &87998243
 MonoBehaviour:
@@ -1879,7 +1879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 413338, guid: 004c0bf81fbf1a342af7262f965b564f, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 413338, guid: 004c0bf81fbf1a342af7262f965b564f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2385,8 +2385,8 @@ Transform:
   - {fileID: 1953893615}
   - {fileID: 1019185113}
   - {fileID: 1193829329}
-  - {fileID: 498634064}
   - {fileID: 87998242}
+  - {fileID: 498634064}
   - {fileID: 401546511}
   - {fileID: 536781216}
   m_Father: {fileID: 1785981413}
@@ -12137,8 +12137,17 @@ MonoBehaviour:
     levelObject: {fileID: 7678611849072009361}
     audioParameterLabel: Topdown
   levelAudioController: {fileID: 1940819103876368600}
-  transitionAnimator: {fileID: 1913303997}
   transitionTriggerName: Switch
+  transitionSprites:
+  - {fileID: 21300000, guid: 89367bedb323ffb4e8bbf32a52e82955, type: 3}
+  - {fileID: 21300000, guid: 79b0206a121046c4396beee8aa93cddb, type: 3}
+  - {fileID: 21300000, guid: e0ba77a98827c8d47af46133ac4519bb, type: 3}
+  - {fileID: 21300000, guid: 26866aa8c31f950409cda3ffe0954100, type: 3}
+  - {fileID: 21300000, guid: 88f2a96a64a65b74da4901d78005af89, type: 3}
+  - {fileID: 21300000, guid: 7501cc4f3d64007429501ae625d6955a, type: 3}
+  - {fileID: 21300000, guid: 21f46e634fd75234b8c6e58fe48a06ee, type: 3}
+  - {fileID: 21300000, guid: 4050bca0e366f344db2dde6d7bb2b8b3, type: 3}
+  transitionObject: {fileID: 1913303993}
 --- !u!1 &8616685848188530071
 GameObject:
   m_ObjectHideFlags: 0

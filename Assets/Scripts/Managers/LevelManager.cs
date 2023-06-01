@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -15,25 +16,30 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private List<Level> levels;
     [SerializeField] private LevelAudioController levelAudioController;
-    [SerializeField] private Animator transitionAnimator;
     [SerializeField] private string transitionTriggerName = "Switch";
+    [SerializeField] private Sprite[] transitionSprites;
+    [SerializeField] private GameObject transitionObject;
+    private SpriteRenderer _transitionRenderer;
+    private Animator _transitionAnimator;
 
-    private int currentLevelIndex = -1;
-    private bool isTransitionRunning = false;
-    private List<int> completedLevelIndices = new List<int>();
+    private int _currentLevelIndex = -1;
+    private bool _isTransitionRunning = false;
+    private List<int> _completedLevelIndices = new List<int>();
 
     private void Awake()
     {
-       // int randomStartIndex = GetRandomLevelIndex();
+        _transitionRenderer = transitionObject.GetComponent<SpriteRenderer>();
+        _transitionAnimator = transitionObject.GetComponent<Animator>();
+        // int randomStartIndex = GetRandomLevelIndex();
         StartCoroutine(SwitchLevel(GetRandomLevelIndex()));
         //SwitchLevel(randomStartIndex);
     }
 
     public IEnumerator SwitchLevel(int levelIndex, bool playTransition = true)
     {
-        if (isTransitionRunning || levelIndex < 0 || levelIndex >= levels.Count || levelIndex == currentLevelIndex) yield break;
+        if (_isTransitionRunning || levelIndex < 0 || levelIndex >= levels.Count || levelIndex == _currentLevelIndex) yield break;
 
-        isTransitionRunning = true;
+        _isTransitionRunning = true;
 
         // Perform level transition animation
         if (playTransition)
@@ -46,25 +52,25 @@ public class LevelManager : MonoBehaviour
         }
 
         // Add the completed level index to the list of completed levels
-        if (currentLevelIndex != -1)
+        if (_currentLevelIndex != -1)
         {
-            completedLevelIndices.Add(currentLevelIndex);
+            _completedLevelIndices.Add(_currentLevelIndex);
         }
 
         // Update the current level index
-        currentLevelIndex = levelIndex;
+        _currentLevelIndex = levelIndex;
 
-        isTransitionRunning = false;
+        _isTransitionRunning = false;
     }
 
     public void SwitchToNextLevel()
     {
-        if (completedLevelIndices.Count == levels.Count)
+        if (_completedLevelIndices.Count == levels.Count)
         {
             // All levels are completed, load the new scene
             LoadNextScene();
         }
-        else if (completedLevelIndices.Count < levels.Count)
+        else if (_completedLevelIndices.Count < levels.Count)
         {
             StartCoroutine(SwitchLevel(GetRandomLevelIndex()));
         }
@@ -76,7 +82,7 @@ public class LevelManager : MonoBehaviour
         do
         {
             randomIndex = Random.Range(0, levels.Count);
-        } while (completedLevelIndices.Contains(randomIndex));
+        } while (_completedLevelIndices.Contains(randomIndex));
 
         return randomIndex;
     }
@@ -86,23 +92,28 @@ public class LevelManager : MonoBehaviour
         // Switch the audio
         levelAudioController.SetFmodParameter("level", levels[targetLevelIndex].audioParameterLabel);
 
+        // Choose a random sprite for the transition
+        int randomSpriteIndex = Random.Range(0, transitionSprites.Length);
+        Image transitionImage = transitionObject.GetComponent<Image>();
+        transitionImage.sprite = transitionSprites[randomSpriteIndex];
+
         // Trigger the transition animation
-        transitionAnimator.SetTrigger(transitionTriggerName);
+        _transitionAnimator.SetTrigger(transitionTriggerName);
 
         // Deactivate the current level object
-        if (currentLevelIndex >= 0)
+        if (_currentLevelIndex >= 0)
         {
-            levels[currentLevelIndex].levelObject.SetActive(false);
+            levels[_currentLevelIndex].levelObject.SetActive(false);
         }
 
         // Wait until the transition animation is completed
-        yield return new WaitForSeconds(transitionAnimator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(_transitionAnimator.GetCurrentAnimatorStateInfo(0).length);
 
         // Activate the target level object
         levels[targetLevelIndex].levelObject.SetActive(true);
 
         // Update the current level index
-        currentLevelIndex = targetLevelIndex;
+        _currentLevelIndex = targetLevelIndex;
     }
 
     private void SwitchLevelWithoutTransition(int targetLevelIndex)
@@ -111,17 +122,16 @@ public class LevelManager : MonoBehaviour
         levelAudioController.SetFmodParameter("level", levels[targetLevelIndex].audioParameterLabel);
 
         // Deactivate the current level object
-        if (currentLevelIndex >= 0)
+        if (_currentLevelIndex >= 0)
         {
-            levels[currentLevelIndex].levelObject.SetActive(false);
+            levels[_currentLevelIndex].levelObject.SetActive(false);
         }
 
         // Activate the target level object
         levels[targetLevelIndex].levelObject.SetActive(true);
 
-       
         // Update the current level index
-        currentLevelIndex = targetLevelIndex;
+        _currentLevelIndex = targetLevelIndex;
     }
 
     private void LoadNextScene()
