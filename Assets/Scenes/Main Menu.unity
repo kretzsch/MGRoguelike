@@ -4949,6 +4949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4637123821794988}
   - component: {fileID: 137720934371488850}
+  - component: {fileID: 137720934371488851}
   m_Layer: 0
   m_Name: Character_Dummy_Male_01
   m_TagString: Untagged
@@ -5929,6 +5930,22 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 85.52081, z: -0.8454952}
     m_Extent: {x: 102.7469, y: 93.28432, z: 16.079613}
   m_DirtyAABB: 0
+--- !u!114 &137720934371488851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938483045825824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderTypes: 2
+  normalStrength: 5
+  normalSmoothing: 1
+  computingNormal: 0
 --- !u!1001 &439470597824505573
 PrefabInstance:
   m_ObjectHideFlags: 0
