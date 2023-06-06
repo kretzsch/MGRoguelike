@@ -12,6 +12,8 @@ using UnityEngine.UI;
 /// 3.	When the top-down level is loaded, the TopDownGameController script gets the PlayerInventory instance and gets the weapons and ammo.
 /// 4.	The TopDownGameController passes the weapons and ammo to the WeaponManager in the top-down scene.
 /// 5.	The WeaponManager sets up the weapons and ammo for the top-down game based on the transferred data.
+/// 
+/// when returning to mainmenu (so on start) reset the loadout
 /// </summary>
 public class LoadoutManager : MonoBehaviour
 {
