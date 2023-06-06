@@ -1859,6 +1859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e795a8f01083f8740b12e81508bcf5bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenename: MainScene
   loadoutManager: {fileID: 1853497248}
 --- !u!1 &944650623
 GameObject:
