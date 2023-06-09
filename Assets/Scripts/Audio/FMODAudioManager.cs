@@ -24,6 +24,15 @@ public class FMODAudioManager : MonoBehaviour
         }
     }
 
+
+    // this method is used for oneshots like menu hover sounds etc. 
+    // use this piece of code to trigger it : FMODAudioManager.Instance.PlayOneShot("path/to/your/event");
+
+    public void PlayOneShot(string eventPath, Vector3 position = default(Vector3))
+    {
+        RuntimeManager.PlayOneShot(eventPath, position);
+    }
+
     // Create an FMOD event instance using the given event path
     public EventInstance CreateEventInstance(string eventPath)
     {
