@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 179407643}
   - component: {fileID: 179407642}
   - component: {fileID: 179407641}
+  - component: {fileID: 179407645}
   m_Layer: 5
   m_Name: BtnBuySword
   m_TagString: Untagged
@@ -436,6 +437,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179407639}
   m_CullTransparentMesh: 1
+--- !u!114 &179407645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179407639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df209e184761df4aaf00791834f804e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fmodEvents:
+  - eventPath: event:/UI/MenuHover
+    triggerType: 3
+  - eventPath: event:/UI/MenuClick
+    triggerType: 2
 --- !u!23 &210545512
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -799,6 +817,7 @@ GameObject:
   - component: {fileID: 240399500}
   - component: {fileID: 240399499}
   - component: {fileID: 240399502}
+  - component: {fileID: 240399503}
   m_Layer: 5
   m_Name: BtnBuyAK47Ammo
   m_TagString: Untagged
@@ -924,6 +943,23 @@ MonoBehaviour:
   purchaseableItem: {fileID: 11400000, guid: 795dbeefa68f3af4e890187a22406084, type: 2}
   budgetText: {fileID: 1462589041}
   purchasedItemsParent: {fileID: 2012866916}
+--- !u!114 &240399503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240399497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df209e184761df4aaf00791834f804e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fmodEvents:
+  - eventPath: event:/UI/MenuHover
+    triggerType: 3
+  - eventPath: event:/UI/MenuClick
+    triggerType: 2
 --- !u!1 &353935464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,6 +1773,7 @@ GameObject:
   - component: {fileID: 921751447}
   - component: {fileID: 921751446}
   - component: {fileID: 921751449}
+  - component: {fileID: 921751450}
   m_Layer: 5
   m_Name: BtnPlay
   m_TagString: Untagged
@@ -1861,6 +1898,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenename: MainScene
   loadoutManager: {fileID: 1853497248}
+--- !u!114 &921751450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921751444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df209e184761df4aaf00791834f804e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fmodEvents:
+  - eventPath: event:/UI/MenuHover
+    triggerType: 3
+  - eventPath: event:/UI/MenuClick
+    triggerType: 2
 --- !u!1 &944650623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,6 +1928,7 @@ GameObject:
   - component: {fileID: 944650627}
   - component: {fileID: 944650626}
   - component: {fileID: 944650625}
+  - component: {fileID: 944650629}
   m_Layer: 5
   m_Name: BtnBuyPistol
   m_TagString: Untagged
@@ -1999,6 +2054,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944650623}
   m_CullTransparentMesh: 1
+--- !u!114 &944650629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944650623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df209e184761df4aaf00791834f804e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fmodEvents:
+  - eventPath: event:/UI/MenuHover
+    triggerType: 3
+  - eventPath: event:/UI/MenuClick
+    triggerType: 2
 --- !u!1 &1005138120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2569,7 @@ GameObject:
   - component: {fileID: 1070617680}
   - component: {fileID: 1070617679}
   - component: {fileID: 1070617682}
+  - component: {fileID: 1070617683}
   m_Layer: 5
   m_Name: BtnReset
   m_TagString: Untagged
@@ -2622,6 +2695,23 @@ MonoBehaviour:
   loadoutManager: {fileID: 1853497248}
   budgetText: {fileID: 1462589041}
   purchasedItemsParent: {fileID: 2012866916}
+--- !u!114 &1070617683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070617677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df209e184761df4aaf00791834f804e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fmodEvents:
+  - eventPath: event:/UI/MenuHover
+    triggerType: 3
+  - eventPath: event:/UI/MenuClick
+    triggerType: 2
 --- !u!1001 &1095215179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3327,8 +3417,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df209e184761df4aaf00791834f804e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventPath: event:/UI/MenuHover
-  triggerType: 3
+  fmodEvents:
+  - eventPath: event:/UI/MenuHover
+    triggerType: 3
+  - eventPath: event:/UI/MenuClick
+    triggerType: 2
 --- !u!1 &1723194661
 GameObject:
   m_ObjectHideFlags: 0
@@ -3923,6 +4016,7 @@ GameObject:
   - component: {fileID: 2061020781}
   - component: {fileID: 2061020780}
   - component: {fileID: 2061020779}
+  - component: {fileID: 2061020783}
   m_Layer: 5
   m_Name: BtnBuyPistolAmmo
   m_TagString: Untagged
@@ -4048,6 +4142,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061020777}
   m_CullTransparentMesh: 1
+--- !u!114 &2061020783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061020777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df209e184761df4aaf00791834f804e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fmodEvents:
+  - eventPath: event:/UI/MenuHover
+    triggerType: 3
+  - eventPath: event:/UI/MenuClick
+    triggerType: 2
 --- !u!1 &2061357975
 GameObject:
   m_ObjectHideFlags: 0
