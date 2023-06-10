@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using FMODUnity;
 
-public class PlayFMODOneShot : MonoBehaviour
+public class PlayFMODOneShot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public enum TriggerType { OnStart, OnEnable, OnClick, OnMouseEnter, OnMouseExit }
 
@@ -24,23 +26,25 @@ public class PlayFMODOneShot : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    public void OnPointerClick(PointerEventData eventData)
     {
         if (triggerType == TriggerType.OnClick)
         {
+            Debug.Log("mouse click");
             PlayOneShot();
         }
     }
 
-    private void OnMouseEnter()
+    public void OnPointerEnter(PointerEventData eventData)
     {
         if (triggerType == TriggerType.OnMouseEnter)
         {
+            Debug.Log("mouseenter");
             PlayOneShot();
         }
     }
 
-    private void OnMouseExit()
+    public void OnPointerExit(PointerEventData eventData)
     {
         if (triggerType == TriggerType.OnMouseExit)
         {
