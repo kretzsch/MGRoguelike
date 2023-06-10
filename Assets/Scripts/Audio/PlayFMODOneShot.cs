@@ -1,58 +1,58 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using FMODUnity;
+using System.Collections.Generic;
 
 public class PlayFMODOneShot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [System.Serializable]
+    public class FMODEventTriggerPair
+    {
+        public string eventPath;
+        public TriggerType triggerType;
+    }
+
     public enum TriggerType { OnStart, OnEnable, OnClick, OnMouseEnter, OnMouseExit }
 
-    [SerializeField] private string eventPath;
-    [SerializeField] private TriggerType triggerType;
+    [SerializeField] private List<FMODEventTriggerPair> fmodEvents = new List<FMODEventTriggerPair>();
 
     private void Start()
     {
-        if (triggerType == TriggerType.OnStart)
-        {
-            PlayOneShot();
-        }
+        PlayEventsOfType(TriggerType.OnStart);
     }
 
     private void OnEnable()
     {
-        if (triggerType == TriggerType.OnEnable)
-        {
-            PlayOneShot();
-        }
+        PlayEventsOfType(TriggerType.OnEnable);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (triggerType == TriggerType.OnClick)
-        {
-            Debug.Log("mouse click");
-            PlayOneShot();
-        }
+        PlayEventsOfType(TriggerType.OnClick);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (triggerType == TriggerType.OnMouseEnter)
-        {
-            Debug.Log("mouseenter");
-            PlayOneShot();
-        }
+        PlayEventsOfType(TriggerType.OnMouseEnter);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (triggerType == TriggerType.OnMouseExit)
+        PlayEventsOfType(TriggerType.OnMouseExit);
+    }
+
+    private void PlayEventsOfType(TriggerType type)
+    {
+        foreach (var fmodEvent in fmodEvents)
         {
-            PlayOneShot();
+            if (fmodEvent.triggerType == type)
+            {
+                PlayOneShot(fmodEvent.eventPath);
+            }
         }
     }
 
-    private void PlayOneShot()
+    private void PlayOneShot(string eventPath)
     {
         FMODUnity.RuntimeManager.PlayOneShot(eventPath, transform.position);
     }
