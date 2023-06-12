@@ -14,9 +14,15 @@ public class GoToSceneButton : MonoBehaviour
         button.onClick.AddListener(StartGame);
     }
 
+    /// <summary>
+    /// come on we can do better than this....
+    /// really need to refactor this shit
+    /// </summary>
     private void StartGame()
     {
+        Debug.Log("ayo are you printing ");
         if(scenename == "MainScene") loadoutManager.TransferDataToLoadoutData();
+        if(scenename == "MainMenu") LoadoutData.ClearLoadoutData(); 
         SceneManager.LoadScene(scenename);
     }
 }

@@ -41,6 +41,15 @@ public static class LoadoutData
 
         }
     }
+
+    public static void ClearLoadoutData()
+    {
+        Debug.Log("ClearLoadoutData is called");
+        selectedWeaponsAndAmmo.Clear();
+        remainingAmmo.Clear();
+        Debug.Log($"selectedWeaponsAndAmmo count after clear: {selectedWeaponsAndAmmo.Count}");
+        Debug.Log($"remainingAmmo count after clear: {remainingAmmo.Count}");
+    }
 }
 
 
