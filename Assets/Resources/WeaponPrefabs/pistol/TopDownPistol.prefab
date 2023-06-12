@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8592174903124859903}
   - component: {fileID: 8592174903124859901}
   - component: {fileID: 8592174903124859900}
+  - component: {fileID: -8168258564151495119}
   m_Layer: 0
   m_Name: TopDownPistol
   m_TagString: Untagged
@@ -133,9 +134,28 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: dd7aec78e48b1db42b50ee1eb0e0e64d, type: 2}
   projectileSpawnPoint: {fileID: 8592174904065263794}
   projectileSpeed: 40
-  fireRate: 20
   bulletPrefab: {fileID: 8809042992057867358, guid: df4ce044f37e76d46a4463494c55997b, type: 3}
+  is3D: 0
+  gunShootParticles: {fileID: 0}
+  bulletTrail: {fileID: 0}
+  firePoint: {fileID: 0}
+  canShoot: 1
   damage: 10
+  fireRate: 20
+  bulletTrailSpeed: 0
+  bulletPoolTag: 
+--- !u!114 &-8168258564151495119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8592174903124859902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2ed8e9d58f8854c81814d1d8e7c22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8592174904065263693
 GameObject:
   m_ObjectHideFlags: 0

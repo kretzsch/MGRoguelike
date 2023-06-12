@@ -484,6 +484,7 @@ GameObject:
   - component: {fileID: 115982378}
   - component: {fileID: 115982376}
   - component: {fileID: 115982382}
+  - component: {fileID: 115982383}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -882,6 +883,19 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &115982383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115982374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &125262266
 GameObject:
   m_ObjectHideFlags: 0
@@ -9161,7 +9175,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940819103876368599}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
@@ -11099,6 +11113,7 @@ GameObject:
   - component: {fileID: 7678611848562367618}
   - component: {fileID: 7678611848562367625}
   - component: {fileID: 7678611848562367624}
+  - component: {fileID: 7678611848562367626}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -11434,6 +11449,19 @@ MonoBehaviour:
   m_DefaultActionMap: TopDown
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7678611848562367626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678611848562367616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!212 &7678611848580560672
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12420,6 +12448,7 @@ GameObject:
   - component: {fileID: 8616685848188530077}
   - component: {fileID: 8616685848188530075}
   - component: {fileID: 8997996946544785198}
+  - component: {fileID: 8997996946544785199}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -12569,14 +12598,6 @@ MonoBehaviour:
     m_ActionId: 4f4c3feb-d8cb-4588-b0c4-62d6e1226e7e
     m_ActionName: FirstPersonShooter/Shoot[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6541c349-440f-4fe9-88d9-f73d71680e6f
-    m_ActionName: SpaceInvaders/Move[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 98dea56e-b636-4c4c-9a59-8a2c17423fb2
-    m_ActionName: SpaceInvaders/Shoot[/Mouse/leftButton,/Keyboard/w]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8997996946544785198}
         m_TargetAssemblyTypeName: FirstPersonController, Assembly-CSharp
@@ -12608,6 +12629,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c508518b-f6db-469a-a5a6-17e2babef0ad
     m_ActionName: FirstPersonShooter/Reload[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 44412409-c914-4dbd-b500-0d954cd0ab08
+    m_ActionName: Invaders/Move[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ee4b5a40-457b-486f-a4af-70377eda5eea
+    m_ActionName: Invaders/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: be0b78c1-ac3f-4fee-919c-2992b5cceac7
+    m_ActionName: Invaders/Reload[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4d4fc2ea-adf1-4ecd-b8d4-4032f2c559c4
+    m_ActionName: Invaders/SwitchWeapon[/Mouse/scroll/up,/Mouse/scroll/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ea21402c-227e-4590-be8a-4adf55893cdb
+    m_ActionName: Invaders/Aim[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: FirstPersonShooter
@@ -13223,6 +13264,7 @@ GameObject:
   - component: {fileID: 8800923751640181876}
   - component: {fileID: 8800923751640181879}
   - component: {fileID: 8800923751640181880}
+  - component: {fileID: 8800923751640181881}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -13445,6 +13487,19 @@ MonoBehaviour:
   m_DefaultActionMap: Platformer
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &8800923751640181881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800923751640181878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!4 &8800923752004791300
 Transform:
   m_ObjectHideFlags: 0
@@ -13939,6 +13994,19 @@ MonoBehaviour:
   reloadTime: 1
   throwForce: 10
   recoilAmount: 5
+--- !u!114 &8997996946544785199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848188530071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &9005220658148368329
 GameObject:
   m_ObjectHideFlags: 0

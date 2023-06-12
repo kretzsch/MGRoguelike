@@ -18,7 +18,7 @@ public class WeaponManager : MonoBehaviour
     private Dictionary<string, ProjectileWeapon> weapons = new Dictionary<string, ProjectileWeapon>();
     public ProjectileWeapon CurrentWeapon { get; set; }
 
-    void Start()
+    void Awake()
     {
         StartCoroutine(InitializeWeapons());
     }
@@ -77,6 +77,7 @@ public class WeaponManager : MonoBehaviour
 
                     if (projectileWeapon != null)
                     {
+                        //projectileWeapon.InitializeWeapon(weaponData);
                         projectileWeapon.weaponData = weaponData;
                         if (weaponData.compatibleAmmo != null)
                         {
