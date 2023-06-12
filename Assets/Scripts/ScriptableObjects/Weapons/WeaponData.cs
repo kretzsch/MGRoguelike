@@ -18,6 +18,8 @@ public class WeaponData : PurchaseableItem
     //used to initialize the UI ammo shown
     public int initialAmmoInMagazine;
 
+    public AudioEvent weaponAudioEvent; 
+
 
     public enum GameGenre
     {
@@ -37,4 +39,11 @@ public class WeaponData : PurchaseableItem
         public GameGenre genre;
         public GameObject prefab;
     }
+    [System.Serializable]
+    public class AudioEvent
+    {
+        public string EventPath2D;
+        public string EventPath3D;
+    }
+
 }
