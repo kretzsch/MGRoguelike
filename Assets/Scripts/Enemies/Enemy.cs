@@ -35,14 +35,7 @@ public class Enemy : MonoBehaviour
             Move();
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
-        if (damageable != null)
-        {
-            damageable.TakeDamage(10); // or however much damage you want to inflict
-        }
-    }
+    
     public void TakeDamage(int damage, Vector2 direction)
     {
         currentHealth -= damage;
