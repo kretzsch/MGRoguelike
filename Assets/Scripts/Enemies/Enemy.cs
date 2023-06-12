@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
             Move();
         }
     }
-
+    
     public void TakeDamage(int damage, Vector2 direction)
     {
         currentHealth -= damage;
