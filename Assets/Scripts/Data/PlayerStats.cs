@@ -23,7 +23,6 @@ public class PlayerStats : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        // Clamp current health between 0 and max health.
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
     }
 }
