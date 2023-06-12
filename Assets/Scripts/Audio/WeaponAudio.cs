@@ -17,12 +17,12 @@ public class WeaponAudio : MonoBehaviour
         string eventPath = is3D ? weaponData.weaponAudioEvent.EventPath3D : weaponData.weaponAudioEvent.EventPath2D;
         FMODUnity.RuntimeManager.PlayOneShot(eventPath, transform.position);
     }
+    public void PlayReloadSound()
+    {
+        string eventPath = weaponData.weaponAudioEvent.ReloadPath;
+        FMODUnity.RuntimeManager.PlayOneShot(eventPath, transform.position);
+    }
 }
-[System.Serializable]
-public class AudioEvent
-{
-    public string EventPath2D;
-    public string EventPath3D;
-}
+
 
 

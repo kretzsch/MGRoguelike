@@ -14,6 +14,9 @@ public abstract class DamageableObject : MonoBehaviour, IDamageable
     protected bool _isDead = false;
     protected EnemyManager _enemyManager;
 
+    private AudioEventPlayer audioPlayer;
+    public AudioEvent damageAudio;
+
     public void Start()
     {
         if (isEnemy) _enemyManager = transform.parent.GetComponent<EnemyManager>();

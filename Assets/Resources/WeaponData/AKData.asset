@@ -31,3 +31,4 @@ MonoBehaviour:
   weaponAudioEvent:
     EventPath2D: event:/Weapons/MachineGun
     EventPath3D: event:/Weapons/MachineGun
+    ReloadPath: event:/Weapons/Reload

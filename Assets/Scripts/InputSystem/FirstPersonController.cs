@@ -80,7 +80,7 @@ public class FirstPersonController : MonoBehaviour
     //used for recoil anim
     [SerializeField] private float recoilAmount = 5f;
 
-
+    private WeaponAudio _weaponAudio;
 
     private bool IsCurrentDeviceMouse
     {
@@ -100,10 +100,14 @@ public class FirstPersonController : MonoBehaviour
         _weaponManager = FindObjectOfType<WeaponManager>();
         Debug.Log($"WeaponManager reference: {_weaponManager}");
 
+       // _weaponAudio = GetComponent<WeaponAudio>();
+       // Debug.Log($"WeaponAudio reference: {_weaponAudio}");
+
     }
 
     private void Start()
     {
+
         _characterController = GetComponent<CharacterController>();
         _cinemachineTargetPitch = CinemachineCameraTarget.transform.localEulerAngles.x;
         if (_cinemachineTargetPitch > 180f)
@@ -291,9 +295,20 @@ public class FirstPersonController : MonoBehaviour
         {
             renderer.enabled = true;
         }
+
         weaponMeshRenderer.enabled = true;
         currentWeaponScript.canShoot = true;
         weaponParticleSystem.Play();
+
+        // Get reference to WeaponAudio
+        WeaponAudio weaponAudio = _weaponManager.CurrentWeapon.GetComponent<WeaponAudio>();
+
+        // Initialize WeaponAudio
+        weaponAudio.Initialize(_weaponManager.CurrentWeapon.weaponData, true);
+
+        // Play reload sound
+        weaponAudio.PlayReloadSound();
+
 
         // Perform the actual reload
         currentWeaponScript.Reload();
