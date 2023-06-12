@@ -11,6 +11,7 @@ public class ResetButton : MonoBehaviour
     private void Start()
     {
         Button button = GetComponent<Button>();
+        ResetLoadout();
         button.onClick.AddListener(ResetLoadout);
     }
 

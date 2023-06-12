@@ -39,10 +39,11 @@ public class LoadoutManager : MonoBehaviour
     #region monobehaviour methods
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(gameObject);
         currentBudget = startingBudget;
         selectedWeaponsAndAmmo = new Dictionary<string, int>();
         UpdateBudgetUI(budgetText);
+   
         ResetMusic();
     }
     #endregion
