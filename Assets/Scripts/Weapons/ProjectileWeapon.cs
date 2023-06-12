@@ -32,6 +32,7 @@ public class ProjectileWeapon : Weapon
     [SerializeField] private float bulletTrailSpeed;
     private float nextFireTime;
     private float lastFireTime;
+    private WeaponAudio weaponAudio;
 
     [Header("Object Pooling")]
     public string bulletPoolTag;
@@ -46,11 +47,23 @@ public class ProjectileWeapon : Weapon
         bulletPoolTag = weaponData.weaponName;
         ObjectPool.Instance.CreatePool(bulletPoolTag, bulletPrefab, weaponData.magazineSize);
         _animator = GetComponent<Animator>();
+
+       
     }
 
     private void Start()
     {
         InitializeAmmo();
+
+        weaponAudio = GetComponent<WeaponAudio>();
+        if (weaponAudio == null)
+        {
+            Debug.LogError("WeaponAudio component missing from the weapon prefab.");
+        }
+        else
+        {
+            weaponAudio.Initialize(weaponData, is3D);
+        }
     }
 
     public override void Shoot()
@@ -62,7 +75,7 @@ public class ProjectileWeapon : Weapon
         {
             Debug.Log("Shoot method : first if");
 
-
+            weaponAudio?.PlayFireSound();
             if (is3D && canShoot)
             {
                 Shoot3D();
@@ -82,6 +95,11 @@ public class ProjectileWeapon : Weapon
         }
     }
 
+    public void InitializeWeapon(WeaponData data)
+    {
+        weaponData = data;
+        weaponAudio.Initialize(weaponData, is3D);
+    }
 
     private void Shoot2D()
     {

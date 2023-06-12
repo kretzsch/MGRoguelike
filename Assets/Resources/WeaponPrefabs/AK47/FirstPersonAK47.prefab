@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 7142067088290600281}
   - component: {fileID: 5454519261329061425}
   - component: {fileID: 2671931335341667175}
+  - component: {fileID: -6122516895026269817}
   m_Layer: 0
   m_Name: FirstPersonAK47
   m_TagString: Untagged
@@ -349,6 +350,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-6122516895026269817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7142067088290600284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2ed8e9d58f8854c81814d1d8e7c22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7142067088483075568
 GameObject:
   m_ObjectHideFlags: 0

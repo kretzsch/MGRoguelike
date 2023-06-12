@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8592174903124859903}
   - component: {fileID: 8592174903124859901}
   - component: {fileID: 8592174903124859900}
+  - component: {fileID: 5853999945248419841}
   m_Layer: 0
   m_Name: InvadersPistol
   m_TagString: Untagged
@@ -138,9 +139,23 @@ MonoBehaviour:
   gunShootParticles: {fileID: 0}
   bulletTrail: {fileID: 0}
   firePoint: {fileID: 0}
+  canShoot: 1
   damage: 10
   fireRate: 20
   bulletTrailSpeed: 0
+  bulletPoolTag: 
+--- !u!114 &5853999945248419841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8592174903124859902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2ed8e9d58f8854c81814d1d8e7c22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8592174904065263693
 GameObject:
   m_ObjectHideFlags: 0
