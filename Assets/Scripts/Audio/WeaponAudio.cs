@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+
+
 using UnityEngine;
+using FMODUnity;
 
 public class WeaponAudio : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private WeaponData weaponData;
+    private bool is3D;
+
+    public void Initialize(WeaponData weaponData, bool is3D)
     {
-        
+        this.weaponData = weaponData;
+        this.is3D = is3D;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayFireSound()
     {
-        
+        string eventPath = is3D ? weaponData.weaponAudioEvent.EventPath3D : weaponData.weaponAudioEvent.EventPath2D;
+        FMODUnity.RuntimeManager.PlayOneShot(eventPath, transform.position);
     }
 }
+
