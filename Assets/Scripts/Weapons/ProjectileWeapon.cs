@@ -118,7 +118,7 @@ public class ProjectileWeapon : Weapon
         if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 500f))
         {
           
-            PlayShootEffects();
+            Play3DShootFX();
 
             IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
             Renderer hitObjectRenderer = hit.collider.GetComponent<Renderer>();
@@ -144,7 +144,7 @@ public class ProjectileWeapon : Weapon
         }
     }
 
-    private void PlayShootEffects()
+    private void Play3DShootFX()
     {
         gunShootParticles.Play();
         GameObject newBulletTrail = Instantiate(bulletTrail, firePoint.transform.position, firePoint.transform.rotation);
