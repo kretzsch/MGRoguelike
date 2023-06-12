@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     public int currentHealth;
     public int maxHealth = 100;
     public HealthBar healthBar;
+    private bool _isDead = false;
 
     private void Start()
     {
@@ -23,6 +24,21 @@ public class PlayerStats : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        if (currentHealth <= 0 && !_isDead)
+        {
+            _isDead = true;
+            Die();
+        }
     }
+
+    public bool IsDead()
+    {
+        return _isDead;
+    }
+
+    private void Die()
+    {
+      //do death things like animation / sound whatever. 
+    }
+
 }
