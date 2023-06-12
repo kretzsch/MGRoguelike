@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour, IDamageable
 {
     public int currentHealth;
     public int maxHealth = 100;
@@ -17,11 +17,13 @@ public class PlayerStats : MonoBehaviour
     private void Update()
     {
         //show health to healthbar.
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            currentHealth -= 20;
-        }
         healthBar.SetHealth(currentHealth);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        // Clamp current health between 0 and max health.
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
     }
 }
