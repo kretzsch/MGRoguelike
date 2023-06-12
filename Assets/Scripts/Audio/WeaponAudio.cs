@@ -1,5 +1,3 @@
-
-
 using UnityEngine;
 using FMODUnity;
 
@@ -19,5 +17,12 @@ public class WeaponAudio : MonoBehaviour
         string eventPath = is3D ? weaponData.weaponAudioEvent.EventPath3D : weaponData.weaponAudioEvent.EventPath2D;
         FMODUnity.RuntimeManager.PlayOneShot(eventPath, transform.position);
     }
+    public void PlayReloadSound()
+    {
+        string eventPath = weaponData.weaponAudioEvent.ReloadPath;
+        FMODUnity.RuntimeManager.PlayOneShot(eventPath, transform.position);
+    }
 }
+
+
 

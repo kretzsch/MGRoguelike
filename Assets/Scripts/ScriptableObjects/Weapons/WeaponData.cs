@@ -44,6 +44,7 @@ public class WeaponData : PurchaseableItem
     {
         public string EventPath2D;
         public string EventPath3D;
+        public string ReloadPath;
     }
 
 }
