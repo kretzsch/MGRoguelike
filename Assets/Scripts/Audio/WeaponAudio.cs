@@ -1,5 +1,3 @@
-
-
 using UnityEngine;
 using FMODUnity;
 
@@ -20,4 +18,11 @@ public class WeaponAudio : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot(eventPath, transform.position);
     }
 }
+[System.Serializable]
+public class AudioEvent
+{
+    public string EventPath2D;
+    public string EventPath3D;
+}
+
 
