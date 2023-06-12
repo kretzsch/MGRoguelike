@@ -4348,11 +4348,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4295433317460516, guid: 05773da76fe5ee64584ab0c3d9169be9, type: 3}
   m_PrefabInstance: {fileID: 994043603}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &994043605 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1428540705898108, guid: 05773da76fe5ee64584ab0c3d9169be9, type: 3}
-  m_PrefabInstance: {fileID: 994043603}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &996926452
 GameObject:
   m_ObjectHideFlags: 0
@@ -7385,7 +7380,7 @@ GameObject:
   - component: {fileID: 1699792912}
   - component: {fileID: 1699792911}
   - component: {fileID: 1699792910}
-  - component: {fileID: 1699792909}
+  - component: {fileID: 1699792913}
   m_Layer: 0
   m_Name: SM_Pawn_Weapon_Male_01 (1)
   m_TagString: Enemy
@@ -7408,21 +7403,6 @@ Transform:
   m_Father: {fileID: 174696306}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 192.448, z: 0}
---- !u!114 &1699792909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699792907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6539670abbe1d7947b522d8f9793fb32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  explosionEffectPrefab: {fileID: 731747600}
-  isEnemy: 1
 --- !u!64 &1699792910
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7487,6 +7467,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699792907}
   m_Mesh: {fileID: 4300000, guid: 792528832f7c311418b90e5ddced8e10, type: 3}
+--- !u!114 &1699792913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699792907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf12b5bc28e7094099b57ef4fb5944d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  explosionEffectPrefab: {fileID: 731747600}
+  isEnemy: 1
 --- !u!1001 &1718727801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7597,7 +7592,7 @@ GameObject:
   - component: {fileID: 1812744272}
   - component: {fileID: 1812744271}
   - component: {fileID: 1812744270}
-  - component: {fileID: 1812744269}
+  - component: {fileID: 1812744273}
   m_Layer: 0
   m_Name: SM_Pawn_Weapon_Female_01 (1)
   m_TagString: Enemy
@@ -7620,21 +7615,6 @@ Transform:
   m_Father: {fileID: 174696306}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 214.641, z: 0}
---- !u!114 &1812744269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1812744267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6539670abbe1d7947b522d8f9793fb32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  explosionEffectPrefab: {fileID: 731747600}
-  isEnemy: 1
 --- !u!64 &1812744270
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7699,6 +7679,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812744267}
   m_Mesh: {fileID: 4300000, guid: 3f36492df7a9ce647a487eb52aeeda64, type: 3}
+--- !u!114 &1812744273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812744267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf12b5bc28e7094099b57ef4fb5944d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  explosionEffectPrefab: {fileID: 731747600}
+  isEnemy: 1
 --- !u!1001 &1823579008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10763,6 +10758,7 @@ GameObject:
   - component: {fileID: 7678611848400200941}
   - component: {fileID: 7678611848400200942}
   - component: {fileID: 7678611848400200943}
+  - component: {fileID: 7678611848400200945}
   - component: {fileID: 7678611848400200940}
   - component: {fileID: 7678611848400200944}
   m_Layer: 0
@@ -10890,6 +10886,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   explosionEffectPrefab: {fileID: 2020581311}
+  isEnemy: 1
+  _isDead: 0
+  _enemyManager: {fileID: 0}
+--- !u!114 &7678611848400200945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678611848400200938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80737c2dec3b8984180de7dfe0f483df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  explosionEffectPrefab: {fileID: 0}
   isEnemy: 1
 --- !u!1 &7678611848400521162
 GameObject:
@@ -13733,9 +13746,9 @@ GameObject:
   - component: {fileID: 8800923752173389918}
   - component: {fileID: 8800923752173389919}
   - component: {fileID: 8800923752173389917}
-  - component: {fileID: 8800923752173389920}
   - component: {fileID: 8800923752173389922}
   - component: {fileID: 8800923752173389921}
+  - component: {fileID: 8800923752173389923}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -13832,21 +13845,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &8800923752173389920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8800923752173389889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6539670abbe1d7947b522d8f9793fb32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  explosionEffectPrefab: {fileID: 994043605}
-  isEnemy: 1
 --- !u!114 &8800923752173389921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13877,6 +13875,21 @@ MonoBehaviour:
   normalStrength: 5
   normalSmoothing: 1
   computingNormal: 0
+--- !u!114 &8800923752173389923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800923752173389889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80737c2dec3b8984180de7dfe0f483df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  explosionEffectPrefab: {fileID: 0}
+  isEnemy: 1
 --- !u!4 &8997996946544785197
 Transform:
   m_ObjectHideFlags: 0

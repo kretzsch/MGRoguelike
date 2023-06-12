@@ -41,7 +41,10 @@ public abstract class DamageableObject : MonoBehaviour, IDamageable
 
     protected void SpawnExplosionEffect()
     {
-        Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+        if (explosionEffectPrefab != null)
+        {
+            Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     // Define the method for handling collision in the derived classes
