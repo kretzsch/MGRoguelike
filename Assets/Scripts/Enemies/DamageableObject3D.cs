@@ -13,8 +13,9 @@ public class DamageableObject3D : DamageableObject
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("3D COLLISION IS HAPPENING");
             PlayerStats player = other.GetComponent<PlayerStats>();
-            player.TakeDamage(10); // example value
+            player.TakeDamage(100);
         }
     }
 }

@@ -37,7 +37,7 @@ public class MoveTowardsPlayer : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             PlayerStats player = other.GetComponent<PlayerStats>();
-            player.TakeDamage(10);
+         //   player.TakeDamage(10);  doesnt work somehow? 
         }
     }
 }

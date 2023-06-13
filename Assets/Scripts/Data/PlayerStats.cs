@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour, IDamageable
 {
@@ -38,7 +39,10 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     private void Die()
     {
-      //do death things like animation / sound whatever. 
+        //do death things like animation / sound whatever. 
+
+        //quick hack to go to death screen 
+        SceneManager.LoadScene("YouLost!");
     }
 
 }

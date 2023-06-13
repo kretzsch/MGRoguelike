@@ -14,7 +14,7 @@ public class DamageableObject2D : DamageableObject
         if (other.CompareTag("Player"))
         {
             PlayerStats player = other.GetComponent<PlayerStats>();
-            player.TakeDamage(10); // example value
+            player.TakeDamage(5); // example value
         }
     }
 }

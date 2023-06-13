@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    [System.Serializable]
+
+    public int randomStartIndex;
+   [System.Serializable]
     public struct Level
     {
         public string levelName;
@@ -26,15 +28,19 @@ public class LevelManager : MonoBehaviour
     private bool _isTransitionRunning = false;
     private List<int> _completedLevelIndices = new List<int>();
 
-    private void Awake()
+    public void Awake()
     {
         _transitionRenderer = transitionObject.GetComponent<SpriteRenderer>();
         _transitionAnimator = transitionObject.GetComponent<Animator>();
-        // int randomStartIndex = GetRandomLevelIndex();
-        StartCoroutine(SwitchLevel(GetRandomLevelIndex()));
+         int randomStartIndex = GetRandomLevelIndex();
+        StartCoroutine(SwitchLevel(randomStartIndex));
+       // StartCoroutine(SwitchLevel(GetRandomLevelIndex()));
         //SwitchLevel(randomStartIndex);
     }
-
+    private void Start()
+    {
+        levelAudioController.SetFmodParameter("level", levels[randomStartIndex].audioParameterLabel);
+    }
     public IEnumerator SwitchLevel(int levelIndex, bool playTransition = true)
     {
         if (_isTransitionRunning || levelIndex < 0 || levelIndex >= levels.Count || levelIndex == _currentLevelIndex) yield break;
