@@ -15,7 +15,8 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private TMP_InputField playerNameInputField;
 
-    public List<HighScore> highScores = new List<HighScore>();
+    public static List<HighScore> highScores = new List<HighScore>(); // Make this list static
+
     public LeaderBoardManager leaderboardManager;
 
     private void Awake()
