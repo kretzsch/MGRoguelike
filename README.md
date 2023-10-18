@@ -38,6 +38,7 @@ This genre-switching game offers a unique and engaging gaming experience by comb
 
 -  ~~Object Pooling~~
 -  ~~Dynamic main menu audio~~
+-  Assembly definitions for different folders. 
 -  art direction. frog sim?
 - Create SFX variety through FMOD
 - Dynamic footsteps with FMOD ( think botw/ totk with seperate footsteps)
